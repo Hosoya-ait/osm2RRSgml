@@ -7,4 +7,4 @@ OSMからGMLへの変換を行うプログラム(osm2gml)はroborescueフォル�
 
 ./modules/maps/src/maps内にあるものがマップに関するソースコードだと考えられる.
 
-osm2gmlというフォルダがmaps内の./convertのフォルダ内にあるので,ここにOSMからGMLに変換するコンバータのソースコードがある.
+osm2gmlというフォルダがmaps内の./convertのフォルダ内にあり,ここにOSMからGMLに変換するコンバータのソースコードがある.
