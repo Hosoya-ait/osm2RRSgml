@@ -8,7 +8,7 @@ public class Converter {
 //作成するファイル
   public static String fileName = "./XML/newXML.gml";
 //読み込むファイル
-  public static String fileLocation = "./OSM/hagiTest.osm";
+  public static String fileLocation = "./OSM/hagi.osm";
 
 //付与する名前空間
   public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -26,14 +26,13 @@ public class Converter {
         ReadFile readFile = new ReadFile(readDocument);
 
       //書き込み用Documentの作成
-        Document wDocument = makeDocument.MakeWriteDocument();
+        Document writeDoc = makeDocument.MakeWriteDocument();
       //書き込み用クラスの作成
         WriteDocument writeDocument = new WriteDocument();
-        wDocument = writeDocument.WriteToDocument(wDocument);
-
+        writeDoc = writeDocument.WriteToDocument(writeDoc);
 
       //Fileに書き込み
-        WriteFile writeFile = new WriteFile(wDocument);
+        WriteFile writeFile = new WriteFile(writeDoc);
 
 
     }

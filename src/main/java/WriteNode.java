@@ -10,6 +10,7 @@ public class WriteNode {
 
   private Document document;
   private Element rcrMap;
+  private Integer i;
 
   public WriteNode(Document doc, Element rcr){
     this.document = doc;
@@ -18,8 +19,7 @@ public class WriteNode {
 
   public Document WriteToDocumentNode(){
     Element rcrNodeList=this.document.createElement("rcr:nodelist");
-
-  
+    i =0;
     Converter.nodeMap.forEach((id,ll)->{
 
       Element rcrNode = this.document.createElement("gml:Node");
@@ -27,7 +27,7 @@ public class WriteNode {
       Element rcrPoint = this.document.createElement("gml:Point");
       Element rcrCoordinates = this.document.createElement("gml:coordinates");
 
-      rcrCoordinates.appendChild(this.document.createTextNode(ll.get("lat")+","+ll.get("lon")));
+      rcrCoordinates.appendChild(this.document.createTextNode(ll.get("lon")+","+ll.get("lat")));
 
 
 
@@ -37,10 +37,10 @@ public class WriteNode {
       rcrNodeList.appendChild(rcrNode);
 
       Attr idDeclare=this.document.createAttribute("gml:id");
-      idDeclare.setValue(""+id);
+      idDeclare.setValue(""+i);
       rcrNode.setAttributeNode(idDeclare);
 
-
+      i++;
 
     });
 
