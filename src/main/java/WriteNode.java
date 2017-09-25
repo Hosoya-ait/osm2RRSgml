@@ -19,15 +19,14 @@ public class WriteNode {
 
   public Document WriteToDocumentNode(){
     Element rcrNodeList=this.document.createElement("rcr:nodelist");
-    i =0;
     Converter.nodeMap.forEach((id,ll)->{
 
       Element rcrNode = this.document.createElement("gml:Node");
       Element rcrPointProperty = this.document.createElement("gml:pointProperty");
       Element rcrPoint = this.document.createElement("gml:Point");
       Element rcrCoordinates = this.document.createElement("gml:coordinates");
-
-      rcrCoordinates.appendChild(this.document.createTextNode(ll.get("lon")+","+ll.get("lat")));
+      String text = String.format("%3.3f,%3.3f",ll.get("lon"),ll.get("lat"));
+      rcrCoordinates.appendChild(this.document.createTextNode(text));
 
 
 
@@ -37,10 +36,9 @@ public class WriteNode {
       rcrNodeList.appendChild(rcrNode);
 
       Attr idDeclare=this.document.createAttribute("gml:id");
-      idDeclare.setValue(""+i);
+      idDeclare.setValue(Converter.linkNodeID.get(id));
       rcrNode.setAttributeNode(idDeclare);
 
-      i++;
 
     });
 

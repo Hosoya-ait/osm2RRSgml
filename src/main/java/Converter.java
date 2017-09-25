@@ -1,9 +1,15 @@
 import org.w3c.dom.Document;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Converter {
 
-  public static HashMap<Long,HashMap<String,Double>> nodeMap = new HashMap<Long,HashMap<String,Double>>();
+  public static HashMap<String,HashMap<String,Double>> nodeMap = new HashMap<String,HashMap<String,Double>>();
+  public static HashMap<String,String> linkNodeID = new HashMap<String,String>();
+  public static HashMap<String,ArrayList<String>> tmpWayMap = new HashMap<String,ArrayList<String>>();
+  //String ID  ArrayList Node
+  public static HashMap<String,ArrayList<String>> edgeMap = new HashMap<String,ArrayList<String>>();
 
 //作成するファイル
   public static String fileName = "./XML/newXML.gml";
@@ -24,6 +30,8 @@ public class Converter {
         Document readDocument = makeDocument.MakeReadDocument(fileLocation);
       //Documentから各種情報の取り出し
         ReadFile readFile = new ReadFile(readDocument);
+
+        MakeEdge makeEdge = new MakeEdge();
 
       //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();

@@ -25,6 +25,11 @@ public class WriteDocument {
     WriteNode writeNode = new WriteNode(document,rcrMap);
     document = writeNode.WriteToDocumentNode();
 
+    WriteEdge writeEdge = new WriteEdge(document,rcrMap);
+    document = writeEdge.WriteToDocumentEdge();
+
+
+
 
     return document;
   }
