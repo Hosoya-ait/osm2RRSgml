@@ -3,52 +3,47 @@ import java.util.ArrayList;
 public class MakeEdge {
 
   private static int  tmpEdgeId= 1;
+  private static int tmpBuildingId = 1;
   public MakeEdge(){
 
-    Converter.tmpWayMap.forEach((key,nodes)->{
-      //key = String  highway or building
+
+
+    Converter.tmpBuildingList.forEach(nodes -> {
       //nodes = ArrayList
       String tmpNode = new String();
-      System.out.println("test1");
-      System.out.println(key);
-      switch (key) {
-        case "highway":
-        System.out.println("test2");
-        tmpNode = nodes.get(0);
-        for (int i=1;i<nodes.size() ; i++) {
-            ArrayList tmpList = new ArrayList();
-            tmpList.add(tmpNode);
-            tmpList.add(nodes.get(i));
-            Converter.edgeMap.put(""+tmpEdgeId,tmpList);
+      ArrayList<String> tmpEdgeList = new ArrayList<String>();
+      tmpNode = nodes.get(0);
+      for (int i=1;i<nodes.size() ; i++) {
+        ArrayList tmpNodeList = new ArrayList();
 
-            tmpNode = nodes.get(i);
-            tmpEdgeId++;
-          }
-          //RoadMapをかく
-          break;
-
-        case "building":
-          System.out.println("test2");
-          tmpNode = nodes.get(nodes.size()-1);
-          for (int i=0;i<nodes.size() ; i++) {
-              ArrayList tmpList = new ArrayList();
-              tmpList.add(tmpNode);
-              tmpList.add(nodes.get(i));
-              Converter.edgeMap.put(""+tmpEdgeId,tmpList);
-              tmpNode = nodes.get(i);
-              tmpEdgeId++;
-            }
-          //BuildingMapを書く
+        tmpNodeList.add(tmpNode);
+        tmpNodeList.add(nodes.get(i));
+        Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+        tmpEdgeList.add(""+tmpEdgeId);
+        tmpNode = nodes.get(i);
+        tmpEdgeId++;
       }
-      tmpEdgeId++;
-      System.out.println("test3");
-    });
-    System.out.println("test4");
-    Converter.edgeMap.forEach((id,nodes)->{
-      System.out.println("edgeID = "+ id);
-      System.out.println("nodeIDMinus = "+ nodes.get(0));
-      System.out.println("nodeIDPlus = "+ nodes.get(1));
+      //BuildingMapを書く
+      Converter.buildingMap.put(""+tmpBuildingId,tmpEdgeList);
 
+      tmpBuildingId++;
     });
+
+    Converter.tmpRoadList.forEach(nodes -> {
+      //nodes = ArrayList
+      String tmpNode = new String();
+
+      tmpNode = nodes.get(0);
+      for (int i=1;i<nodes.size() ; i++) {
+          ArrayList tmpList = new ArrayList();
+          tmpList.add(tmpNode);
+          tmpList.add(nodes.get(i));
+          Converter.edgeMap.put(""+tmpEdgeId,tmpList);
+          tmpNode = nodes.get(i);
+          tmpEdgeId++;
+        }
+      //RoadMapを書く
+    });
+
   }
 }

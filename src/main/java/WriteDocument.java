@@ -28,7 +28,8 @@ public class WriteDocument {
     WriteEdge writeEdge = new WriteEdge(document,rcrMap);
     document = writeEdge.WriteToDocumentEdge();
 
-
+    WriteBuilding writeBuilding = new WriteBuilding(document,rcrMap);
+    document = writeBuilding.WriteToDocumentBuilding();
 
 
     return document;

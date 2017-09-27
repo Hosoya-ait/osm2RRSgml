@@ -33,8 +33,10 @@ public class WriteEdge {
 
       //idの付与
       Attr idDeclare=this.document.createAttribute("gml:id");
-      idDeclare.setValue(""+Converter.nodeMap.size()+id);
+      int i = Converter.nodeMap.size()+Integer.parseInt(id);
+      idDeclare.setValue(""+i);
       rcrEdge.setAttributeNode(idDeclare);
+
 
       //orientationの付与
       Attr orientationMinus = this.document.createAttribute("orientation");
@@ -54,6 +56,9 @@ public class WriteEdge {
       hrefPlus.setValue("#"+nodes.get(1));
       rcrDirectednodePlus.setAttributeNode(hrefPlus);
 
+
+
+      Converter.linkEdgeID.put(""+id,""+i);
     });
 
     this.rcrMap.appendChild(rcrEdgeList);

@@ -17,37 +17,46 @@ public class ReadFile {
       while(elementNodes != null) {
           String elementNodesNodeName = elementNodes.getNodeName();
 
-
           if (elementNodesNodeName == "relation") {
             break;
           }
 
-
           switch (elementNodesNodeName) {
+            case "node":
+              setNodeMap("id", elementNodes);
+              break;
 
-              case "node":
-                  setNodeMap("id", elementNodes);
+            case "way":
+              tmpNodeList = new ArrayList();
+              tmpKey = new String();
+              Node itemNodes = elementNodes.getFirstChild();
+              while(itemNodes != null) {
+                getWayInfo(elementNodesNodeName, itemNodes);
+                itemNodes = itemNodes.getNextSibling();
+              }
+              //System.out.println("key"+tmpKey);
 
-                  break;
+              switch (tmpKey) {
+                case "building":
+                   if (tmpNodeList.size() > 2) {
+                     Converter.tmpBuildingList.add(tmpNodeList);
+                   }
 
+                   break;
+                case "highway":
+                   if (tmpNodeList.size() > 1) {
+                     Converter.tmpRoadList.add(tmpNodeList);
+                   }
+                   break;
 
-              case "way":
-                  this.tmpNodeList = new ArrayList();
-                  this.tmpKey = new String();
-                  Node itemNodes = elementNodes.getFirstChild();
-                  while(itemNodes != null) {
-                    getWayInfo(elementNodesNodeName, itemNodes);
-                    itemNodes = itemNodes.getNextSibling();
-                  }
-                  if (checkWayInfo(tmpKey, tmpNodeList)) {
-                    Converter.tmpWayMap.put(tmpKey,tmpNodeList);
-                  }
-                  break;
+                default:
+                   break;
+              }
+
+              break;
           }
-
           elementNodes = elementNodes.getNextSibling();
       }
-
 
     }
 
@@ -57,23 +66,21 @@ public class ReadFile {
           case "nd":
               Node attributeRef = attributes.getNamedItem("ref");
               tmpNodeList.add(Converter.linkNodeID.get(attributeRef.getNodeValue()));
-              System.out.println(Converter.linkNodeID.get(attributeRef.getNodeValue()));
+              //System.out.println(Converter.linkNodeID.get(attributeRef.getNodeValue()));
               break;
           case "tag":
               Node attributeK = attributes.getNamedItem("k");
-              System.out.println(attributeK.getNodeValue());
 
               switch (attributeK.getNodeValue()) {
                 case "building":
                 case "highway":
                    tmpKey = attributeK.getNodeValue();
+                   //System.out.println(tmpKey);
                    break;
 
                 default:
                    break;
               }
-              
-
               break;
       }
    }
@@ -81,7 +88,7 @@ public class ReadFile {
 
    private static Boolean checkWayInfo(String key, ArrayList nodes) {
      if (key != null) {
-       System.out.println(key);
+       //System.out.println(key);
        switch (key) {
          case "building":
             if (nodes.size() > 2) {
@@ -102,7 +109,6 @@ public class ReadFile {
      return false;
   }
 
-
     private static void setNodeMap(String id, Node node) {
         NamedNodeMap attributes = node.getAttributes();
         if (attributes!=null) {
@@ -112,11 +118,19 @@ public class ReadFile {
             Node attributeLat = attributes.getNamedItem("lat");
             Node attributeLon = attributes.getNamedItem("lon");
 
-            map.put("lat",Double.parseDouble(attributeLat.getNodeValue()));
-            map.put("lon",Double.parseDouble(attributeLon.getNodeValue()));
+            Double lat = Double.parseDouble(attributeLat.getNodeValue());
+            Double lon = Double.parseDouble(attributeLon.getNodeValue());
+
+
+            //lat =(lat*10000)%1000;
+            //lon =(lon*10000)%1000;
+
+            map.put("lat",lat);
+            map.put("lon",lon);
 
             Converter.nodeMap.put(attributeId.getNodeValue(),map);
             Converter.linkNodeID.put(attributeId.getNodeValue(),""+Converter.nodeMap.size());
+            Converter.linkInverseNodeID.put(""+Converter.nodeMap.size(),attributeId.getNodeValue());
         }
     }
 }
