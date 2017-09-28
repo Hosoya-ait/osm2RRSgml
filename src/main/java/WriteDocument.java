@@ -31,6 +31,9 @@ public class WriteDocument {
     WriteBuilding writeBuilding = new WriteBuilding(document,rcrMap);
     document = writeBuilding.WriteToDocumentBuilding();
 
+    WriteRoad writeRoad = new WriteRoad(document,rcrMap);
+    document = writeRoad.WriteToDocumentRoad();
+
 
     return document;
   }

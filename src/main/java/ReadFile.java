@@ -9,6 +9,8 @@ public class ReadFile {
 
   private static  ArrayList tmpNodeList = new ArrayList();
   private static String tmpKey = new String();
+  private static double referenceLat = 0.0;
+  private static double referenceLon = 0.0;
 
     ReadFile(Document document){
       Node osmNode = document.getDocumentElement();
@@ -45,7 +47,7 @@ public class ReadFile {
                    break;
                 case "highway":
                    if (tmpNodeList.size() > 1) {
-                     Converter.tmpRoadList.add(tmpNodeList);
+                     Converter.tmpHighwayList.add(tmpNodeList);
                    }
                    break;
 
@@ -121,12 +123,23 @@ public class ReadFile {
             Double lat = Double.parseDouble(attributeLat.getNodeValue());
             Double lon = Double.parseDouble(attributeLon.getNodeValue());
 
+            lat =lat/0.000009;
+            lon =lon/0.000009;
 
-            //lat =(lat*10000)%1000;
-            //lon =(lon*10000)%1000;
+            if (referenceLon == 0.0) {
+              referenceLon = lon;
+            }
+            if(referenceLat == 0.0){
+              referenceLat = lat;
+            }
 
-            map.put("lat",lat);
-            map.put("lon",lon);
+            lat = lat - referenceLat;
+            lon = lon - referenceLon;
+
+            map.put("y",lat);
+            map.put("x",lon);
+
+
 
             Converter.nodeMap.put(attributeId.getNodeValue(),map);
             Converter.linkNodeID.put(attributeId.getNodeValue(),""+Converter.nodeMap.size());

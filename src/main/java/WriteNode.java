@@ -36,13 +36,14 @@ public class WriteNode {
       //rcrCoordinates.appendChild(this.document.createTextNode(text));
 
       String text = String.format("%3.3f,%3.3f",
-                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lon"),
-                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lat")
+                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("x"),
+                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("y")
                     );
 
-      rcrCoordinates.appendChild(this.document.createTextNode(((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lon")+","+
-      ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lat")));
+      // rcrCoordinates.appendChild(this.document.createTextNode(((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lon")+","+
+      // ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lat")));
 
+      rcrCoordinates.appendChild(this.document.createTextNode(text));
 
       rcrPoint.appendChild(rcrCoordinates);
       rcrPointProperty.appendChild(rcrPoint);

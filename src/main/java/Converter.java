@@ -17,7 +17,9 @@ public class Converter {
   public static HashMap<String,String> linkEdgeID = new HashMap<String,String>();
 
   public static ArrayList<ArrayList<String>> tmpBuildingList = new ArrayList<ArrayList<String>>();
+  public static ArrayList<ArrayList<String>> tmpHighwayList = new ArrayList<ArrayList<String>>();
   public static ArrayList<ArrayList<String>> tmpRoadList = new ArrayList<ArrayList<String>>();
+
   //String ID  ArrayList Node
   public static HashMap<String,ArrayList<String>> edgeMap = new HashMap<String,ArrayList<String>>();
 
@@ -27,7 +29,7 @@ public class Converter {
 //作成するファイル
   public static String fileName = "./XML/newXML.gml";
 //読み込むファイル
-  public static String fileLocation = "./OSM/london.osm";
+  public static String fileLocation = "./OSM/hagi.osm";
 
 //付与する名前空間
   public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -43,6 +45,8 @@ public class Converter {
         Document readDocument = makeDocument.MakeReadDocument(fileLocation);
       //Documentから各種情報の取り出し
         ReadFile readFile = new ReadFile(readDocument);
+
+        MakeRoad makeRoad = new MakeRoad();
 
         MakeEdge makeEdge = new MakeEdge();
 
