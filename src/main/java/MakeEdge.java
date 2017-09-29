@@ -19,6 +19,10 @@ public class MakeEdge {
 
         tmpNodeList.add(tmpNode);
         tmpNodeList.add(nodes.get(i));
+
+        Converter.usedNodeList.add(tmpNode);
+        Converter.usedNodeList.add(nodes.get(i));
+
         Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
         tmpEdgeList.add(""+tmpEdgeId);
         tmpNode = nodes.get(i);
@@ -29,6 +33,9 @@ public class MakeEdge {
 
       tmpBuildingId++;
     });
+
+
+
 
     Converter.tmpRoadList.forEach(nodes -> {
       //nodes = ArrayList
@@ -41,6 +48,10 @@ public class MakeEdge {
 
         tmpNodeList.add(tmpNode);
         tmpNodeList.add(nodes.get(i));
+
+        Converter.usedNodeList.add(tmpNode);
+        Converter.usedNodeList.add(nodes.get(i));
+
         //すでにあるEdgeか判定
         checkEdgeId = checkEdge(tmpNode,nodes.get(i));
 
@@ -58,19 +69,74 @@ public class MakeEdge {
       tmpRoadId++;
       //RoadMapを書く
     });
+    Converter.addedConnectRoadList.forEach(nodes -> {
+      //nodes = ArrayList
+      String tmpNode = new String();
+      ArrayList tmpMinusEdgeList = new ArrayList<String>();
+      ArrayList<String> tmpEdgeList = new ArrayList<String>();
+      tmpNode = nodes.get(0);
+      for (int i=1;i<nodes.size() ; i++) {
+        ArrayList tmpNodeList = new ArrayList();
+        String checkEdgeId = new String();
+
+        tmpNodeList.add(tmpNode);
+        tmpNodeList.add(nodes.get(i));
+
+        Converter.usedNodeList.add(tmpNode);
+        Converter.usedNodeList.add(nodes.get(i));
+
+        //すでにあるEdgeか判定
+        checkEdgeId = checkEdge(tmpNode,nodes.get(i));
+
+        if (checkEdgeId == "0") {
+          Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+          tmpEdgeList.add(""+tmpEdgeId);
+          tmpEdgeId++;
+        }else{
+          tmpEdgeList.add(""+checkEdgeId);
+          tmpMinusEdgeList.add(""+checkEdgeId);
+        }
+        tmpNode = nodes.get(i);
+      }
+      Converter.roadMap.put(""+tmpRoadId,tmpEdgeList);
+      Converter.minusDirectionEdgeMap.put(""+tmpRoadId,tmpMinusEdgeList);
+
+      tmpRoadId++;
+      //RoadMapを書く
+    });
+
+    // //testよう
+    // Converter.tmpHighwayList.forEach(nodes -> {
+    //   //nodes = ArrayList
+    //   String tmpNode = new String();
+    //   ArrayList<String> tmpEdgeList = new ArrayList<String>();
+    //   tmpNode = nodes.get(0);
+    //   for (int i=1;i<nodes.size() ; i++) {
+    //     ArrayList tmpNodeList = new ArrayList();
+    //
+    //     tmpNodeList.add(tmpNode);
+    //     tmpNodeList.add(nodes.get(i));
+    //     Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+    //     tmpEdgeList.add(""+tmpEdgeId);
+    //     tmpNode = nodes.get(i);
+    //     tmpEdgeId++;
+    //   }
+    //   //BuildingMapを書く
+    //   //Converter.buildingMap.put(""+tmpBuildingId,tmpEdgeList);
+    //
+    //   tmpBuildingId++;
+    // });
+
+
 
   }
   private String checkEdge(String node1,String node2){
     this.tmpNodeID = "0";
     Converter.edgeMap.forEach((id,edgeNodes)->{
 
-      if (edgeNodes.get(0) == node1) {
-        if (edgeNodes.get(1) == node2) {
+      if (edgeNodes.contains(node1)) {
+        if (edgeNodes.contains(node2)) {
            this.tmpNodeID = id;
-        }
-      }else if(edgeNodes.get(1) == node1){
-        if (edgeNodes.get(0) == node2) {
-          this.tmpNodeID =  id;
         }
       }
     });

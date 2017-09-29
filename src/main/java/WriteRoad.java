@@ -14,6 +14,9 @@ public class WriteRoad {
   private Element rcrMap;
   private Integer i;
 
+  private static String tmpEdgeID = new String();
+  private static String tmpNodeID = new String();
+
   public WriteRoad(Document doc, Element rcr){
     this.document = doc;
     this.rcrMap = rcr;
@@ -34,15 +37,51 @@ public class WriteRoad {
         gmlFace.appendChild(gmlDirectedEdge);
 
         //plusかMinusかの処理
+
+
         Attr orientation = this.document.createAttribute("orientation");
-        orientation.setValue("+");
+
+        if (Converter.minusDirectionEdgeMap.containsKey(id)) {
+          if (((ArrayList)Converter.minusDirectionEdgeMap.get(id)).contains(edges.get(n))) {
+            orientation.setValue("-");
+          }else{
+            orientation.setValue("+");
+          }
+        }else{
+          orientation.setValue("+");
+        }
+
         gmlDirectedEdge.setAttributeNode(orientation);
 
+        this.tmpNodeID = id;
+        this.tmpEdgeID = edges.get(n);
+        //neighbour情報
+        Converter.buildingMap.forEach((neID,neEdges)->{
+          if(neEdges.contains(this.tmpEdgeID)){
+            Attr neighbour = this.document.createAttribute("rcr:neighbour");
+
+            int neighbourBuildingID = Converter.nodeMap.size()+Converter.edgeMap.size()+Integer.parseInt(neID);
+
+            neighbour.setValue(""+neighbourBuildingID);
+            gmlDirectedEdge.setAttributeNode(neighbour);
+          }
+        });
+
+
+        Converter.roadMap.forEach((neID,neEdges)->{
+          if (neID != this.tmpNodeID) {
+            if(neEdges.contains(this.tmpEdgeID)){
+              Attr neighbour = this.document.createAttribute("rcr:neighbour");
+
+              int neighbourRoadID = Converter.nodeMap.size()+Converter.edgeMap.size()+Converter.buildingMap.size()+Integer.parseInt(neID);
+              neighbour.setValue(""+neighbourRoadID);
+              gmlDirectedEdge.setAttributeNode(neighbour);
+            }
+          }
+        });
         Attr href = this.document.createAttribute("xlink:href");
         href.setValue("#"+Converter.linkEdgeID.get(edges.get(n)));
         gmlDirectedEdge.setAttributeNode(href);
-
-        //neighbour情報
       }
 
       rcrRoad.appendChild(gmlFace);

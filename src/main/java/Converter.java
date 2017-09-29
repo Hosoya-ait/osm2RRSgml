@@ -23,13 +23,17 @@ public class Converter {
   //String ID  ArrayList Node
   public static HashMap<String,ArrayList<String>> edgeMap = new HashMap<String,ArrayList<String>>();
 
+  public static ArrayList<String> usedNodeList = new ArrayList<String>();
   public static HashMap<String,ArrayList<String>> buildingMap = new HashMap<String,ArrayList<String>>();
   public static HashMap<String,ArrayList<String>> roadMap = new HashMap<String,ArrayList<String>>();
 
+  public static ArrayList<ArrayList<String>>  addedConnectRoadList = new ArrayList<ArrayList<String>>() ;
+  public static HashMap<String,ArrayList<String>> minusDirectionEdgeMap = new HashMap<String,ArrayList<String>>();
+
 //作成するファイル
-  public static String fileName = "./XML/newXML.gml";
+  public static String fileName = "./XML/oosu.gml";
 //読み込むファイル
-  public static String fileLocation = "./OSM/hagi.osm";
+  public static String fileLocation = "./OSM/oosu.osm";
 
 //付与する名前空間
   public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";

@@ -23,37 +23,43 @@ public class WriteNode {
     Element rcrNodeList=this.document.createElement("rcr:nodelist");
 
     for (int i = 1; i<=Converter.linkNodeID.size();i++ ) {
-      Element rcrNode = this.document.createElement("gml:Node");
-      Element rcrPointProperty = this.document.createElement("gml:pointProperty");
-      Element rcrPoint = this.document.createElement("gml:Point");
-      Element rcrCoordinates = this.document.createElement("gml:coordinates");
+      //if (Converter.usedNodeList.contains(i)) {
+        Element rcrNode = this.document.createElement("gml:Node");
+        Element rcrPointProperty = this.document.createElement("gml:pointProperty");
+        Element rcrPoint = this.document.createElement("gml:Point");
+        Element rcrCoordinates = this.document.createElement("gml:coordinates");
 
-      // String text = String.format("%3.3f,%3.3f",
-      //               ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lon"),
-      //               ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lat")
-      //               );
 
-      //rcrCoordinates.appendChild(this.document.createTextNode(text));
+        String text = String.format("%3.3f,%3.3f",
+                      ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("x"),
+                      ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("y")
+                      );
 
-      String text = String.format("%3.3f,%3.3f",
-                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("x"),
-                    ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("y")
-                    );
 
-      // rcrCoordinates.appendChild(this.document.createTextNode(((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lon")+","+
-      // ((HashMap)Converter.nodeMap.get(Converter.linkInverseNodeID.get(""+i))).get("lat")));
+        rcrCoordinates.appendChild(this.document.createTextNode(text));
 
-      rcrCoordinates.appendChild(this.document.createTextNode(text));
+        rcrPoint.appendChild(rcrCoordinates);
+        rcrPointProperty.appendChild(rcrPoint);
+        rcrNode.appendChild(rcrPointProperty);
+        rcrNodeList.appendChild(rcrNode);
 
-      rcrPoint.appendChild(rcrCoordinates);
-      rcrPointProperty.appendChild(rcrPoint);
-      rcrNode.appendChild(rcrPointProperty);
-      rcrNodeList.appendChild(rcrNode);
+        Attr idDeclare=this.document.createAttribute("gml:id");
+        idDeclare.setValue(""+i);
+        rcrNode.setAttributeNode(idDeclare);
+      //}
+      // System.out.println("test");
+      // Converter.edgeMap.forEach((id ,nodes)->{
+      //   if (nodes.contains(i)) {
+      //     System.out.println("usedNode:"+i);
+      //   }
+      //   System.out.println("id="+id);
+      //   System.out.println("node1="+nodes.get(0));
+      //   System.out.println("node2="+nodes.get(1));
+      // });
 
-      Attr idDeclare=this.document.createAttribute("gml:id");
-      idDeclare.setValue(""+i);
-      rcrNode.setAttributeNode(idDeclare);
+
     }
+
 
     // Converter.nodeMap.forEach((id,ll)->{
     //   Element rcrNode = this.document.createElement("gml:Node");

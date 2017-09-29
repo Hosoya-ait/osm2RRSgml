@@ -36,7 +36,7 @@ public class WriteBuilding {
         gmlFace.appendChild(gmlDirectedEdge);
 
         Attr orientation = this.document.createAttribute("orientation");
-        orientation.setValue("+");
+        orientation.setValue("-");
         gmlDirectedEdge.setAttributeNode(orientation);
 
         Attr href = this.document.createAttribute("xlink:href");
