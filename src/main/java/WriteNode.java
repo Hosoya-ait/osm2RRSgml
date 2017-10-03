@@ -46,40 +46,8 @@ public class WriteNode {
         Attr idDeclare=this.document.createAttribute("gml:id");
         idDeclare.setValue(""+i);
         rcrNode.setAttributeNode(idDeclare);
-      //}
-      // System.out.println("test");
-      // Converter.edgeMap.forEach((id ,nodes)->{
-      //   if (nodes.contains(i)) {
-      //     System.out.println("usedNode:"+i);
-      //   }
-      //   System.out.println("id="+id);
-      //   System.out.println("node1="+nodes.get(0));
-      //   System.out.println("node2="+nodes.get(1));
-      // });
-
 
     }
-
-
-    // Converter.nodeMap.forEach((id,ll)->{
-    //   Element rcrNode = this.document.createElement("gml:Node");
-    //   Element rcrPointProperty = this.document.createElement("gml:pointProperty");
-    //   Element rcrPoint = this.document.createElement("gml:Point");
-    //   Element rcrCoordinates = this.document.createElement("gml:coordinates");
-    //
-    //   String text = String.format("%3.3f,%3.3f",ll.get("lon"),ll.get("lat"));
-    //   rcrCoordinates.appendChild(this.document.createTextNode(text));
-    //
-    //   rcrPoint.appendChild(rcrCoordinates);
-    //   rcrPointProperty.appendChild(rcrPoint);
-    //   rcrNode.appendChild(rcrPointProperty);
-    //   rcrNodeList.appendChild(rcrNode);
-    //
-    //   Attr idDeclare=this.document.createAttribute("gml:id");
-    //   idDeclare.setValue(Converter.linkNodeID.get(id));
-    //   rcrNode.setAttributeNode(idDeclare);
-    //
-    // });
 
     this.rcrMap.appendChild(rcrNodeList);
 

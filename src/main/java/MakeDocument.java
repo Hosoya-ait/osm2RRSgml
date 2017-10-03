@@ -10,10 +10,7 @@ public class MakeDocument{
     DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
     Document document = documentBuilder.parse(new File(str));
-    // Document document= DocumentBuilderFactory
-    // .newInstance()
-    // .newDocumentBuilder()
-    // .parse(new File(str));
+
   return document;
   }
 
