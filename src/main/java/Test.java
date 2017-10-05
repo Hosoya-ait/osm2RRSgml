@@ -6,7 +6,6 @@ public class Test {
 	public Test() {
 		// TODO 自動生成されたメソッド・スタブ
 		System.out.println("Hello World!");
-
 		HashMap<String, ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
     map = Converter.buildingMap;
 
@@ -16,7 +15,6 @@ public class Test {
 				//System.out.println(idedge);
 			//});
 		});
-
 	}
 
-}
+}	

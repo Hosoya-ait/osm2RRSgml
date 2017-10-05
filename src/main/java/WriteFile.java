@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class WriteFile {
-  WriteFile(Document document) throws Exception{
-    TransformerFactory transFactory = TransformerFactory.newInstance();
+    WriteFile(Document document) throws Exception{
+        TransformerFactory transFactory = TransformerFactory.newInstance();
         Transformer transformer = transFactory.newTransformer();
 
         transformer.setOutputProperty("indent", "yes"); //改行指定
@@ -26,5 +26,5 @@ public class WriteFile {
         StreamResult result = new StreamResult(os);
 
         transformer.transform(source, result);
-  }
+    }
 }
