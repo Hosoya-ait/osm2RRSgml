@@ -1,10 +1,6 @@
-import java.lang.String;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
-
-import java.util.HashMap;
 
 public class WriteEdge {
 
@@ -18,7 +14,7 @@ public class WriteEdge {
 
     public Document WriteToDocumentEdge(){
         Element rcrEdgeList=this.document.createElement("rcr:edgelist");
-        Converter.edgeMap.forEach((id,nodes)->{
+        OsmToGmlConverter.edgeMap.forEach((id, nodes)->{
 
             Element rcrEdge = this.document.createElement("gml:Edge");
             Element rcrDirectednodePlus = this.document.createElement("gml:directedNode");
@@ -33,7 +29,7 @@ public class WriteEdge {
 
             //idの付与
             Attr idDeclare=this.document.createAttribute("gml:id");
-            int i = Converter.nodeMap.size()+Integer.parseInt(id);
+            int i = OsmToGmlConverter.nodeMap.size()+Integer.parseInt(id);
             idDeclare.setValue(""+i);
             rcrEdge.setAttributeNode(idDeclare);
 
@@ -58,7 +54,7 @@ public class WriteEdge {
 
 
 
-            Converter.linkEdgeID.put(""+id,""+i);
+            OsmToGmlConverter.linkEdgeID.put(""+id,""+i);
         });
 
         this.rcrMap.appendChild(rcrEdgeList);

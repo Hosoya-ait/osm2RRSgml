@@ -10,7 +10,7 @@ public class MakeEdge {
     private static String tmpNodeID = new String();
     public MakeEdge(){
 
-        Converter.tmpBuildingList.forEach(nodes -> {
+        OsmToGmlConverter.tmpBuildingList.forEach(nodes -> {
             //nodes = ArrayList
             String tmpNode = new String();
             ArrayList<String> tmpEdgeList = new ArrayList<String>();
@@ -21,22 +21,22 @@ public class MakeEdge {
                 tmpNodeList.add(tmpNode);
                 tmpNodeList.add(nodes.get(i));
 
-                Converter.usedNodeList.add(tmpNode);
-                Converter.usedNodeList.add(nodes.get(i));
+                OsmToGmlConverter.usedNodeList.add(tmpNode);
+                OsmToGmlConverter.usedNodeList.add(nodes.get(i));
 
-                Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+                OsmToGmlConverter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
                 tmpEdgeList.add(""+tmpEdgeId);
                 tmpNode = nodes.get(i);
                 tmpEdgeId++;
             }
             //BuildingMapを書く
-            Converter.buildingMap.put(""+tmpBuildingId,tmpEdgeList);
+            OsmToGmlConverter.buildingMap.put(""+tmpBuildingId,tmpEdgeList);
 
             tmpBuildingId++;
         });
 
 
-        Converter.tmpRoadList.forEach(nodes -> {
+        OsmToGmlConverter.tmpRoadList.forEach(nodes -> {
             //nodes = ArrayList
             String tmpNode = new String();
             ArrayList<String> tmpEdgeList = new ArrayList<String>();
@@ -48,14 +48,14 @@ public class MakeEdge {
                 tmpNodeList.add(tmpNode);
                 tmpNodeList.add(nodes.get(i));
 
-                Converter.usedNodeList.add(tmpNode);
-                Converter.usedNodeList.add(nodes.get(i));
+                OsmToGmlConverter.usedNodeList.add(tmpNode);
+                OsmToGmlConverter.usedNodeList.add(nodes.get(i));
 
                 //すでにあるEdgeか判定
                 checkEdgeId = checkEdge(tmpNode,nodes.get(i));
 
                 if (checkEdgeId == "0") {
-                    Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+                    OsmToGmlConverter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
                     tmpEdgeList.add(""+tmpEdgeId);
                     tmpEdgeId++;
                 }else{
@@ -63,12 +63,12 @@ public class MakeEdge {
                 }
                 tmpNode = nodes.get(i);
             }
-            Converter.roadMap.put(""+tmpRoadId,tmpEdgeList);
+            OsmToGmlConverter.roadMap.put(""+tmpRoadId,tmpEdgeList);
 
             tmpRoadId++;
             //RoadMapを書く
         });
-        Converter.addedConnectRoadList.forEach(nodes -> {
+        OsmToGmlConverter.addedConnectRoadList.forEach(nodes -> {
             //nodes = ArrayList
             String tmpNode = new String();
             ArrayList<String> tmpMinusEdgeList = new ArrayList<String>();
@@ -81,14 +81,14 @@ public class MakeEdge {
                 tmpNodeList.add(tmpNode);
                 tmpNodeList.add(nodes.get(i));
 
-                Converter.usedNodeList.add(tmpNode);
-                Converter.usedNodeList.add(nodes.get(i));
+                OsmToGmlConverter.usedNodeList.add(tmpNode);
+                OsmToGmlConverter.usedNodeList.add(nodes.get(i));
 
                 //すでにあるEdgeか判定
                 checkEdgeId = checkEdge(tmpNode,nodes.get(i));
 
                 if (checkEdgeId == "0") {
-                    Converter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
+                    OsmToGmlConverter.edgeMap.put(""+tmpEdgeId,tmpNodeList);
                     tmpEdgeList.add(""+tmpEdgeId);
                     tmpEdgeId++;
                 }else{
@@ -97,8 +97,8 @@ public class MakeEdge {
                 }
                 tmpNode = nodes.get(i);
             }
-            Converter.roadMap.put(""+tmpRoadId,tmpEdgeList);
-            Converter.minusDirectionEdgeMap.put(""+tmpRoadId,tmpMinusEdgeList);
+            OsmToGmlConverter.roadMap.put(""+tmpRoadId,tmpEdgeList);
+            OsmToGmlConverter.minusDirectionEdgeMap.put(""+tmpRoadId,tmpMinusEdgeList);
 
             tmpRoadId++;
             //RoadMapを書く
@@ -107,7 +107,7 @@ public class MakeEdge {
     }
     private String checkEdge(String node1,String node2){
         this.tmpNodeID = "0";
-        Converter.edgeMap.forEach((id,edgeNodes)->{
+        OsmToGmlConverter.edgeMap.forEach((id, edgeNodes)->{
 
             if (edgeNodes.contains(node1)) {
                 if (edgeNodes.contains(node2)) {

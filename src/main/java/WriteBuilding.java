@@ -1,11 +1,6 @@
-import java.lang.String;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
-
-import java.util.HashMap;
-import java.util.ArrayList;
 
 public class WriteBuilding {
 
@@ -25,7 +20,7 @@ public class WriteBuilding {
 
 
 
-        Converter.buildingMap.forEach((id,edges)->{
+        OsmToGmlConverter.buildingMap.forEach((id, edges)->{
 
             Element rcrBuilding = this.document.createElement("rcr:building");
             Element gmlFace = this.document.createElement("gml:Face");
@@ -40,7 +35,7 @@ public class WriteBuilding {
                 gmlDirectedEdge.setAttributeNode(orientation);
 
                 Attr href = this.document.createAttribute("xlink:href");
-                href.setValue("#"+Converter.linkEdgeID.get(edges.get(n)));
+                href.setValue("#"+ OsmToGmlConverter.linkEdgeID.get(edges.get(n)));
                 gmlDirectedEdge.setAttributeNode(href);
 
                 //neighbour情報
@@ -64,7 +59,7 @@ public class WriteBuilding {
 
             //idの付与
             Attr idDeclare=this.document.createAttribute("gml:id");
-            int i = Converter.nodeMap.size()+Converter.edgeMap.size()+Integer.parseInt(id);
+            int i = OsmToGmlConverter.nodeMap.size()+ OsmToGmlConverter.edgeMap.size()+Integer.parseInt(id);
             idDeclare.setValue(""+i);
             rcrBuilding.setAttributeNode(idDeclare);
 

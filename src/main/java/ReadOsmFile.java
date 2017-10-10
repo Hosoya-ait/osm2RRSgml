@@ -5,7 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NamedNodeMap;
 
-public class ReadFile {
+public class ReadOsmFile {
 
     private static ArrayList tmpNodeList = new ArrayList();
     private static String tmpKey = new String();
@@ -13,7 +13,7 @@ public class ReadFile {
     private static double referenceLat = 0.0;
     private static double referenceLon = 0.0;
 
-    ReadFile(Document document){
+    ReadOsmFile(Document document){
         Node osmNode = document.getDocumentElement();
         Node elementNodes = osmNode.getFirstChild();
 
@@ -43,13 +43,13 @@ public class ReadFile {
                     switch (tmpKey) {
                         case "building":
                             if (tmpNodeList.size() > 2) {
-                                Converter.tmpBuildingList.add(tmpNodeList);
+                                OsmToGmlConverter.tmpBuildingList.add(tmpNodeList);
                             }
 
                             break;
                         case "highway":
                             if (tmpNodeList.size() > 1) {
-                                Converter.tmpHighwayList.add(tmpNodeList);
+                                OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
                             }
                             break;
 
@@ -69,8 +69,8 @@ public class ReadFile {
         switch (node.getNodeName()) {
             case "nd":
                 Node attributeRef = attributes.getNamedItem("ref");
-                tmpNodeList.add(Converter.linkNodeID.get(attributeRef.getNodeValue()));
-                //System.out.println(Converter.linkNodeID.get(attributeRef.getNodeValue()));
+                tmpNodeList.add(OsmToGmlConverter.linkNodeID.get(attributeRef.getNodeValue()));
+                //System.out.println(OsmToGmlConverter.linkNodeID.get(attributeRef.getNodeValue()));
                 break;
             case "tag":
                 Node attributeK = attributes.getNamedItem("k");
@@ -142,9 +142,9 @@ public class ReadFile {
             map.put("x",lon);
 
 
-            Converter.nodeMap.put(attributeId.getNodeValue(),map);
-            Converter.linkNodeID.put(attributeId.getNodeValue(),""+Converter.nodeMap.size());
-            Converter.linkInverseNodeID.put(""+Converter.nodeMap.size(),attributeId.getNodeValue());
+            OsmToGmlConverter.nodeMap.put(attributeId.getNodeValue(),map);
+            OsmToGmlConverter.linkNodeID.put(attributeId.getNodeValue(),""+ OsmToGmlConverter.nodeMap.size());
+            OsmToGmlConverter.linkInverseNodeID.put(""+ OsmToGmlConverter.nodeMap.size(),attributeId.getNodeValue());
         }
     }
 }

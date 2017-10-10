@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Converter {
+public class OsmToGmlConverter {
     //nodeのOSMIDとx,yのmapを対応したmap x,yのmapはxとその値,yとその値の対応が入っている
     public static HashMap<String,HashMap<String,Double>> nodeMap = new HashMap<String,HashMap<String,Double>>();
     //nodeのOSMID NEWID(1~) の対応map
@@ -53,9 +53,9 @@ public class Converter {
         //作成したDocumentにファイルの情報を読み込み
         Document readDocument = makeDocument.MakeReadDocument(fileLocation);
         //Documentから各種情報の取り出し
-        ReadFile readFile = new ReadFile(readDocument);
+        ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
 
-        MakeRoad makeRoad = new MakeRoad();
+        ExpansionHighway expansionHighway = new ExpansionHighway();
 
         MakeEdge makeEdge = new MakeEdge();
 
@@ -66,7 +66,7 @@ public class Converter {
         writeDoc = writeDocument.WriteToDocument(writeDoc);
 
         //Fileに書き込み
-        WriteFile writeFile = new WriteFile(writeDoc);
+        WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
 
     }
 

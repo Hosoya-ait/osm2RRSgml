@@ -12,11 +12,11 @@ public class WriteDocument {
         Element rcrMap=document.getDocumentElement();
 
         Attr xmlnsGmlDeclare=document.createAttribute("xmlns:gml");
-        xmlnsGmlDeclare.setValue(Converter.xmlns_gml_namespace_uri);
+        xmlnsGmlDeclare.setValue(OsmToGmlConverter.xmlns_gml_namespace_uri);
         rcrMap.setAttributeNode(xmlnsGmlDeclare);
 
         Attr xmlnsXlinkDeclare=document.createAttribute("xmlns:xlink");
-        xmlnsXlinkDeclare.setValue(Converter.xmlns_xlink_namespace_uri);
+        xmlnsXlinkDeclare.setValue(OsmToGmlConverter.xmlns_xlink_namespace_uri);
         rcrMap.setAttributeNode(xmlnsXlinkDeclare);
 
         WriteNode writeNode = new WriteNode(document,rcrMap);

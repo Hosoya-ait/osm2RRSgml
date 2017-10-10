@@ -22,7 +22,7 @@ public class MakeDocument{
         documentBuilderFactory.setNamespaceAware(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         DOMImplementation domImpl = documentBuilder.getDOMImplementation();
-        Document document = domImpl.createDocument(Converter.xmlns_rcr_namespace_uri,"rcr:map",null);
+        Document document = domImpl.createDocument(OsmToGmlConverter.xmlns_rcr_namespace_uri,"rcr:map",null);
 
         return document;
     }

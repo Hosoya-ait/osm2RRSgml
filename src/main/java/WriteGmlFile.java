@@ -4,13 +4,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.OutputKeys;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class WriteFile {
-    WriteFile(Document document) throws Exception{
+public class WriteGmlFile {
+    WriteGmlFile(Document document) throws Exception{
         TransformerFactory transFactory = TransformerFactory.newInstance();
         Transformer transformer = transFactory.newTransformer();
 
@@ -21,7 +20,7 @@ public class WriteFile {
 
 
         DOMSource source = new DOMSource(document);
-        File newXML = new File(Converter.fileName);
+        File newXML = new File(OsmToGmlConverter.fileName);
         FileOutputStream os = new FileOutputStream(newXML);
         StreamResult result = new StreamResult(os);
 
