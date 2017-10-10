@@ -129,10 +129,10 @@ public class ReadFile {
             lon =lon/0.000009;
 
             if (referenceLon == 0.0) {
-                referenceLon = lon;
+              referenceLon = lon;
             }
             if(referenceLat == 0.0){
-                referenceLat = lat;
+              referenceLat = lat;
             }
 
             lat = lat - referenceLat;
