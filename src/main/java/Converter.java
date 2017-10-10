@@ -36,9 +36,9 @@ public class Converter {
     public static HashMap<String,ArrayList<String>> minusDirectionEdgeMap = new HashMap<String,ArrayList<String>>();
 
     //作成するファイル
-    public static String fileName = "./XML/kawasaki.gml";
+    public static String fileName = "./GMLs/Test.gml";
     //読み込むファイル
-    public static String fileLocation = "./OSM/kawasaki2.osm";
+    public static String fileLocation = "./OSMs/Test.osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";

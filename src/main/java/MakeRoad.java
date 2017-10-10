@@ -134,7 +134,7 @@ public class MakeRoad{
 
         double distance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2));
 
-        if( distance > refDistance*2 ){
+        if( distance > refDistance*2.5){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
             return true;
         }else{
             return false;
@@ -183,8 +183,8 @@ public class MakeRoad{
 
         double halfDistance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2))/2;
 
-        double tmpX = Math.cos(radian)*halfDistance*Math.sqrt(3)+pointAx;
-        double tmpY = Math.sin(radian)*halfDistance*Math.sqrt(3)+pointAy;
+        double tmpX = Math.cos(radian)*halfDistance+pointAx;
+        double tmpY = Math.sin(radian)*halfDistance+pointAy;
 
 
         Double radian1 = ((degree-90)*Math.PI)/180.0;
