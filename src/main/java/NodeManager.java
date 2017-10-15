@@ -37,7 +37,7 @@ public class NodeManager {
         return gml_node_map_.get(node_id).get("y");
     }
     //nodeがすでに使用されているか調べてboolを返す
-    public static boolean checkUsedNodeList(int node_id){
+    public static boolean checkUsedNodeList(String node_id){
         if(used_node_list_.contains(node_id)){
             return true;
         }
@@ -48,8 +48,7 @@ public class NodeManager {
     //引数の型を合わせないと　考えるのはあとで　node_id_の++忘れない
     //osm_idとxyをマップしないことになったため，ここでosmIDとnodeIDを合わせることにした
     public static String addGmlNode(String osm_id,HashMap nodeXY){
-        node_id_ += 1;
-        String node_id = String.valueOf(node_id_);
+        String node_id = String.valueOf(node_id_++);
         gml_node_map_.put(node_id, nodeXY);
 
         osm_to_gml_id_.put(osm_id, node_id);
