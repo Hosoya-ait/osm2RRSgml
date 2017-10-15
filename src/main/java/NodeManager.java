@@ -21,19 +21,19 @@ public class NodeManager {
     private static ArrayList<String> used_node_list_ = new ArrayList<String>();
 
     //nodeIDからosmIDを取得  引数の型を調べる
-    public static String getOsmID(int node_id){
+    public static String getOsmID(String node_id){
         return gml_to_osm_id_.get(node_id);
     }
     //osmIDからnodeIDを取得　引数の型を調べる
-    public static String getGmlID(int osm_id){
+    public static String getGmlID(String osm_id){
         return osm_to_gml_id_.get(osm_id);
     }
     //nodeIDの示すnodeのx座標
-    public static double getX(int node_id){
+    public static double getX(String node_id){
         return gml_node_map_.get(node_id).get("x");
     }
     //nodeIDの示すnodeのy座標
-    public static double getY(int node_id){
+    public static double getY(String node_id){
         return gml_node_map_.get(node_id).get("y");
     }
     //nodeがすでに使用されているか調べてboolを返す
@@ -47,14 +47,15 @@ public class NodeManager {
     //gml用のnodeをnodeIDと共に追加
     //引数の型を合わせないと　考えるのはあとで　node_id_の++忘れない
     //osm_idとxyをマップしないことになったため，ここでosmIDとnodeIDを合わせることにした
-    public static int addGmlNode(String osm_id,HashMap nodeXY){
+    public static String addGmlNode(String osm_id,HashMap nodeXY){
         node_id_ += 1;
-        gml_node_map_.put(node_id_, nodeXY);
+        String node_id = String.valueOf(node_id_);
+        gml_node_map_.put(node_id, nodeXY);
 
-        osm_to_gml_id_.put(osm_id, node_id_);
-        gml_to_osm_id_.put(node_id_, osm_id);
+        osm_to_gml_id_.put(osm_id, node_id);
+        gml_to_osm_id_.put(node_id, osm_id);
 
-        return node_id_;
+        return node_id;
     }
     //osmのあるnodeのx,yの座標情報をnodeIDに流すはずだったが，
     //新クラス構造案にてxy管理はgmlNodeMapのみなので、IDの関連付けのみが残る
@@ -64,7 +65,7 @@ public class NodeManager {
     }
     //nodeを使用済みとみなす
     //引数の型をintのままにするか
-    public static void setUsedNodeList(int node_id){
+    public static void setUsedNodeList(String node_id){
         used_node_list_.add(node_id);
     }
 
