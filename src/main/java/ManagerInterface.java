@@ -1,0 +1,3 @@
+interface ManagerInterface {
+    void setManager();
+}

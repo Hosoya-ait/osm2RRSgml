@@ -13,17 +13,20 @@ public class ReadOsmFile {
     private static double referenceLat = 0.0;
     private static double referenceLon = 0.0;
 
+    private static CheckHighwayTag checkHighway = new CheckHighwayTag();
+
     ReadOsmFile(Document document){
         Node osmNode = document.getDocumentElement();
         Node elementNodes = osmNode.getFirstChild();
+
 
         //Document内のnode way relationを発見したら処理に入る
         while(elementNodes != null) {
             String elementNodesNodeName = elementNodes.getNodeName();
             //relation の場所までいったら終了させる
-            if (elementNodesNodeName == "relation") {
-                break;
-            }
+            // if (elementNodesNodeName == "relation") {
+            //     break;
+            // }
 
             switch (elementNodesNodeName) {
                 case "node":
@@ -33,6 +36,9 @@ public class ReadOsmFile {
                 case "way":
                     tmpNodeList = new ArrayList();
                     tmpKey = new String();
+
+                    checkHighway.clearCheckList();
+
                     Node itemNodes = elementNodes.getFirstChild();
                     while(itemNodes != null) {
                         getWayInfo(elementNodesNodeName, itemNodes);
@@ -49,7 +55,10 @@ public class ReadOsmFile {
                             break;
                         case "highway":
                             if (tmpNodeList.size() > 1) {
-                                OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
+                                if (checkHighway.checkList()) {
+                                    OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
+                                }
+
                             }
                             break;
 
@@ -76,21 +85,28 @@ public class ReadOsmFile {
                 Node attributeK = attributes.getNamedItem("k");
 
                 switch (attributeK.getNodeValue()) {
-                    case "building":
+
                     case "highway":
+                        Node attributeV = attributes.getNamedItem("v");
+                        checkHighway.setCheckList(attributeV.getNodeValue());
+                    case "building":
+
                         tmpKey = attributeK.getNodeValue();
                         //System.out.println(tmpKey);
                         break;
 
                     default:
+                        //System.out.println("tag:"+attributeK.getNodeValue());
+                        checkHighway.setCheckList(attributeK.getNodeValue());
                         break;
                 }
                 break;
         }
+
     }
 
 
-    private static Boolean checkWayInfo(String key, ArrayList nodes) {
+        private static Boolean checkWayInfo(String key, ArrayList nodes) {
         if (key != null) {
             //System.out.println(key);
             switch (key) {
