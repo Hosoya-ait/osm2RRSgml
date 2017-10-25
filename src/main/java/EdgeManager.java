@@ -13,11 +13,11 @@ public class EdgeManager {
 
     //2点のosmIDを利用したedgeが他にあれば，マイナスにする処理のためにtrue返す
     //これedgeを構成するnodeのArrayを引数にした方が扱いやすいのでは？
-    public static boolean checkMinusDirectionEdge(String nodeA,String nodeB) {
+    public static boolean checkMinusDirectionEdge(String new_node_id_A,String new_node_id_B) {
         //edge_map_のkeyは1から始まり，edge_map_.size()と同じ値までのidを保持していることに注意
         for (int i=1; edge_map_.size()>=i; i++) {
             String edge_id = String.valueOf(i);
-            if (edge_map_.get(edge_id).contains(nodeA) && edge_map_.get(edge_id).contains(nodeB)) {
+            if (edge_map_.get(edge_id).contains(new_node_id_A) && edge_map_.get(edge_id).contains(new_node_id_B)) {
                 return true;
             }
         }
