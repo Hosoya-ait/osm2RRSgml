@@ -8,10 +8,10 @@ public class BuildingManager {
     private static HashMap<String,ArrayList<String>> building_node_list_ = new HashMap<String,ArrayList<String>>();
     //building_id_とedge_id_の対応
     private static HashMap<String,ArrayList<String>> building_edge_list_ = new HashMap<String,ArrayList<String>>();
-    //buildingを構成するnode集を管理するidを新しく一時的に管理するid
-    private static int building_node_id_ = 1;
-    //buildingを構成するedge集を管理するidを新しく一時的に管理するid
-    private static int building_edge_id_ = 1;
+    //building_node_list_のkeyを1~管理する変数
+    private static int building_node_id_ = 0;
+    //building_node_list_のkeyを1~管理する変数
+    private static int building_edge_id_ = 0;
 
 
     public static ArrayList getBuildingNodeList(String building_node_id){
@@ -28,18 +28,18 @@ public class BuildingManager {
     }
     //引数のnodeを含んだbuildingのnode集をArrayで返す
     public static ArrayList getBuildingContainNode(String node_id){
-        for(int i=0; building_node_id_>i; i++) {
-            if (building_node_list_.get(i).contains(node_id)) {
-                return building_node_list_.get(i);
+        for(int i=1; building_node_id_>=i; i++) {
+            if (building_node_list_.get(String.valueOf(i)).contains(node_id)) {
+                return building_node_list_.get(String.valueOf(i));
             }
         }
         return null;
     }
     //引数のedgeを含んだbuildingのedge集をArrayで返す
     public static ArrayList getBuildingContainEdge(String edge_id){
-        for(int i=0; building_edge_id_>i; i++){
-            if(building_edge_list_.get(i).contains(edge_id)){
-                return building_edge_list_.get(i);
+        for(int i=1; building_edge_id_>=i; i++){
+            if(building_edge_list_.get(String.valueOf(i)).contains(edge_id)){
+                return building_edge_list_.get(String.valueOf(i));
             }
         }
         return null;
@@ -48,9 +48,11 @@ public class BuildingManager {
     //道路と建物の接続時に作成する2つのnodeを追加するメソッドを考える
 
     public static void setBuildingNodeList(ArrayList nodes){
-        building_node_list_.put(String.valueOf(building_node_id_++),nodes);
+        building_node_id_++;
+        building_node_list_.put(String.valueOf(building_node_id_),nodes);
     }
     public static void setBuildingEdgeList(ArrayList edges){
-        building_edge_list_.put(String.valueOf(building_edge_id_++),edges);
+        building_edge_id_++;
+        building_edge_list_.put(String.valueOf(building_edge_id_),edges);
     }
 }
