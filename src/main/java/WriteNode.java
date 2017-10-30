@@ -10,7 +10,6 @@ public class WriteNode {
 
     private Document document;
     private Element rcrMap;
-    private Integer i;
     private NodeManager nm;
 
     public WriteNode(Document doc, Element rcr, NodeManager nm){
@@ -30,14 +29,7 @@ public class WriteNode {
             Element rcrPoint = this.document.createElement("gml:Point");
             Element rcrCoordinates = this.document.createElement("gml:coordinates");
 
-
-            String text = String.format("%3.3f,%3.3f",
-                    //((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("x"),
-                    //((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("y")
-                    nm.getX(String.valueOf(i)),
-                    nm.getY(String.valueOf(i))
-            );
-
+            String text = String.format("%3.3f,%3.3f", nm.getX(String.valueOf(i)), nm.getY(String.valueOf(i)));
 
             rcrCoordinates.appendChild(this.document.createTextNode(text));
 

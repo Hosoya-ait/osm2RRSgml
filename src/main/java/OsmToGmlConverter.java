@@ -61,7 +61,7 @@ public class OsmToGmlConverter {
         //Documentから各種情報の取り出し
         //ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
 
-        ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,em,hm,bm,rm);
+        ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,hm,bm);
         readOsmFile1.readosmFile();
 
         /*

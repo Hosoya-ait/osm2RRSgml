@@ -17,23 +17,18 @@ public class ReadOsmFile {
 
     private Document  document;
     private NodeManager     nm = new NodeManager();
-    private EdgeManager     em = new EdgeManager();
     private HighwayManager  hm = new HighwayManager();
     private BuildingManager bm = new BuildingManager();
-    private RoadManager     rm = new RoadManager();
+
 
     ReadOsmFile(Document        document,
                 NodeManager     nm,
-                EdgeManager     em,
                 HighwayManager  hm,
-                BuildingManager bm,
-                RoadManager     rm) {
+                BuildingManager bm) {
         this.document = document;
         this.nm = nm;
-        this.em = em;
         this.hm = hm;
         this.bm = bm;
-        this.rm = rm;
 
     }
 
@@ -54,31 +49,44 @@ public class ReadOsmFile {
                 case "node":
                     setNodeMap(elementNodes,this.nm);
                     break;
-                /*
+
                 case "way":
+                    /*
+                        osmのwayの構造
+                        <way id='32170762' timestamp='2010-03-04T16:20:06Z' uid='146930' user='Tom_G3X' version='4' changeset='4033941'>
+                            <nd ref='361018947' />
+                            <nd ~>
+                            ...
+                            <tag k='KSJ2:INT_label' v='公営鉄道' />
+                            ...
+                            <tag k='railway' v='subway' />
+                        </way>
+
+                     */
+
                     tmpNodeList = new ArrayList();
                     tmpKey = new String();
-
                     checkHighway.clearCheckList();
 
                     Node itemNodes = elementNodes.getFirstChild();
                     while(itemNodes != null) {
-                        getWayInfo(elementNodesNodeName, itemNodes);
+                        getWayInfo(itemNodes,this.nm);
                         itemNodes = itemNodes.getNextSibling();
                     }
-                    //System.out.println("key"+tmpKey);
 
                     switch (tmpKey) {
                         case "building":
                             if (tmpNodeList.size() > 2) {
-                                OsmToGmlConverter.tmpBuildingList.add(tmpNodeList);
+                                //OsmToGmlConverter.tmpBuildingList.add(tmpNodeList);
+                                bm.setBuildingNodeList(tmpNodeList);
                             }
 
                             break;
                         case "highway":
                             if (tmpNodeList.size() > 1) {
                                 if (checkHighway.checkList()) {
-                                    OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
+                                    //OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
+                                    hm.setTmpHighwayList(tmpNodeList);
                                 }
 
                             }
@@ -90,7 +98,6 @@ public class ReadOsmFile {
 
 
                 break;
-                */
             }
             elementNodes = elementNodes.getNextSibling();
         }
@@ -126,14 +133,44 @@ public class ReadOsmFile {
 
 
             nm.addGmlNode(attributeId.getNodeValue(),map);
-            System.out.print(attributeId.getNodeValue());
-            System.out.println(" ," + nm.getGmlID(attributeId.getNodeValue()));
-
-            //OsmToGmlConverter.nodeMap.put(attributeId.getNodeValue(),map);
-            //OsmToGmlConverter.linkNodeID.put(attributeId.getNodeValue(),""+ OsmToGmlConverter.nodeMap.size());
-            //OsmToGmlConverter.linkInverseNodeID.put(""+ OsmToGmlConverter.nodeMap.size(),attributeId.getNodeValue());
+            //System.out.print(attributeId.getNodeValue());
+            //System.out.println(" ," + nm.getGmlID(attributeId.getNodeValue()));
         }
     }
+
+    private static void getWayInfo(Node node,NodeManager nm) {
+        NamedNodeMap attributes = node.getAttributes();
+        switch (node.getNodeName()) {
+            case "nd":
+                Node attributeRef = attributes.getNamedItem("ref");
+                //tmpNodeList.add(OsmToGmlConverter.linkNodeID.get(attributeRef.getNodeValue()));
+                tmpNodeList.add(nm.getGmlID(attributeRef.getNodeValue()));
+                break;
+            case "tag":
+                Node attributeK = attributes.getNamedItem("k");
+
+                switch (attributeK.getNodeValue()) {
+
+                    case "highway":
+                        Node attributeV = attributes.getNamedItem("v");
+                        checkHighway.setCheckList(attributeV.getNodeValue());
+                    case "building":
+
+                        tmpKey = attributeK.getNodeValue();
+                        //System.out.println(tmpKey);
+                        break;
+
+                    default:
+                        //System.out.println("tag:"+attributeK.getNodeValue());
+                        checkHighway.setCheckList(attributeK.getNodeValue());
+                        break;
+                }
+                break;
+        }
+
+    }
+
+    /*
 
 
     ReadOsmFile(Document document){
@@ -284,8 +321,5 @@ public class ReadOsmFile {
             OsmToGmlConverter.linkInverseNodeID.put(""+ OsmToGmlConverter.nodeMap.size(),attributeId.getNodeValue());
         }
     }
-
-    public NodeManager getNM() {
-        return nm;
-    }
+    */
 }
