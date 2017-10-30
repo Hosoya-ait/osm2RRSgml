@@ -8,6 +8,8 @@ public class WriteBuilding {
     private Element rcrMap;
     private Integer i;
 
+    private static String tmpEdgeID = new String();
+    private static String tmpNodeID = new String();
 
     public WriteBuilding(Document doc, Element rcr){
         this.document = doc;
@@ -17,7 +19,6 @@ public class WriteBuilding {
     public Document WriteToDocumentBuilding(){
 
         Element rcrBuildingList=this.document.createElement("rcr:buildinglist");
-
 
 
         OsmToGmlConverter.buildingMap.forEach((id, edges)->{
@@ -31,8 +32,25 @@ public class WriteBuilding {
                 gmlFace.appendChild(gmlDirectedEdge);
 
                 Attr orientation = this.document.createAttribute("orientation");
+
                 orientation.setValue("-");
                 gmlDirectedEdge.setAttributeNode(orientation);
+
+                this.tmpNodeID = id;
+                this.tmpEdgeID = edges.get(n);
+
+                OsmToGmlConverter.roadMap.forEach((neID, neEdges)->{
+                    if (neID != this.tmpNodeID) {
+                        if(neEdges.contains(this.tmpEdgeID)){
+                            Attr neighbour = this.document.createAttribute("rcr:neighbour");
+
+                            int neighbourRoadID = OsmToGmlConverter.nodeMap.size()+ OsmToGmlConverter.edgeMap.size()+ OsmToGmlConverter.buildingMap.size()+Integer.parseInt(neID);
+                            neighbour.setValue(""+neighbourRoadID);
+                            gmlDirectedEdge.setAttributeNode(neighbour);
+                        }
+                    }
+                });
+
 
                 Attr href = this.document.createAttribute("xlink:href");
                 href.setValue("#"+ OsmToGmlConverter.linkEdgeID.get(edges.get(n)));

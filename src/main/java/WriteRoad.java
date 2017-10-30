@@ -6,7 +6,7 @@ import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 
-public class WriteRoad {
+public class WriteRoad  {
 
     private Document document;
     private Element rcrMap;
@@ -33,9 +33,6 @@ public class WriteRoad {
                 Element gmlDirectedEdge = this.document.createElement("gml:directedEdge");
 
                 gmlFace.appendChild(gmlDirectedEdge);
-
-                //plusかMinusかの処理
-
 
                 Attr orientation = this.document.createAttribute("orientation");
 
@@ -77,6 +74,7 @@ public class WriteRoad {
                         }
                     }
                 });
+
                 Attr href = this.document.createAttribute("xlink:href");
                 href.setValue("#"+ OsmToGmlConverter.linkEdgeID.get(edges.get(n)));
                 gmlDirectedEdge.setAttributeNode(href);
