@@ -5,29 +5,29 @@ public class BuildingManager {
     //building_node_id_,building_edge_id_はこのクラス内部ではint,外部ではStringで扱う
 
     //buildig_id_とnode_id_の対応
-    private static HashMap<String,ArrayList<String>> building_node_list_ = new HashMap<String,ArrayList<String>>();
+    private HashMap<String,ArrayList<String>> building_node_list_ = new HashMap<String,ArrayList<String>>();
     //building_id_とedge_id_の対応
-    private static HashMap<String,ArrayList<String>> building_edge_list_ = new HashMap<String,ArrayList<String>>();
+    private HashMap<String,ArrayList<String>> building_edge_list_ = new HashMap<String,ArrayList<String>>();
     //building_node_list_のkeyを1~管理する変数
-    private static int building_node_id_ = 0;
+    private int building_node_id_ = 0;
     //building_node_list_のkeyを1~管理する変数
-    private static int building_edge_id_ = 0;
+    private int building_edge_id_ = 0;
 
 
-    public static ArrayList getBuildingNodeList(String building_node_id){
+    public ArrayList getBuildingNodeList(String building_node_id){
         return building_node_list_.get(building_node_id);
     }
-    public static ArrayList getBuildingEdgeList(String building_edge_id){
+    public ArrayList getBuildingEdgeList(String building_edge_id){
         return building_edge_list_.get(building_edge_id);
     }
-    public static String getBuildingNodeID(){
+    public String getBuildingNodeID(){
         return String.valueOf(building_node_id_);
     }
-    public static String getBuildingEdgeID(){
+    public String getBuildingEdgeID(){
         return String.valueOf(building_edge_id_);
     }
     //引数のnodeを含んだbuildingのnode集をArrayで返す
-    public static ArrayList getBuildingContainNode(String node_id){
+    public ArrayList getBuildingContainNode(String node_id){
         for(int i=1; building_node_id_>=i; i++) {
             if (building_node_list_.get(String.valueOf(i)).contains(node_id)) {
                 return building_node_list_.get(String.valueOf(i));
@@ -36,7 +36,7 @@ public class BuildingManager {
         return null;
     }
     //引数のedgeを含んだbuildingのedge集をArrayで返す
-    public static ArrayList getBuildingContainEdge(String edge_id){
+    public ArrayList getBuildingContainEdge(String edge_id){
         for(int i=1; building_edge_id_>=i; i++){
             if(building_edge_list_.get(String.valueOf(i)).contains(edge_id)){
                 return building_edge_list_.get(String.valueOf(i));
@@ -47,11 +47,11 @@ public class BuildingManager {
 
     //道路と建物の接続時に作成する2つのnodeを追加するメソッドを考える
 
-    public static void setBuildingNodeList(ArrayList nodes){
+    public void setBuildingNodeList(ArrayList nodes){
         building_node_id_++;
         building_node_list_.put(String.valueOf(building_node_id_),nodes);
     }
-    public static void setBuildingEdgeList(ArrayList edges){
+    public void setBuildingEdgeList(ArrayList edges){
         building_edge_id_++;
         building_edge_list_.put(String.valueOf(building_edge_id_),edges);
     }
