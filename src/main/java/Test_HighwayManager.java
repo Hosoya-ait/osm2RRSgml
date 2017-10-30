@@ -8,12 +8,14 @@ public class Test_HighwayManager {
         test_highway.add("2");
         test_highway.add("3");
 
+        HighwayManager hm = new HighwayManager();
+
         //highwayをセット
-        HighwayManager.setTmpHighwayList(test_highway);
+        hm.setTmpHighwayList(test_highway);
 
         //highwayを呼び出す
         ArrayList<ArrayList<String>> test_get_highway = new ArrayList<ArrayList<String>>();
-        test_get_highway = HighwayManager.getTmpHighwayList();
+        test_get_highway = hm.getTmpHighwayList();
         System.out.println(test_get_highway.get(0).get(0));
         System.out.println(test_get_highway.get(0).get(1));
         System.out.println(test_get_highway.get(0).get(2));
