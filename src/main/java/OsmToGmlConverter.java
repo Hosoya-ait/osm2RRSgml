@@ -64,9 +64,10 @@ public class OsmToGmlConverter {
         ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,hm,bm);
         readOsmFile1.readosmFile();
 
-        /*
-        ExpansionHighway expansionHighway = new ExpansionHighway();
+        ExpansionHighway expansionHighway = new ExpansionHighway(nm,em,hm,bm,rm);
+        expansionHighway.ExpantionHighway();
 
+        /*
         MakeEdge makeEdge = new MakeEdge();
         */
 
