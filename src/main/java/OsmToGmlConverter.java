@@ -3,7 +3,6 @@ import org.w3c.dom.Document;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class OsmToGmlConverter {
     //nodeのOSMIDとx,yのmapを対応したmap x,yのmapはxとその値,yとその値の対応が入っている
     public static HashMap<String,HashMap<String,Double>> nodeMap = new HashMap<String,HashMap<String,Double>>();
@@ -57,12 +56,17 @@ public class OsmToGmlConverter {
 
         ExpansionHighway expansionHighway = new ExpansionHighway();
 
+        ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad();
+
+        connectBuildingToRoad.connect();
+
         MakeEdge makeEdge = new MakeEdge();
 
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
         //書き込み用クラスの作成
         WriteDocument writeDocument = new WriteDocument();
+
         writeDoc = writeDocument.WriteToDocument(writeDoc);
 
         //Fileに書き込み

@@ -40,9 +40,13 @@ public class MakeEdge {
             //nodes = ArrayList
             String tmpNode = new String();
             ArrayList<String> tmpEdgeList = new ArrayList<String>();
+            ArrayList<String> tmpMinusEdgeList = new ArrayList<String>();
+
             tmpNode = nodes.get(0);
             for (int i=1;i<nodes.size() ; i++) {
                 ArrayList tmpNodeList = new ArrayList();
+
+
                 String checkEdgeId = new String();
 
                 tmpNodeList.add(tmpNode);
@@ -60,10 +64,27 @@ public class MakeEdge {
                     tmpEdgeId++;
                 }else{
                     tmpEdgeList.add(""+checkEdgeId);
+
+                    Boolean minusFlag = true;
+                    for (int k = 1; k<=OsmToGmlConverter.buildingMap.size();k++ ) {
+
+                        ArrayList<String> tmpBuildingcheckList = OsmToGmlConverter.buildingMap.get(""+k);
+                        String check_Edge = ""+checkEdgeId;
+                        if (tmpBuildingcheckList.contains(check_Edge)) {
+                            minusFlag = false;
+                        }
+                    }
+
+                    if (minusFlag == true) {
+                        tmpMinusEdgeList.add(""+checkEdgeId);
+                    }
+
+
                 }
                 tmpNode = nodes.get(i);
             }
             OsmToGmlConverter.roadMap.put(""+tmpRoadId,tmpEdgeList);
+            OsmToGmlConverter.minusDirectionEdgeMap.put(""+tmpRoadId,tmpMinusEdgeList);
 
             tmpRoadId++;
             //RoadMapを書く
