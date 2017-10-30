@@ -11,16 +11,19 @@ public class WriteNode {
     private Document document;
     private Element rcrMap;
     private Integer i;
+    private NodeManager nm;
 
-    public WriteNode(Document doc, Element rcr){
+    public WriteNode(Document doc, Element rcr, NodeManager nm){
         this.document = doc;
         this.rcrMap = rcr;
+        this.nm = nm;
     }
 
     public Document WriteToDocumentNode(){
         Element rcrNodeList=this.document.createElement("rcr:nodelist");
 
-        for (int i = 1; i<= OsmToGmlConverter.linkNodeID.size(); i++ ) {
+        //for (int i = 1; i<= OsmToGmlConverter.linkNodeID.size(); i++ ) {
+        for (int i=1; i<nm.getNodeSize(); i++) {
             //if (OsmToGmlConverter.usedNodeList.contains(i)) {
             Element rcrNode = this.document.createElement("gml:Node");
             Element rcrPointProperty = this.document.createElement("gml:pointProperty");
@@ -29,8 +32,10 @@ public class WriteNode {
 
 
             String text = String.format("%3.3f,%3.3f",
-                    ((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("x"),
-                    ((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("y")
+                    //((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("x"),
+                    //((HashMap) OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i))).get("y")
+                    nm.getX(String.valueOf(i)),
+                    nm.getY(String.valueOf(i))
             );
 
 

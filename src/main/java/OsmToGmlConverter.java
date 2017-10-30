@@ -36,9 +36,9 @@ public class OsmToGmlConverter {
     public static HashMap<String,ArrayList<String>> minusDirectionEdgeMap = new HashMap<String,ArrayList<String>>();
 
     //作成するファイル
-    public static String fileName = "./GMLs/kawasaki.gml";
+    public static String fileName = "./GMLs/testSakae.gml";
     //読み込むファイル
-    public static String fileLocation = "./OSMs/kawasaki.osm";
+    public static String fileLocation = "./OSMs/testSakae.osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -47,27 +47,38 @@ public class OsmToGmlConverter {
 
 
     public static void main(String args[]) throws Exception{
+        //データ管理用のManagerクラスのインスタンス生成
+        NodeManager     nm = new NodeManager();
+        EdgeManager     em = new EdgeManager();
+        HighwayManager  hm = new HighwayManager();
+        BuildingManager bm = new BuildingManager();
+        RoadManager     rm = new RoadManager();
 
         //読み込み用Documentの作成
         MakeDocument makeDocument = new MakeDocument();
         //作成したDocumentにファイルの情報を読み込み
         Document readDocument = makeDocument.MakeReadDocument(fileLocation);
         //Documentから各種情報の取り出し
-        ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
+        //ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
 
+        ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,em,hm,bm,rm);
+        readOsmFile1.readosmFile();
+
+        /*
         ExpansionHighway expansionHighway = new ExpansionHighway();
 
         MakeEdge makeEdge = new MakeEdge();
+        */
+
 
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
         //書き込み用クラスの作成
-        WriteDocument writeDocument = new WriteDocument();
-        writeDoc = writeDocument.WriteToDocument(writeDoc);
+        WriteDocument writeDocument = new WriteDocument(nm,em,bm,rm);
+        writeDoc = writeDocument.WriteToDocument1(writeDoc);
 
         //Fileに書き込み
         WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
-
     }
 
 }

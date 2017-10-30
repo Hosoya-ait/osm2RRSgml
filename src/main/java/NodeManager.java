@@ -42,6 +42,9 @@ public class NodeManager {
         }
         return false;
     }
+    public int getNodeSize() {
+        return node_id_;
+    }
 
     //gml用のnodeをnodeIDと共に追加
     //引数の型を合わせないと　考えるのはあとで　node_id_の++忘れない
