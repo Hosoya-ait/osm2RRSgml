@@ -132,7 +132,7 @@ public class ExpansionHighway {
         double pointBx = (double)tmpMap.get("x");
         double pointBy = (double)tmpMap.get("y");
 
-        double distance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2));
+        double distance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy));
 
         if( distance > refDistance*2.5){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
             return true;
@@ -181,7 +181,7 @@ public class ExpansionHighway {
         double radian = Math.atan2(difPointY,difPointX);
         double degree = (radian*180)/Math.PI;
 
-        double halfDistance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2))/2;
+        double halfDistance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy))/2;
 
         double tmpX = Math.cos(radian)*halfDistance+pointAx;
         double tmpY = Math.sin(radian)*halfDistance+pointAy;

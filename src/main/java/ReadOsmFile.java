@@ -49,6 +49,7 @@ public class ReadOsmFile {
                     switch (tmpKey) {
                         case "building":
                             if (tmpNodeList.size() > 2) {
+                                tmpNodeList = checkDirection(tmpNodeList);
                                 OsmToGmlConverter.tmpBuildingList.add(tmpNodeList);
                             }
 
@@ -162,5 +163,233 @@ public class ReadOsmFile {
             OsmToGmlConverter.linkNodeID.put(attributeId.getNodeValue(),""+ OsmToGmlConverter.nodeMap.size());
             OsmToGmlConverter.linkInverseNodeID.put(""+ OsmToGmlConverter.nodeMap.size(),attributeId.getNodeValue());
         }
+    }
+    private ArrayList checkDirection(ArrayList tmp_List){
+
+
+        String tmp_switch_1 = new String();
+        String tmp_switch_2 = new String();
+
+        Boolean counter_clock_wise_switch = false;
+
+        int counter_clock_wise_count = 0;
+        int clock_wise_count = 0;
+
+        String point_A = new String();
+        String point_B = new String();
+        String point_C = new String();
+        String point_D = new String();
+
+        HashMap<String,Double> map_A = new HashMap<String,Double>();
+        HashMap<String,Double> map_B = new HashMap<String,Double>();
+        HashMap<String,Double> map_C = new HashMap<String,Double>();
+        HashMap<String,Double> map_D = new HashMap<String,Double>();
+        for (int i = 0; i<tmp_List.size()-2;i++ ) {
+            point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i));
+            point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+1));
+            if (i==0) {
+                point_C = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(tmp_List.size()-2));
+                point_D = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(tmp_List.size()-1));
+            }else{
+                point_C = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i-1));
+                point_D = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i));
+            }
+
+
+            map_A = OsmToGmlConverter.nodeMap.get(point_A);
+            map_B = OsmToGmlConverter.nodeMap.get(point_B);
+            map_C = OsmToGmlConverter.nodeMap.get(point_C);
+            map_D = OsmToGmlConverter.nodeMap.get(point_D);
+
+            if (map_B.get("x")-map_A.get("x") > 0) {
+                tmp_switch_1 = "+";
+            }else{
+                tmp_switch_1 = "-";
+            }
+            if (map_B.get("y")-map_A.get("y") > 0) {
+                tmp_switch_1 = tmp_switch_1+"+";
+            }else{
+                tmp_switch_1 = tmp_switch_1+"-";
+            }
+
+            if (map_D.get("x")-map_C.get("x") > 0) {
+                tmp_switch_2 = "+";
+            }else{
+                tmp_switch_2 = "-";
+            }
+            if (map_D.get("y")-map_C.get("y") > 0) {
+                tmp_switch_2 = tmp_switch_2+"+";
+            }else{
+                tmp_switch_2 = tmp_switch_2+"-";
+            }
+
+            switch(tmp_switch_1){
+                case "++":
+                    switch(tmp_switch_2){
+                        case "+-":
+                            counter_clock_wise_count++;
+                        break;
+
+                        default:
+                            clock_wise_count++;
+                        break;
+                    }
+                break;
+                case "+-":
+                    switch(tmp_switch_2){
+                        case "--":
+                            counter_clock_wise_count++;
+                            break;
+                        default:
+                            clock_wise_count++;
+                        break;
+                    }
+
+                break;
+                case "--":
+                    switch(tmp_switch_2){
+                        case "-+":
+                        counter_clock_wise_count++;
+                        break;
+                    default:
+                        clock_wise_count++;
+                    break;
+                        }
+                break;
+                case "-+":
+
+                    switch(tmp_switch_2){
+                        case "++":
+                        counter_clock_wise_count++;
+                        break;
+                    default:
+                        clock_wise_count++;
+                    break;
+                    }
+                break;
+                default:
+                break;
+            }
+        }
+
+
+
+
+
+
+        if (counter_clock_wise_count>clock_wise_count) {
+            ArrayList counter_tmp_List = new ArrayList();
+            for (int i=tmp_List.size()-1; i>=0;i-- ) {
+                counter_tmp_List.add(tmp_List.get(i));
+            }
+            System.out.println("test");
+            return counter_tmp_List;
+        }
+
+        return tmp_List;
+
+
+
+        // String tmp_switch_1 = new String();
+        // String tmp_switch_2 = new String();
+        //
+        // Boolean counter_clock_wise_switch = false;
+        //
+        // String point_A = new String();
+        // String point_B = new String();
+        // String point_C = new String();
+        // String point_D = new String();
+        //
+        // HashMap<String,Double> map_A = new HashMap<String,Double>();
+        // HashMap<String,Double> map_B = new HashMap<String,Double>();
+        // HashMap<String,Double> map_C = new HashMap<String,Double>();
+        // HashMap<String,Double> map_D = new HashMap<String,Double>();
+        //
+        // point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(0));
+        // point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(1));
+        // point_C = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(tmp_List.size()-2));
+        // point_D = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(tmp_List.size()-1));
+        //
+        // map_A = OsmToGmlConverter.nodeMap.get(point_A);
+        // map_B = OsmToGmlConverter.nodeMap.get(point_B);
+        // map_C = OsmToGmlConverter.nodeMap.get(point_C);
+        // map_D = OsmToGmlConverter.nodeMap.get(point_D);
+        //
+        // if (map_B.get("x")-map_A.get("x") > 0) {
+        //     tmp_switch_1 = "+";
+        // }else{
+        //     tmp_switch_1 = "-";
+        // }
+        // if (map_B.get("y")-map_A.get("y") > 0) {
+        //     tmp_switch_1 = tmp_switch_1+"+";
+        // }else{
+        //     tmp_switch_1 = tmp_switch_1+"-";
+        // }
+        //
+        // if (map_D.get("x")-map_C.get("x") > 0) {
+        //     tmp_switch_2 = "+";
+        // }else{
+        //     tmp_switch_2 = "-";
+        // }
+        // if (map_D.get("y")-map_C.get("y") > 0) {
+        //     tmp_switch_2 = tmp_switch_2+"+";
+        // }else{
+        //     tmp_switch_2 = tmp_switch_2+"-";
+        // }
+        //
+        // switch(tmp_switch_1){
+        //     case "++":
+        //         switch(tmp_switch_2){
+        //             case "+-":
+        //                 counter_clock_wise_switch = true;
+        //             break;
+        //             default:
+        //             break;
+        //         }
+        //     break;
+        //     case "+-":
+        //         switch(tmp_switch_2){
+        //             case "--":
+        //                 counter_clock_wise_switch = true;
+        //                 break;
+        //                 default:
+        //                 break;
+        //             }
+        //
+        //     break;
+        //     case "--":
+        //         switch(tmp_switch_2){
+        //             case "-+":
+        //                 counter_clock_wise_switch = true;
+        //                 break;
+        //                 default:
+        //                 break;
+        //             }
+        //     break;
+        //     case "-+":
+        //
+        //         switch(tmp_switch_2){
+        //             case "++":
+        //                 counter_clock_wise_switch = true;
+        //             break;
+        //             default:
+        //             break;
+        //         }
+        //     break;
+        //     default:
+        //     break;
+        // }
+        //
+        //
+        // if (counter_clock_wise_switch) {
+        //     ArrayList counter_tmp_List = new ArrayList();
+        //     for (int i=tmp_List.size()-1; i>=0;i-- ) {
+        //         counter_tmp_List.add(tmp_List.get(i));
+        //     }
+        //     System.out.println("test");
+        //     return counter_tmp_List;
+        // }
+        //
+        // return tmp_List;
     }
 }

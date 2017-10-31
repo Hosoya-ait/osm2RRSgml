@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 class ConnectBuildingToRoad {
+    private HashMap<String,String> alreadyConnectBuilding = new HashMap<String,String>();
+
     public void connect(){
 
         for (int i=0; i<OsmToGmlConverter.tmpBuildingList.size();i++ ) {
@@ -96,32 +98,37 @@ class ConnectBuildingToRoad {
                     if (checkCrossingLineSegment(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y)) {
                         //直行している線分が交差している場合
                         cross_point = CheckCrossingPoint(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y);
-                        distance = Math.sqrt(Math.pow((cross_point.get(0) - mid_point_X),2) + Math.pow((cross_point.get(1) - mid_point_Y),2));
-
-                        if(distance != 0){
-                            if (nearest_Shape_Type == "none") {
-                                nearest_Shape_Type = "road";
-                                nearest_Shape_ID = ""+k;
-                                nearest_X = cross_point.get(0);
-                                nearest_Y = cross_point.get(1);
-                                connect_edge_point_A = m;
-                                connect_edge_point_B = m+1;
-                                nearest_distance = distance;
-                                connect_building_edge_point_A = i;
-                                connect_building_edge_point_B = i+1;
-                            }
-                            if (distance < nearest_distance) {
-                                nearest_Shape_Type = "road";
-                                nearest_Shape_ID = ""+k;
-                                nearest_X = cross_point.get(0);
-                                nearest_Y = cross_point.get(1);
-                                connect_edge_point_A = m;
-                                connect_edge_point_B = m+1;
-                                nearest_distance = distance;
-                                connect_building_edge_point_A = i;
-                                connect_building_edge_point_B = i+1;
+                        distance = Math.sqrt((cross_point.get(0) - mid_point_X)*(cross_point.get(0) - mid_point_X) +(cross_point.get(1) - mid_point_Y)*(cross_point.get(1) - mid_point_Y));
+                        if (checkContainNode(cross_point.get(0),cross_point.get(1))) {
+                            if (checkCrossingBuilding(mid_point_X,mid_point_Y,cross_point.get(0),cross_point.get(1))) {
+                                if(distance != 0){
+                                    if (nearest_Shape_Type == "none") {
+                                        nearest_Shape_Type = "road";
+                                        nearest_Shape_ID = ""+k;
+                                        nearest_X = cross_point.get(0);
+                                        nearest_Y = cross_point.get(1);
+                                        connect_edge_point_A = m;
+                                        connect_edge_point_B = m+1;
+                                        nearest_distance = distance;
+                                        connect_building_edge_point_A = i;
+                                        connect_building_edge_point_B = i+1;
+                                    }
+                                    if (distance < nearest_distance) {
+                                        nearest_Shape_Type = "road";
+                                        nearest_Shape_ID = ""+k;
+                                        nearest_X = cross_point.get(0);
+                                        nearest_Y = cross_point.get(1);
+                                        connect_edge_point_A = m;
+                                        connect_edge_point_B = m+1;
+                                        nearest_distance = distance;
+                                        connect_building_edge_point_A = i;
+                                        connect_building_edge_point_B = i+1;
+                                    }
+                                }
                             }
                         }
+
+
 
                     }
                 }
@@ -143,90 +150,105 @@ class ConnectBuildingToRoad {
                     if (checkCrossingLineSegment(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y)) {
                         //直行している線分が交差している場合
                         cross_point = CheckCrossingPoint(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y);
-                        distance = Math.sqrt(Math.pow((cross_point.get(0) - mid_point_X),2) + Math.pow((cross_point.get(1) - mid_point_Y),2));
-
-                        if(distance != 0){
-                            if (nearest_Shape_Type == "none") {
-                                nearest_Shape_Type = "addroad";
-                                nearest_Shape_ID = ""+k;
-                                nearest_X = cross_point.get(0);
-                                nearest_Y = cross_point.get(1);
-                                connect_edge_point_A = m;
-                                connect_edge_point_B = m+1;
-                                nearest_distance = distance;
-                                connect_building_edge_point_A = i;
-                                connect_building_edge_point_B = i+1;
-                            }
-                            if (distance < nearest_distance) {
-                                nearest_Shape_Type = "addroad";
-                                nearest_Shape_ID = ""+k;
-                                nearest_X = cross_point.get(0);
-                                nearest_Y = cross_point.get(1);
-                                connect_edge_point_A = m;
-                                connect_edge_point_B = m+1;
-                                nearest_distance = distance;
-                                connect_building_edge_point_A = i;
-                                connect_building_edge_point_B = i+1;
+                        distance = Math.sqrt((cross_point.get(0) - mid_point_X)*(cross_point.get(0) - mid_point_X) +(cross_point.get(1) - mid_point_Y)*(cross_point.get(1) - mid_point_Y));
+                        if (checkContainNode(cross_point.get(0),cross_point.get(1))) {
+                            if (checkCrossingBuilding(mid_point_X,mid_point_Y,cross_point.get(0),cross_point.get(1))) {
+                                if(distance != 0){
+                                    if (nearest_Shape_Type == "none") {
+                                        nearest_Shape_Type = "addroad";
+                                        nearest_Shape_ID = ""+k;
+                                        nearest_X = cross_point.get(0);
+                                        nearest_Y = cross_point.get(1);
+                                        connect_edge_point_A = m;
+                                        connect_edge_point_B = m+1;
+                                        nearest_distance = distance;
+                                        connect_building_edge_point_A = i;
+                                        connect_building_edge_point_B = i+1;
+                                    }
+                                    if (distance < nearest_distance) {
+                                        nearest_Shape_Type = "addroad";
+                                        nearest_Shape_ID = ""+k;
+                                        nearest_X = cross_point.get(0);
+                                        nearest_Y = cross_point.get(1);
+                                        connect_edge_point_A = m;
+                                        connect_edge_point_B = m+1;
+                                        nearest_distance = distance;
+                                        connect_building_edge_point_A = i;
+                                        connect_building_edge_point_B = i+1;
+                                    }
+                                }
                             }
                         }
+
+
 
                     }
                 }
             }
-            for (int k = 0; k<OsmToGmlConverter.tmpBuildingList.size();k++ ) {
-                if (k != building_ID) {
-                    tmp_arr = OsmToGmlConverter.tmpBuildingList.get(k);
+            if (nearest_Shape_Type == "none") {
+                for (int k = 0; k<OsmToGmlConverter.tmpBuildingList.size();k++ ) {
+                    if (k != building_ID) {
+                        tmp_arr = OsmToGmlConverter.tmpBuildingList.get(k);
 
-                    for (int m = 0; m<tmp_arr.size()-1;m++ ) {
-                        tmp_point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_arr.get(m));
-                        tmp_point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_arr.get(m+1));
+                        for (int m = 0; m<tmp_arr.size()-1;m++ ) {
+                            tmp_point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_arr.get(m));
+                            tmp_point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_arr.get(m+1));
 
 
 
-                        tmp_Map = OsmToGmlConverter.nodeMap.get(tmp_point_A);
-                        tmp_point_A_X = tmp_Map.get("x");
-                        tmp_point_A_Y = tmp_Map.get("y");
+                            tmp_Map = OsmToGmlConverter.nodeMap.get(tmp_point_A);
+                            tmp_point_A_X = tmp_Map.get("x");
+                            tmp_point_A_Y = tmp_Map.get("y");
 
-                        tmp_Map = OsmToGmlConverter.nodeMap.get(tmp_point_B);
-                        tmp_point_B_X = tmp_Map.get("x");
-                        tmp_point_B_Y = tmp_Map.get("y");
+                            tmp_Map = OsmToGmlConverter.nodeMap.get(tmp_point_B);
+                            tmp_point_B_X = tmp_Map.get("x");
+                            tmp_point_B_Y = tmp_Map.get("y");
 
-                        if (checkCrossingLineSegment(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y)) {
-                            //直行している線分が交差している場合
-                            cross_point = CheckCrossingPoint(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y);
-                            distance = Math.sqrt(Math.pow((cross_point.get(0) - mid_point_X),2) + Math.pow((cross_point.get(1) - mid_point_Y),2));
+                            if (checkCrossingLineSegment(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y)) {
+                                //直行している線分が交差している場合
+                                cross_point = CheckCrossingPoint(mid_point_X,mid_point_Y,tmp_X,tmp_Y,tmp_point_A_X,tmp_point_A_Y,tmp_point_B_X,tmp_point_B_Y);
+                                distance = Math.sqrt((cross_point.get(0) - mid_point_X)*(cross_point.get(0) - mid_point_X) +(cross_point.get(1) - mid_point_Y)*(cross_point.get(1) - mid_point_Y));
+                                if (checkContainNode(cross_point.get(0),cross_point.get(1))) {
+                                    if (checkCrossingBuilding(mid_point_X,mid_point_Y,cross_point.get(0),cross_point.get(1))) {
+                                        if (this.alreadyConnectBuilding.containsKey(""+building_ID) == false) {
 
-                            if (distance != 0) {
-                                if (nearest_Shape_Type == "none") {
-                                    nearest_Shape_Type = "building";
-                                    nearest_Shape_ID = ""+k;
-                                    nearest_X = cross_point.get(0);
-                                    nearest_Y = cross_point.get(1);
-                                    connect_edge_point_A = m;
-                                    connect_edge_point_B = m+1;
-                                    nearest_distance = distance;
-                                    connect_building_edge_point_A = i;
-                                    connect_building_edge_point_B = i+1;
+                                            if (distance != 0) {
+                                                if (nearest_Shape_Type == "none") {
+                                                    nearest_Shape_Type = "building";
+                                                    nearest_Shape_ID = ""+k;
+                                                    nearest_X = cross_point.get(0);
+                                                    nearest_Y = cross_point.get(1);
+                                                    connect_edge_point_A = m;
+                                                    connect_edge_point_B = m+1;
+                                                    nearest_distance = distance;
+                                                    connect_building_edge_point_A = i;
+                                                    connect_building_edge_point_B = i+1;
+                                                }
+                                                if (distance < nearest_distance) {
+                                                    nearest_Shape_Type = "building";
+                                                    nearest_Shape_ID = ""+k;
+                                                    nearest_X = cross_point.get(0);
+                                                    nearest_Y = cross_point.get(1);
+                                                    connect_edge_point_A = m;
+                                                    connect_edge_point_B = m+1;
+                                                    nearest_distance = distance;
+                                                    connect_building_edge_point_A = i;
+                                                    connect_building_edge_point_B = i+1;
+                                                }
+                                            }
+                                        }
+                                    }
+
                                 }
-                                if (distance < nearest_distance) {
-                                    nearest_Shape_Type = "building";
-                                    nearest_Shape_ID = ""+k;
-                                    nearest_X = cross_point.get(0);
-                                    nearest_Y = cross_point.get(1);
-                                    connect_edge_point_A = m;
-                                    connect_edge_point_B = m+1;
-                                    nearest_distance = distance;
-                                    connect_building_edge_point_A = i;
-                                    connect_building_edge_point_B = i+1;
-                                }
+
+
+
                             }
-
                         }
                     }
+
                 }
-
             }
-
         }
         //接続処理
         Double radian_180;
@@ -666,6 +688,7 @@ class ConnectBuildingToRoad {
 
                         OsmToGmlConverter.tmpRoadList.add(addRoadArr1);
 
+                        this.alreadyConnectBuilding.put(nearest_Shape_ID,""+building_ID);
 
 
             break;
@@ -723,6 +746,80 @@ class ConnectBuildingToRoad {
                 }
             }
         }
+        for (int i = 0; i<OsmToGmlConverter.addedConnectRoadList.size();i++ ) {
+            check_Road = OsmToGmlConverter.addedConnectRoadList.get(i);
+            for (int k = 0; k<check_Road.size()-1;k++ ) {
+                point_A = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k));
+                point_B = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k+1));
+                for (int m = 0; m<building_List.size()-1;m++ ) {
+                    point_C = OsmToGmlConverter.linkInverseNodeID.get(building_List.get(m));
+                    point_D = OsmToGmlConverter.linkInverseNodeID.get(building_List.get(m+1));
+
+                    map_A = OsmToGmlConverter.nodeMap.get(point_A);
+                    map_B = OsmToGmlConverter.nodeMap.get(point_B);
+                    map_C = OsmToGmlConverter.nodeMap.get(point_C);
+                    map_D = OsmToGmlConverter.nodeMap.get(point_D);
+
+                    if (checkCrossingLineSegment(map_A.get("x"),map_A.get("y"),map_B.get("x"),map_B.get("y"),map_C.get("x"),map_C.get("y"),map_D.get("x"),map_D.get("y"))) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private Boolean checkCrossingBuilding(Double origin_X,Double origin_Y,Double connect_X,Double connect_Y){
+        ArrayList<String> check_Road = new ArrayList<String>();
+        //すべてのRoadの線分に対して交差しているか判定交差していなければtrueが帰る
+        String point_A = new String();
+        String point_B = new String();
+
+        HashMap<String,Double> map_A = new HashMap<String,Double>();
+        HashMap<String,Double> map_B = new HashMap<String,Double>();
+
+        for (int i = 0; i<OsmToGmlConverter.tmpBuildingList.size();i++ ) {
+            check_Road = OsmToGmlConverter.tmpBuildingList.get(i);
+            for (int k = 0; k<check_Road.size()-1;k++ ) {
+                point_A = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k));
+                point_B = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k+1));
+
+                map_A = OsmToGmlConverter.nodeMap.get(point_A);
+                map_B = OsmToGmlConverter.nodeMap.get(point_B);
+
+                if (checkCrossingLineSegment(origin_X,origin_Y,connect_X,connect_Y,map_A.get("x"),map_A.get("y"),map_B.get("x"),map_B.get("y"))) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i<OsmToGmlConverter.tmpRoadList.size();i++ ) {
+            check_Road = OsmToGmlConverter.tmpRoadList.get(i);
+            for (int k = 0; k<check_Road.size()-1;k++ ) {
+                point_A = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k));
+                point_B = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k+1));
+
+                map_A = OsmToGmlConverter.nodeMap.get(point_A);
+                map_B = OsmToGmlConverter.nodeMap.get(point_B);
+
+                if (checkCrossingLineSegment(origin_X,origin_Y,connect_X,connect_Y,map_A.get("x"),map_A.get("y"),map_B.get("x"),map_B.get("y"))) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i<OsmToGmlConverter.addedConnectRoadList.size();i++ ) {
+            check_Road = OsmToGmlConverter.addedConnectRoadList.get(i);
+            for (int k = 0; k<check_Road.size()-1;k++ ) {
+                point_A = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k));
+                point_B = OsmToGmlConverter.linkInverseNodeID.get(check_Road.get(k+1));
+
+                map_A = OsmToGmlConverter.nodeMap.get(point_A);
+                map_B = OsmToGmlConverter.nodeMap.get(point_B);
+
+                if (checkCrossingLineSegment(origin_X,origin_Y,connect_X,connect_Y,map_A.get("x"),map_A.get("y"),map_B.get("x"),map_B.get("y"))) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
     private Boolean checkCrossingLineSegment(Double ax,Double ay,Double bx,Double by,Double cx,Double cy,Double dx,Double dy){
@@ -735,6 +832,20 @@ class ConnectBuildingToRoad {
             return true;
         }
         return false;
+    }
+
+    private Boolean checkContainNode(Double x,Double y){
+        //x,yから指定した円の範囲にnodeがあった場合falseを返す なかった場合はtrue
+        Double distance;
+        for (int i=1; i<=OsmToGmlConverter.nodeMap.size();i++ ) {
+            HashMap<String,Double> tmp_map = OsmToGmlConverter.nodeMap.get(OsmToGmlConverter.linkInverseNodeID.get(""+i));
+            distance = (tmp_map.get("x")-x)*(tmp_map.get("x")-x)+(tmp_map.get("y")-y)*(tmp_map.get("y")-y);
+            distance = Math.sqrt(distance);
+            if (distance < 1.1) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
