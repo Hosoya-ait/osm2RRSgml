@@ -77,7 +77,6 @@ public class ReadOsmFile {
                     switch (tmpKey) {
                         case "building":
                             if (tmpNodeList.size() > 2) {
-                                //OsmToGmlConverter.tmpBuildingList.add(tmpNodeList);
                                 bm.setBuildingNodeList(tmpNodeList);
                             }
 
@@ -85,7 +84,6 @@ public class ReadOsmFile {
                         case "highway":
                             if (tmpNodeList.size() > 1) {
                                 if (checkHighway.checkList()) {
-                                    //OsmToGmlConverter.tmpHighwayList.add(tmpNodeList);
                                     hm.setTmpHighwayList(tmpNodeList);
                                 }
 
