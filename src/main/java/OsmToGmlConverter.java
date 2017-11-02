@@ -3,7 +3,6 @@ import org.w3c.dom.Document;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class OsmToGmlConverter {
     //nodeのOSMIDとx,yのmapを対応したmap x,yのmapはxとその値,yとその値の対応が入っている
     public static HashMap<String,HashMap<String,Double>> nodeMap = new HashMap<String,HashMap<String,Double>>();
@@ -64,13 +63,18 @@ public class OsmToGmlConverter {
         ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,hm,bm);
         readOsmFile1.readosmFile();
 
-        ExpansionHighway expansionHighway = new ExpansionHighway(nm,em,hm,bm,rm);
+        ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         expansionHighway.ExpantionHighway();
 
-        /*
-        MakeEdge makeEdge = new MakeEdge();
+        //MakeEdge makeEdge = new MakeEdge(nm,em,hm,bm,rm);
+
+        /* 森島が行数減らしてからリファクタリングする
+        ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad();
+
+        connectBuildingToRoad.connect();
         */
 
+        /*
 
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
@@ -78,8 +82,12 @@ public class OsmToGmlConverter {
         WriteDocument writeDocument = new WriteDocument(nm,em,bm,rm);
         writeDoc = writeDocument.WriteToDocument1(writeDoc);
 
+
         //Fileに書き込み
         WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
+        */
+
+        System.out.println("owata");
     }
 
 }
