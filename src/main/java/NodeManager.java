@@ -58,6 +58,12 @@ public class NodeManager {
 
         return node_id;
     }
+    public String addGmlNode(HashMap nodeXY) {
+        String node_id = String.valueOf(node_id_++);
+        gml_node_map_.put(node_id, nodeXY);
+
+        return node_id;
+    }
     //osmのあるnodeのx,yの座標情報をnodeIDに流すはずだったが，
     //新クラス構造案にてxy管理はgmlNodeMapのみなので、IDの関連付けのみが残る
     //中身の処理は”addGmlNode”メソッドに移した↑

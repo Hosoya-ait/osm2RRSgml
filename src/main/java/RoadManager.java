@@ -9,9 +9,9 @@ public class RoadManager {
     //EdgeManagerのcheckで確認し，マイナスにすべきedgeの管理
     private HashMap<String,ArrayList<String>> minus_direction_edge_map_ = new HashMap<String,ArrayList<String>>();
     //roadを構成するnodeのIDを新しく一時的に保持する
-    private int road_node_id_ = 1;
+    private int road_node_id_ = 0;
     //roadを構成するedgeのIDを新しく一時的に保持する
-    private int road_edge_id_ = 1;
+    private int road_edge_id_ = 0;
 
     //road_node_id_に対応したnodeのArrayを返す
     public ArrayList getRoadNodeList(String road_node_id){
@@ -58,11 +58,13 @@ public class RoadManager {
 
 
     public void setTmpRoadList(ArrayList nodes){
-        tmp_road_list_.put(String.valueOf(road_node_id_++),nodes);
+        road_node_id_++;
+        tmp_road_list_.put(String.valueOf(road_node_id_),nodes);
     }
     //内部でマイナスをつけるべきedgeをminus_direction_edge_map_へセットする
     public void setRoadMap(ArrayList edges){
-        road_map_.put(String.valueOf(road_edge_id_++),edges);
+        road_edge_id_++;
+        road_map_.put(String.valueOf(road_edge_id_),edges);
 
         //setMinusDirectionEdgeMapの処理かく
         //別のメソッドとして書いた方が計算量削減になるはず
