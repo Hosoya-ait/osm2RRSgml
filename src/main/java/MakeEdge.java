@@ -7,18 +7,15 @@ public class MakeEdge {
 
     private NodeManager     nm;
     private EdgeManager     em;
-    private HighwayManager  hm;
     private BuildingManager bm;
     private RoadManager     rm;
 
     public MakeEdge(NodeManager     nm,
                     EdgeManager     em,
-                    HighwayManager  hm,
                     BuildingManager bm,
                     RoadManager     rm){
         this.nm = nm;
         this.em = em;
-        this.hm = hm;
         this.bm = bm;
         this.rm = rm;
     }

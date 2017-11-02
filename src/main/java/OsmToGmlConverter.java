@@ -53,6 +53,9 @@ public class OsmToGmlConverter {
         BuildingManager bm = new BuildingManager();
         RoadManager     rm = new RoadManager();
 
+        //計算時間計測開始
+        long start = System.currentTimeMillis();
+
         //読み込み用Documentの作成
         MakeDocument makeDocument = new MakeDocument();
         //作成したDocumentにファイルの情報を読み込み
@@ -66,7 +69,8 @@ public class OsmToGmlConverter {
         ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         expansionHighway.ExpantionHighway();
 
-        //MakeEdge makeEdge = new MakeEdge(nm,em,hm,bm,rm);
+        MakeEdge makeEdge = new MakeEdge(nm,em,bm,rm);
+        makeEdge.MakeEdge();
 
         /* 森島が行数減らしてからリファクタリングする
         ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad();
@@ -87,6 +91,9 @@ public class OsmToGmlConverter {
         WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
         */
 
+        //計算時間計測終了
+        long end = System.currentTimeMillis();
+        System.out.println("RunTime : " + (end - start)  + "ms");
         System.out.println("owata");
     }
 
