@@ -10,8 +10,10 @@ public class RoadManager {
     private HashMap<String,ArrayList<String>> minus_direction_edge_map_ = new HashMap<String,ArrayList<String>>();
     //roadを構成するnodeのIDを新しく一時的に保持する
     private int road_node_id_ = 0;
-    //roadを構成するedgeのIDを新しく一時的に保持する
+    //edgeで構成されているroadのIDを新しく一時的に保持する
     private int road_edge_id_ = 0;
+//    //minusのedgesを管理する用のid
+//    private int minus_edges_id_ = 0;
 
     //road_node_id_に対応したnodeのArrayを返す
     public ArrayList getRoadNodeList(String road_node_id){
@@ -33,7 +35,7 @@ public class RoadManager {
     public ArrayList getMinusDirectionEdgeMap(String road_edge_id){
         return minus_direction_edge_map_.get(road_edge_id);
     }
-    //引数のnodeを含んだroadID(road_node_id_かな？)集合のArrayを返す
+    //引数のnodeを含んだroadID集合のArrayを返す
     public ArrayList getRoadIDContainNode(String node_id){
         for(int i=0; road_node_id_>i; i++){
             if(tmp_road_list_.get(i).contains(node_id)){
@@ -42,7 +44,7 @@ public class RoadManager {
         }
         return null;
     }
-    //引数のedgeを含んだroad_edge_id_のroadID集合のArrayを返す
+    //引数のedgeを含んだroad_edge_id_の集合のArrayを返す
     public ArrayList getRoadIDContainEdge(String edge_id){
         for(int i=0; road_edge_id_>i; i++){
             if(road_map_.get(i).contains(edge_id)){
@@ -62,11 +64,26 @@ public class RoadManager {
         tmp_road_list_.put(String.valueOf(road_node_id_),nodes);
     }
     //内部でマイナスをつけるべきedgeをminus_direction_edge_map_へセットする
-    public void setRoadMap(ArrayList edges){
+    //minus_direction_edge_map_は(roadID,minusにすべきedge集合)
+    public void setRoadMap(ArrayList<String> edges){
         road_edge_id_++;
         road_map_.put(String.valueOf(road_edge_id_),edges);
 
+        ArrayList<String> tmp = new ArrayList<>();
+
+        for (int i=0; i<edges.size(); i++) {
+            if (getRoadIDContainEdge(edges.get(i)) != null) {
+                tmp.add(edges.get(i));
+            }
+        }
+        minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp);
+
+        //建物を反時計回りに作るのであれば，建物で使っているedgeをminusにする処理も必要
+
         //setMinusDirectionEdgeMapの処理かく
         //別のメソッドとして書いた方が計算量削減になるはず
+    }
+    public void setMinusDirectionEdgeMap (ArrayList minusEdges) {
+
     }
 }

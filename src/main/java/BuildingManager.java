@@ -26,7 +26,7 @@ public class BuildingManager {
     public String getBuildingEdgeID(){
         return String.valueOf(building_edge_id_);
     }
-    //引数のnodeを含んだbuildingのnode集をArrayで返す
+    //引数のnodeを含んだbuildingの集合をArrayで返す
     public ArrayList getBuildingContainNode(String node_id){
         for(int i=1; building_node_id_>=i; i++) {
             if (building_node_list_.get(String.valueOf(i)).contains(node_id)) {
@@ -35,7 +35,7 @@ public class BuildingManager {
         }
         return null;
     }
-    //引数のedgeを含んだbuildingのedge集をArrayで返す
+    //引数のedgeを含んだbuildingの集合をArrayで返す
     public ArrayList getBuildingContainEdge(String edge_id){
         for(int i=1; building_edge_id_>=i; i++){
             if(building_edge_list_.get(String.valueOf(i)).contains(edge_id)){
