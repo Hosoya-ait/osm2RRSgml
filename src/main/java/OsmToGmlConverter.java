@@ -35,9 +35,9 @@ public class OsmToGmlConverter {
     public static HashMap<String,ArrayList<String>> minusDirectionEdgeMap = new HashMap<String,ArrayList<String>>();
 
     //作成するファイル
-    public static String fileName = "./GMLs/testSakae.gml";
+    public static String fileName = "./GMLs/test.gml";
     //読み込むファイル
-    public static String fileLocation = "./OSMs/testSakae.osm";
+    public static String fileLocation = "./OSMs/test.osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";

@@ -121,7 +121,7 @@ public class ExpansionHighway {
 
         double distance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy));
 
-        System.out.println("distance:"+distance);
+//        System.out.println("distance:"+distance);
 
         if( distance > refDistance*2*Math.sqrt(3)){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
             return true;
