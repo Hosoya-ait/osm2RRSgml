@@ -39,6 +39,7 @@ public class WriteRoad  {
                 if (OsmToGmlConverter.minusDirectionEdgeMap.containsKey(id)) {
                     if (((ArrayList) OsmToGmlConverter.minusDirectionEdgeMap.get(id)).contains(edges.get(n))) {
                         orientation.setValue("-");
+                        //System.out.println("minusDirection");
                     }else{
                         orientation.setValue("+");
                     }

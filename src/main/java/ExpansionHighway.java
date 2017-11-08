@@ -3,8 +3,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ExpansionHighway {
-    private static Double refDistance = 3.0;
+    private static Double refDistance = 1.5;
     private static ArrayList checkedNodeList = new ArrayList();
+
 
     private NodeManager     nm;
     private HighwayManager  hm;
@@ -29,9 +30,11 @@ public class ExpansionHighway {
             for (int j=1; j<tmp.size(); j++) {
                 ArrayList arrayListA = new ArrayList();
                 ArrayList arrayListB = new ArrayList();
+
                 //現在地のnodeと次のnodeの2点を保持　次点はjで管理故に1から始まる
                 String pointA = tmpNode;
                 String pointB = tmp.get(j);
+
 
                 if (checkDistance(pointA,pointB)) {
                     //2点でそれぞれ三角形を作成
@@ -116,9 +119,11 @@ public class ExpansionHighway {
         double pointBx = nm.getX(nodeNumB);
         double pointBy = nm.getY(nodeNumB);
 
-        double distance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2));
+        double distance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy));
 
-        if( distance > refDistance*2.5){ //本来は*2でいいはず 要検証
+        System.out.println("distance:"+distance);
+
+        if( distance > refDistance*2*Math.sqrt(3)){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
             return true;
         }else{
             return false;
@@ -151,7 +156,7 @@ public class ExpansionHighway {
         double radian = Math.atan2(difPointY,difPointX);
         double degree = (radian*180)/Math.PI;
 
-        double halfDistance = Math.sqrt(Math.pow((pointBx - pointAx),2) + Math.pow((pointBy - pointAy),2))/2;
+        double halfDistance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy))/2;
 
         double tmpX = Math.cos(radian)*halfDistance+pointAx;
         double tmpY = Math.sin(radian)*halfDistance+pointAy;
@@ -259,32 +264,40 @@ public class ExpansionHighway {
                     int usePoint = 0;
 
                     for (int k = 1; k< tmpRoadNodeList.size();k+=2 ) {
-                        double degree1 = calcDegreePoint(node, (String)tmpRoadNodeList.get(i));
+                        if (k-1 != i) {
+                            double degree1 = calcMiddleDegreePoint(node, (String)tmpRoadNodeList.get(i),(String)tmpRoadNodeList.get(i+1));
 
-                        if (degree1 < 0) {
-                            degree1+=360;
-                        }
-                        double degree2 = calcDegreePoint(node , (String)tmpRoadNodeList.get(k));
-
-                        if (degree2 < 0) {
-                            degree2+=360;
-                        }
-                        double difDegree = degree1 - degree2;
-                        if (difDegree < 0) {
-                            difDegree +=360;
-                        }
+                            if (degree1 < 0) {
+                                degree1+=360;
+                            }
+                            double degree2 = calcMiddleDegreePoint(node , (String)tmpRoadNodeList.get(k-1), (String)tmpRoadNodeList.get(k));
 
 
-                        if (minDegree > difDegree ) {
-                            minDegree = difDegree;
-                            usePoint = k;
+                            if (degree2 < 0) {
+                                degree2+=360;
+                            }
+                            double difDegree = degree1 - degree2;
+                            if (difDegree < 0) {
+                                difDegree +=360;
+                            }
+
+
+                            if (minDegree > difDegree ) {
+                                minDegree = difDegree;
+                                usePoint = k;
+                            }
                         }
+
                     }
-                    array.add(node);
-                    array.add(tmpRoadNodeList.get(usePoint));
-                    array.add(tmpRoadNodeList.get(i));
-                    array.add(node);
-                    rm.setTmpRoadList(array);
+                    if (minDegree<60) {
+
+                    }else{
+                        array.add(node);
+                        array.add(tmpRoadNodeList.get(usePoint));
+                        array.add(tmpRoadNodeList.get(i));
+                        array.add(node);
+                        rm.setTmpRoadList(array);
+                    }
                 }
 
                 break;
@@ -312,4 +325,24 @@ public class ExpansionHighway {
         double degree = Math.atan2(node2y-node1y,node2x-node1x) * 180.0 / Math.PI;
         return degree;
     }
+    private double calcMiddleDegreePoint(String node1,String node2,String node3){
+        double node1x = nm.getX(node1);
+        double node1y = nm.getY(node1);
+        double node2x = nm.getX(node2);
+        double node2y = nm.getY(node2);
+        double node3x = nm.getX(node3);
+        double node3y = nm.getY(node3);
+
+        double avex = (node2x+node3x)/2;
+        double avey = (node2y+node3y)/2;
+
+        double difx = avex-node1x;
+        double dify = avey-node1y;
+
+        double degree = Math.atan2(dify,difx) * 180.0 / Math.PI;
+
+        return degree;
+
+    }
+
 }

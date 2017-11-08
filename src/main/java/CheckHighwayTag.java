@@ -1,12 +1,12 @@
 import java.util.ArrayList;
-class CheckHighwayTag{
+class CheckHighwayTag {
     private static ArrayList<String> exclude_List_ = new ArrayList<String>();
     private static ArrayList<String> check_List_ = new ArrayList<String>();
     public CheckHighwayTag(){
         this.exclude_List_.add("footway");
         this.exclude_List_.add("motorway");
         this.exclude_List_.add("motorway_link");
-        this.exclude_List_.add("pedestrian");
+        this.exclude_List_.add("area");
         this.exclude_List_.add("steps");
 
     }
