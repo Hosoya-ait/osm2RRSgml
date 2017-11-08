@@ -12,17 +12,19 @@ public class WriteNode {
     private Document document;
     private Element rcrMap;
     private NodeManager nm;
+    private EdgeManager em;
 
-    public WriteNode(Document doc, Element rcr, NodeManager nm){
+    public WriteNode(Document doc, Element rcr, NodeManager nm,EdgeManager em){
         this.document = doc;
         this.rcrMap = rcr;
         this.nm = nm;
+        this.em = em;
     }
 
     public Document WriteToDocumentNode(){
+
         Element rcrNodeList=this.document.createElement("rcr:nodelist");
 
-        //for (int i = 1; i<= OsmToGmlConverter.linkNodeID.size(); i++ ) {
         for (int i=1; i<nm.getNodeSize(); i++) {
             if (checkNoUsedNode(i)) {
                 //if (OsmToGmlConverter.usedNodeList.contains(i)) {
@@ -53,9 +55,9 @@ public class WriteNode {
         return document;
     }
     private Boolean checkNoUsedNode(int n){
-        for (int i = 1; i<=OsmToGmlConverter.edgeMap.size(); i++) {
-            ArrayList<String> tmp_List = OsmToGmlConverter.edgeMap.get(""+i);
-            if (tmp_List.contains(""+n)) {
+        for (int i=1; i<=Integer.parseInt(em.getEdgeID()); i++) {
+            ArrayList<String> tmp_List = (ArrayList) em.getEdgeNodeList(String.valueOf(i));
+            if (tmp_List.contains(String.valueOf(n))) {
                 return true;
             }
         }

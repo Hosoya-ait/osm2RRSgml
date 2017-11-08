@@ -31,7 +31,7 @@ public class WriteDocument {
         xmlnsXlinkDeclare.setValue(OsmToGmlConverter.xmlns_xlink_namespace_uri);
         rcrMap.setAttributeNode(xmlnsXlinkDeclare);
 
-        WriteNode writeNode = new WriteNode(document,rcrMap,nm);
+        WriteNode writeNode = new WriteNode(document,rcrMap,nm,em);
         document = writeNode.WriteToDocumentNode();
 
         WriteEdge writeEdge = new WriteEdge(document,rcrMap,nm,em);
