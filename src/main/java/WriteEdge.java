@@ -50,15 +50,13 @@ public class WriteEdge {
             orientationPlus.setValue("+");
             rcrDirectednodePlus.setAttributeNode(orientationPlus);
 
-//            System.out.println("辺" + em.getEdgeNodeList(String.valueOf(i)));
-
             //hrefの付与
             Attr hrefMinus = this.document.createAttribute("xlink:href");
             hrefMinus.setValue("#" + em.getEdgeNodeList(String.valueOf(i)).get(0));
             rcrDirectednodeMinus.setAttributeNode(hrefMinus);
 
             Attr hrefPlus = this.document.createAttribute("xlink:href");
-            hrefMinus.setValue("#" + em.getEdgeNodeList(String.valueOf(i)).get(1));
+            hrefPlus.setValue("#" + em.getEdgeNodeList(String.valueOf(i)).get(1));
             rcrDirectednodePlus.setAttributeNode(hrefPlus);
 
 
