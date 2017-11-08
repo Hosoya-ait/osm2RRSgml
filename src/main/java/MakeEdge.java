@@ -69,6 +69,10 @@ public class MakeEdge {
                 }
                 tmpNode = tmpNodeNext;
             }
+//            System.out.println("tmpEdgeList = "  +tmpEdgeList);
+
+
+            // ここでやってるマイナスの処理多分間違ってる　全部マイナスにしてるから
             rm.setRoadMap(tmpEdgeList);
         }
     }

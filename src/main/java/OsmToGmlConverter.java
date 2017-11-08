@@ -78,18 +78,17 @@ public class OsmToGmlConverter {
         connectBuildingToRoad.connect();
         */
 
-        /*
 
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
         //書き込み用クラスの作成
-        WriteDocument writeDocument = new WriteDocument(nm,em,bm,rm);
+        WriteDocument writeDocument = new WriteDocument(nm,em,hm,bm,rm);
         writeDoc = writeDocument.WriteToDocument1(writeDoc);
 
 
         //Fileに書き込み
         WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
-        */
+
 
         //計算時間計測終了
         long end = System.currentTimeMillis();

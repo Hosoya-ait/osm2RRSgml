@@ -46,9 +46,14 @@ public class RoadManager {
     }
     //引数のedgeを含んだroad_edge_id_の集合のArrayを返す
     public ArrayList getRoadIDContainEdge(String edge_id){
-        for(int i=0; road_edge_id_>i; i++){
-            if(road_map_.get(i).contains(edge_id)){
-                return road_map_.get(i);
+//        System.out.println("edge_id = " + edge_id);
+//        System.out.println("road_edge_id_ = " + road_edge_id_);
+        for(int i=1; i<=road_edge_id_; i++){
+//            System.out.println("road_map_.get(String.valueOf(i)) = " + road_map_.get(String.valueOf(i)));
+//            System.out.println("true" + road_map_.get(i));
+            if(road_map_.get(String.valueOf(i)).contains(edge_id)){
+//                System.out.println("true");
+                return road_map_.get(String.valueOf(i));
             }
         }
         return null;
@@ -71,11 +76,16 @@ public class RoadManager {
 
         ArrayList<String> tmp = new ArrayList<>();
 
+//        System.out.println("edges = "+edges);
+
         for (int i=0; i<edges.size(); i++) {
             if (getRoadIDContainEdge(edges.get(i)) != null) {
+//                System.out.println("アアアアアアアアアアアアアアアあ");
                 tmp.add(edges.get(i));
             }
         }
+//        System.out.println("tmp = " + tmp);
+//        System.out.println("road_edge_id_  = " + road_edge_id_);
         minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp);
 
         //建物を反時計回りに作るのであれば，建物で使っているedgeをminusにする処理も必要
