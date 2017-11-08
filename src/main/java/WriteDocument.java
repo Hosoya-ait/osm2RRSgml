@@ -3,25 +3,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
 
 public class WriteDocument {
-
-    // WriteDocument(Document document) throws Exception {
-    //
-    // }
-
     private NodeManager     nm;
     private EdgeManager     em;
-    private HighwayManager  hm;
     private BuildingManager bm;
     private RoadManager     rm;
 
     WriteDocument (NodeManager     nm,
                    EdgeManager     em,
-                   HighwayManager  hm,
                    BuildingManager bm,
                    RoadManager     rm) {
         this.nm = nm;
         this.em = em;
-        this.hm = hm;
         this.bm = bm;
         this.rm = rm;
     }
@@ -42,17 +34,14 @@ public class WriteDocument {
         WriteNode writeNode = new WriteNode(document,rcrMap,nm);
         document = writeNode.WriteToDocumentNode();
 
-
         WriteEdge writeEdge = new WriteEdge(document,rcrMap,nm,em);
         document = writeEdge.WriteToDocumentEdge();
 
         WriteBuilding writeBuilding = new WriteBuilding(document,rcrMap,nm,em,bm,rm);
         document = writeBuilding.WriteToDocumentBuilding();
 
-        /*
-        WriteRoad writeRoad = new WriteRoad(document,rcrMap);
+        WriteRoad writeRoad = new WriteRoad(document,rcrMap,nm,em,bm,rm);
         document = writeRoad.WriteToDocumentRoad();
-        */
 
         return document;
     }

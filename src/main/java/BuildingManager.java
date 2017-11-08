@@ -10,7 +10,7 @@ public class BuildingManager {
     private HashMap<String,ArrayList<String>> building_edge_list_ = new HashMap<String,ArrayList<String>>();
     //building_node_list_のkeyを1~管理する変数
     private int building_node_id_ = 0;
-    //building_node_list_のkeyを1~管理する変数
+    //building_edge_list_のkeyを1~管理する変数
     private int building_edge_id_ = 0;
 
 

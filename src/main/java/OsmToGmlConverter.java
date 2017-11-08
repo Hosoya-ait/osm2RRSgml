@@ -82,7 +82,7 @@ public class OsmToGmlConverter {
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
         //書き込み用クラスの作成
-        WriteDocument writeDocument = new WriteDocument(nm,em,hm,bm,rm);
+        WriteDocument writeDocument = new WriteDocument(nm,em,bm,rm);
         writeDoc = writeDocument.WriteToDocument1(writeDoc);
 
 

@@ -10,88 +10,97 @@ public class WriteRoad  {
 
     private Document document;
     private Element rcrMap;
-    private Integer i;
 
     private static String tmpEdgeID = new String();
     private static String tmpNodeID = new String();
 
-    public WriteRoad(Document doc, Element rcr){
+    private NodeManager     nm;
+    private EdgeManager     em;
+    private BuildingManager bm;
+    private RoadManager     rm;
+
+    public WriteRoad(Document doc,
+                     Element rcr,
+                     NodeManager     nm,
+                     EdgeManager     em,
+                     BuildingManager bm,
+                     RoadManager     rm){
         this.document = doc;
         this.rcrMap = rcr;
+        this.nm = nm;
+        this.em = em;
+        this.bm = bm;
+        this.rm = rm;
+
     }
 
     public Document WriteToDocumentRoad(){
 
         Element rcrRoadList=this.document.createElement("rcr:roadlist");
 
-        OsmToGmlConverter.roadMap.forEach((id, edges)->{
+        for (int i=1; i<=Integer.parseInt(rm.getRoadEdgeID()); i++) {
+            //i = id, edges = rm.getRoadEdgelist(i)
 
             Element rcrRoad = this.document.createElement("rcr:road");
             Element gmlFace = this.document.createElement("gml:Face");
 
-            for (Integer n = 0; n < edges.size() ;n++ ) {
+            for (int n=0; n<rm.getRoadEdgeList(String.valueOf(i)).size(); n++) {
                 Element gmlDirectedEdge = this.document.createElement("gml:directedEdge");
 
                 gmlFace.appendChild(gmlDirectedEdge);
 
                 Attr orientation = this.document.createAttribute("orientation");
 
-                if (OsmToGmlConverter.minusDirectionEdgeMap.containsKey(id)) {
-                    if (((ArrayList) OsmToGmlConverter.minusDirectionEdgeMap.get(id)).contains(edges.get(n))) {
+
+                if (rm.getMinusDirectionEdgeMap(String.valueOf(i)) != null) {
+                    if (rm.getMinusDirectionEdgeMap(String.valueOf(i)).contains(rm.getRoadEdgeList(String.valueOf(n)))) {
                         orientation.setValue("-");
-                        //System.out.println("minusDirection");
-                    }else{
+                    } else {
                         orientation.setValue("+");
                     }
-                }else{
+                } else {
                     orientation.setValue("+");
                 }
 
                 gmlDirectedEdge.setAttributeNode(orientation);
 
-                this.tmpNodeID = id;
-                this.tmpEdgeID = edges.get(n);
+                this.tmpNodeID = String.valueOf(i);
+                this.tmpEdgeID = (String)rm.getRoadEdgeList(String.valueOf(i)).get(n);
                 //neighbour情報
-                OsmToGmlConverter.buildingMap.forEach((neID, neEdges)->{
-                    if(neEdges.contains(this.tmpEdgeID)){
+                for (int neID=1; neID<=Integer.parseInt(bm.getBuildingEdgeID()); neID++) {
+                    if (bm.getBuildingEdgeList(String.valueOf(neID)).contains(this.tmpEdgeID)) {
                         Attr neighbour = this.document.createAttribute("rcr:neighbour");
 
-                        int neighbourBuildingID = OsmToGmlConverter.nodeMap.size()+ OsmToGmlConverter.edgeMap.size()+Integer.parseInt(neID);
+                        int neighbourBuildingID = nm.getNodeSize() + Integer.parseInt(em.getEdgeID()) + neID;
 
                         neighbour.setValue(""+neighbourBuildingID);
                         gmlDirectedEdge.setAttributeNode(neighbour);
                     }
-                });
-
-
-                OsmToGmlConverter.roadMap.forEach((neID, neEdges)->{
-                    if (neID != this.tmpNodeID) {
-                        if(neEdges.contains(this.tmpEdgeID)){
+                }
+                for (int neID=1; neID<=Integer.parseInt(rm.getRoadEdgeID()); neID++) {
+                    if ( ! String.valueOf(neID).equals(this.tmpNodeID)) {
+                        if (rm.getRoadEdgeList(String.valueOf(neID)).contains(this.tmpEdgeID)) {
                             Attr neighbour = this.document.createAttribute("rcr:neighbour");
 
-                            int neighbourRoadID = OsmToGmlConverter.nodeMap.size()+ OsmToGmlConverter.edgeMap.size()+ OsmToGmlConverter.buildingMap.size()+Integer.parseInt(neID);
+                            int neighbourRoadID = nm.getNodeSize() + Integer.parseInt(em.getEdgeID()) + Integer.parseInt(bm.getBuildingEdgeID()) + neID;
                             neighbour.setValue(""+neighbourRoadID);
                             gmlDirectedEdge.setAttributeNode(neighbour);
                         }
                     }
-                });
-
+                }
                 Attr href = this.document.createAttribute("xlink:href");
-                href.setValue("#"+ OsmToGmlConverter.linkEdgeID.get(edges.get(n)));
+                href.setValue("#" + rm.getRoadEdgeList(String.valueOf(i)).get(n));
                 gmlDirectedEdge.setAttributeNode(href);
             }
-
             rcrRoad.appendChild(gmlFace);
             rcrRoadList.appendChild(rcrRoad);
 
             //idの付与
             Attr idDeclare=this.document.createAttribute("gml:id");
-            int i = OsmToGmlConverter.nodeMap.size()+ OsmToGmlConverter.edgeMap.size()+ OsmToGmlConverter.buildingMap.size()+Integer.parseInt(id);
-            idDeclare.setValue(""+i);
+            int newRoadId = nm.getNodeSize() + Integer.parseInt(em.getEdgeID()) + Integer.parseInt(bm.getBuildingEdgeID()) + i;
+            idDeclare.setValue(""+newRoadId);
             rcrRoad.setAttributeNode(idDeclare);
-
-        });
-
+        }
         this.rcrMap.appendChild(rcrRoadList);
 
         return document;
