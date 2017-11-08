@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ExpansionHighway {
-    private static Double refDistance = 3.0;
+    private static Double refDistance = 1.5;
     private static int tmpNodeId = 1;
     private static ArrayList checkedNodeList = new ArrayList();
     public ExpansionHighway(){
+
+
         OsmToGmlConverter.tmpHighwayList.forEach(nodes -> {
             //nodes = ArrayList
             String tmpNode = new String();
@@ -15,6 +17,9 @@ public class ExpansionHighway {
 
                 ArrayList arrayListA = new ArrayList();
                 ArrayList arrayListB = new ArrayList();
+
+                System.out.println("node1:"+tmpNode);
+                System.out.println("node2:"+nodes.get(i));
 
                 String pointA = OsmToGmlConverter.linkInverseNodeID.get(tmpNode);
                 String pointB = OsmToGmlConverter.linkInverseNodeID.get(nodes.get(i));
@@ -134,7 +139,9 @@ public class ExpansionHighway {
 
         double distance = Math.sqrt((pointBx - pointAx)*(pointBx - pointAx) + (pointBy - pointAy)*(pointBy - pointAy));
 
-        if( distance > refDistance*2.5){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
+        System.out.println("distance:"+distance);
+
+        if( distance > refDistance*2*Math.sqrt(3)){ //本来は*2でいいはず　なんでうまくいかんのや、検証しなかん
             return true;
         }else{
             return false;
@@ -304,34 +311,44 @@ public class ExpansionHighway {
                     double minDegree =360;
                     int usePoint = 0;
 
+
+
                     for (int k = 1; k< tmpRoadNodeList.size();k+=2 ) {
-                        double degree1 = calcDegreePoint(OsmToGmlConverter.linkInverseNodeID.get(node),""+tmpRoadNodeList.get(i));
+                        if (k-1 != i ) {
+                            double degree1 = calcMiddleDegreePoint(OsmToGmlConverter.linkInverseNodeID.get(node),""+tmpRoadNodeList.get(i),""+tmpRoadNodeList.get(i+1));
 
-                        if (degree1 < 0) {
-                            degree1+=360;
-                        }
-                        double degree2 = calcDegreePoint(OsmToGmlConverter.linkInverseNodeID.get(node) ,""+tmpRoadNodeList.get(k));
+                            if (degree1 < 0) {
+                                degree1+=360;
+                            }
+                            double degree2 = calcMiddleDegreePoint(OsmToGmlConverter.linkInverseNodeID.get(node) ,""+tmpRoadNodeList.get(k-1),""+tmpRoadNodeList.get(k));
 
-                        if (degree2 < 0) {
-                            degree2+=360;
-                        }
-                        double difDegree = degree1 - degree2;
-                        if (difDegree < 0) {
-                            difDegree +=360;
-                        }
+                            if (degree2 < 0) {
+                                degree2+=360;
+                            }
+                            double difDegree = degree1 - degree2;
+                            if (difDegree < 0) {
+                                difDegree +=360;
+                            }
 
 
-                        if (minDegree > difDegree ) {
-                            minDegree = difDegree;
-                            usePoint = k;
+                            if (minDegree > difDegree ) {
+                                minDegree = difDegree;
+                                usePoint = k;
+                            }
                         }
+
                     }
-                    array.add(node);
+                    if (minDegree<60) {
 
-                    array.add(OsmToGmlConverter.linkNodeID.get(tmpRoadNodeList.get(usePoint)));
-                    array.add(OsmToGmlConverter.linkNodeID.get(tmpRoadNodeList.get(i)));
-                    array.add(node);
-                    OsmToGmlConverter.addedConnectRoadList.add(array);
+                    }else{
+                        array.add(node);
+
+                        array.add(OsmToGmlConverter.linkNodeID.get(tmpRoadNodeList.get(usePoint)));
+                        array.add(OsmToGmlConverter.linkNodeID.get(tmpRoadNodeList.get(i)));
+                        array.add(node);
+                        OsmToGmlConverter.addedConnectRoadList.add(array);
+                    }
+
                 }
 
                 break;
@@ -355,6 +372,28 @@ public class ExpansionHighway {
         double node2x = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node2)).get("x");
         double node2y = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node2)).get("y");
         double degree = Math.atan2(node2y-node1y,node2x-node1x) * 180.0 / Math.PI;
+
+        return degree;
+
+    }
+
+    private double calcMiddleDegreePoint(String node1,String node2,String node3){
+        double node1x = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node1)).get("x");
+        double node1y = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node1)).get("y");
+
+        double node2x = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node2)).get("x");
+        double node2y = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node2)).get("y");
+
+        double node3x = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node3)).get("x");
+        double node3y = (double)((HashMap) OsmToGmlConverter.nodeMap.get(node3)).get("y");
+
+        double avex = (node2x+node3x)/2;
+        double avey = (node2y+node3y)/2;
+
+        double difx = avex-node1x;
+        double dify = avey-node1y;
+
+        double degree = Math.atan2(dify,difx) * 180.0 / Math.PI;
 
         return degree;
 
