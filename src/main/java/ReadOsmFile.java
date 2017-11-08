@@ -168,7 +168,7 @@ public class ReadOsmFile {
 
 
     private ArrayList checkDirection(ArrayList tmp_List){
-        System.out.println();
+//        System.out.println();
 
         String point_A = new String();
         String point_B = new String();
@@ -182,18 +182,28 @@ public class ReadOsmFile {
         double sum_degree = 0.0;
 
         for (int i = 0; i<tmp_List.size()-2;i++ ) {
-            point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+0));
-            point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+1));
-            point_C = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+2));
 
-            map_A = OsmToGmlConverter.nodeMap.get(point_A);
-            map_B = OsmToGmlConverter.nodeMap.get(point_B);
-            map_C = OsmToGmlConverter.nodeMap.get(point_C);
+            point_A = (String)tmp_List.get(i+0);
+            point_B = (String)tmp_List.get(i+1);
+            point_C = (String)tmp_List.get(i+2);
 
-            double dif_BA_X = map_A.get("x")-map_B.get("x");
-            double dif_BA_Y = map_A.get("y")-map_B.get("y");
-            double dif_BC_X = map_C.get("x")-map_B.get("x");
-            double dif_BC_Y = map_C.get("y")-map_B.get("y");
+//            point_A = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+0));
+//            point_B = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+1));
+//            point_C = OsmToGmlConverter.linkInverseNodeID.get(tmp_List.get(i+2));
+
+//            map_A = OsmToGmlConverter.nodeMap.get(point_A);
+//            map_B = OsmToGmlConverter.nodeMap.get(point_B);
+//            map_C = OsmToGmlConverter.nodeMap.get(point_C);
+
+//            double dif_BA_X = map_A.get("x")-map_B.get("x");
+//            double dif_BA_Y = map_A.get("y")-map_B.get("y");
+//            double dif_BC_X = map_C.get("x")-map_B.get("x");
+//            double dif_BC_Y = map_C.get("y")-map_B.get("y");
+
+            double dif_BA_X = nm.getX(point_A)-nm.getX(point_B);
+            double dif_BA_Y = nm.getY(point_A)-nm.getY(point_B);
+            double dif_BC_X = nm.getX(point_C)-nm.getX(point_B);
+            double dif_BC_Y = nm.getY(point_C)-nm.getY(point_B);
 
             double length_BA = Math.sqrt((dif_BA_X*dif_BA_X)+(dif_BA_Y*dif_BA_Y));
             double length_BC = Math.sqrt((dif_BC_X*dif_BC_X)+(dif_BC_Y*dif_BC_Y));
