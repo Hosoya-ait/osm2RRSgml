@@ -60,7 +60,8 @@ public class WriteBuilding {
                     }
                 }
                 Attr href = this.document.createAttribute("xlink:href");
-                href.setValue("#" + bm.getBuildingEdgeList(String.valueOf(i)).get(j));
+                int hrefValue = nm.getNodeSize() + Integer.parseInt((String)bm.getBuildingEdgeList(String.valueOf(i)).get(j));
+                href.setValue("#" + hrefValue);
                 gmlDirectedEdge.setAttributeNode(href);
 
                 //neighbour情報

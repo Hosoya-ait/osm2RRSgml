@@ -39,7 +39,6 @@ public class WriteRoad  {
         Element rcrRoadList=this.document.createElement("rcr:roadlist");
 
         for (int i=1; i<=Integer.parseInt(rm.getRoadEdgeID()); i++) {
-            //i = id, edges = rm.getRoadEdgelist(i)
 
             Element rcrRoad = this.document.createElement("rcr:road");
             Element gmlFace = this.document.createElement("gml:Face");
@@ -89,7 +88,8 @@ public class WriteRoad  {
                     }
                 }
                 Attr href = this.document.createAttribute("xlink:href");
-                href.setValue("#" + rm.getRoadEdgeList(String.valueOf(i)).get(n));
+                int hrefValue = nm.getNodeSize() + Integer.parseInt((String)rm.getRoadEdgeList(String.valueOf(i)).get(n));
+                href.setValue("#" + hrefValue);
                 gmlDirectedEdge.setAttributeNode(href);
             }
             rcrRoad.appendChild(gmlFace);
