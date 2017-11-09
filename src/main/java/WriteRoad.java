@@ -77,7 +77,14 @@ public class WriteRoad  {
                     }
                 }
                 for (int neID=1; neID<=Integer.parseInt(rm.getRoadEdgeID()); neID++) {
-                    if ( ! String.valueOf(neID).equals(this.tmpNodeID)) {
+
+
+
+                    //String の比較を!=でやってたので！equalsに変えた
+                    if (! String.valueOf(neID).equals(this.tmpNodeID)) {
+
+
+
                         if (rm.getRoadEdgeList(String.valueOf(neID)).contains(this.tmpEdgeID)) {
                             Attr neighbour = this.document.createAttribute("rcr:neighbour");
 

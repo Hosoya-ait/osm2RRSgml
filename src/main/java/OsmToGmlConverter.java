@@ -78,22 +78,6 @@ public class OsmToGmlConverter {
         connectBuildingToRoad.connect();
         */
 
-
-//        for (int i=1; i<=Integer.parseInt(bm.getBuildingNodeID()); i++) {
-//            System.out.println("建物のnode　＝　" + bm.getBuildingNodeList(String.valueOf(i)));
-//        }
-//        for (int i=1; i<=Integer.parseInt(bm.getBuildingEdgeID()); i++) {
-//            System.out.println("建物のedge　＝　" + bm.getBuildingEdgeList(String.valueOf(i)));
-//            System.out.println("edge数　＝　" + bm.getBuildingEdgeList(String.valueOf(i)).size());
-//            System.out.println("edge");
-//            for (int j=0; j<bm.getBuildingEdgeList(String.valueOf(i)).size(); j++) {
-//
-//                System.out.print(bm.getBuildingEdgeList(String.valueOf(i)).get(j) + " , ");
-//            }
-//            System.out.println();
-//        }
-
-
         //書き込み用Documentの作成
         Document writeDoc = makeDocument.MakeWriteDocument();
         //書き込み用クラスの作成
