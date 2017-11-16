@@ -22,12 +22,9 @@ public class WriteNode {
     }
 
     public Document WriteToDocumentNode(){
-
         Element rcrNodeList=this.document.createElement("rcr:nodelist");
-
         for (int i=1; i<nm.getNodeSize(); i++) {
-            if (checkNoUsedNode(i)) {
-                //if (OsmToGmlConverter.usedNodeList.contains(i)) {
+            if (nm.checkUsedNodeList(String.valueOf(i))) {
                 Element rcrNode = this.document.createElement("gml:Node");
                 Element rcrPointProperty = this.document.createElement("gml:pointProperty");
                 Element rcrPoint = this.document.createElement("gml:Point");
@@ -43,24 +40,12 @@ public class WriteNode {
                 rcrNodeList.appendChild(rcrNode);
 
                 Attr idDeclare=this.document.createAttribute("gml:id");
-                idDeclare.setValue(""+i);
+                idDeclare.setValue(String.valueOf(i));
                 rcrNode.setAttributeNode(idDeclare);
-
             }
-
         }
-
         this.rcrMap.appendChild(rcrNodeList);
 
         return document;
-    }
-    private Boolean checkNoUsedNode(int n){
-        for (int i=1; i<=Integer.parseInt(em.getEdgeID()); i++) {
-            ArrayList<String> tmp_List = (ArrayList) em.getEdgeNodeList(String.valueOf(i));
-            if (tmp_List.contains(String.valueOf(n))) {
-                return true;
-            }
-        }
-        return false;
     }
 }

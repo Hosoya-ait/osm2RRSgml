@@ -43,28 +43,28 @@ public class WriteRoad  {
             Element rcrRoad = this.document.createElement("rcr:road");
             Element gmlFace = this.document.createElement("gml:Face");
 
-            for (int n=0; n<rm.getRoadEdgeList(String.valueOf(i)).size(); n++) {
+            ArrayList<String> write_road_edge_list = rm.getRoadEdgeList(String.valueOf(i));
+            for (int n=0; n<write_road_edge_list.size(); n++) {
                 Element gmlDirectedEdge = this.document.createElement("gml:directedEdge");
 
                 gmlFace.appendChild(gmlDirectedEdge);
 
                 Attr orientation = this.document.createAttribute("orientation");
 
-
-                if (rm.getMinusDirectionEdgeMap(String.valueOf(i)) != null) {
-                    if (rm.getMinusDirectionEdgeMap(String.valueOf(i)).contains(rm.getRoadEdgeList(String.valueOf(n)))) {
-                        orientation.setValue("-");
-                    } else {
-                        orientation.setValue("+");
-                    }
+                System.out.println("road_ID:"+String.valueOf(i));
+                System.out.println("Edge_ID:"+write_road_edge_list.get(n));
+                if (rm.containMinusDirectionEdge(String.valueOf(i),write_road_edge_list.get(n))) {
+                    orientation.setValue("-");
+                    System.out.println("-");
                 } else {
+                    System.out.println("+");
                     orientation.setValue("+");
                 }
 
                 gmlDirectedEdge.setAttributeNode(orientation);
 
                 this.tmpNodeID = String.valueOf(i);
-                this.tmpEdgeID = (String)rm.getRoadEdgeList(String.valueOf(i)).get(n);
+                this.tmpEdgeID = write_road_edge_list.get(n);
                 //neighbour情報
                 for (int neID=1; neID<=Integer.parseInt(bm.getBuildingEdgeID()); neID++) {
                     if (bm.getBuildingEdgeList(String.valueOf(neID)).contains(this.tmpEdgeID)) {
@@ -78,12 +78,8 @@ public class WriteRoad  {
                 }
                 for (int neID=1; neID<=Integer.parseInt(rm.getRoadEdgeID()); neID++) {
 
-
-
                     //String の比較を!=でやってたので！equalsに変えた
                     if (! String.valueOf(neID).equals(this.tmpNodeID)) {
-
-
 
                         if (rm.getRoadEdgeList(String.valueOf(neID)).contains(this.tmpEdgeID)) {
                             Attr neighbour = this.document.createAttribute("rcr:neighbour");
@@ -95,7 +91,7 @@ public class WriteRoad  {
                     }
                 }
                 Attr href = this.document.createAttribute("xlink:href");
-                int hrefValue = nm.getNodeSize() + Integer.parseInt((String)rm.getRoadEdgeList(String.valueOf(i)).get(n));
+                int hrefValue = nm.getNodeSize() + Integer.parseInt(write_road_edge_list.get(n));
                 href.setValue("#" + hrefValue);
                 gmlDirectedEdge.setAttributeNode(href);
             }

@@ -35,9 +35,9 @@ public class OsmToGmlConverter {
     public static HashMap<String,ArrayList<String>> minusDirectionEdgeMap = new HashMap<String,ArrayList<String>>();
 
     //作成するファイル
-    public static String fileName = "./GMLs/test.gml";
+    public static String fileName = "./GMLs/ootakuLargeTest.gml";
     //読み込むファイル
-    public static String fileLocation = "./OSMs/test.osm";
+    public static String fileLocation = "./OSMs/ootakuLarge.osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -70,7 +70,7 @@ public class OsmToGmlConverter {
         expansionHighway.ExpantionHighway();
 
         MakeEdge makeEdge = new MakeEdge(nm,em,bm,rm);
-        makeEdge.MakeEdge();
+        makeEdge.makeNodeToEdge();
 
         /* 森島が行数減らしてからリファクタリングする
         ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad();

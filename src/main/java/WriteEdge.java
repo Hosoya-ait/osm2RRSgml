@@ -1,6 +1,7 @@
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
+import java.util.ArrayList;
 
 public class WriteEdge {
 
@@ -8,9 +9,6 @@ public class WriteEdge {
     private Element rcrMap;
     private NodeManager     nm;
     private EdgeManager     em;
-//    private HighwayManager  hm;
-//    private BuildingManager bm;
-//    private RoadManager     rm;
 
     public WriteEdge(Document doc,
                      Element rcr,
@@ -37,8 +35,8 @@ public class WriteEdge {
             //idの付与
             Attr idDeclare=this.document.createAttribute("gml:id");
             //int i = OsmToGmlConverter.nodeMap.size()+Integer.parseInt(id);
-            int j = nm.getNodeSize() + i;
-            idDeclare.setValue(""+j);
+            String set_edge_ID = ""+(nm.getNodeSize() + i);
+            idDeclare.setValue(set_edge_ID);
             rcrEdge.setAttributeNode(idDeclare);
 
             //orientationの付与
@@ -50,13 +48,15 @@ public class WriteEdge {
             orientationPlus.setValue("+");
             rcrDirectednodePlus.setAttributeNode(orientationPlus);
 
+            ArrayList<String> write_gml_edge = em.getEdgeNodeList(String.valueOf(i));
+
             //hrefの付与
             Attr hrefMinus = this.document.createAttribute("xlink:href");
-            hrefMinus.setValue("#" + em.getEdgeNodeList(String.valueOf(i)).get(0));
+            hrefMinus.setValue("#" + write_gml_edge.get(0));
             rcrDirectednodeMinus.setAttributeNode(hrefMinus);
 
             Attr hrefPlus = this.document.createAttribute("xlink:href");
-            hrefPlus.setValue("#" + em.getEdgeNodeList(String.valueOf(i)).get(1));
+            hrefPlus.setValue("#" + write_gml_edge.get(1));
             rcrDirectednodePlus.setAttributeNode(hrefPlus);
 
 
