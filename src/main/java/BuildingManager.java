@@ -14,10 +14,10 @@ public class BuildingManager {
     private int building_edge_id_ = 0;
 
 
-    public ArrayList getBuildingNodeList(String building_node_id){
+    public ArrayList<String> getBuildingNodeList(String building_node_id){
         return building_node_list_.get(building_node_id);
     }
-    public ArrayList getBuildingEdgeList(String building_edge_id){
+    public ArrayList<String> getBuildingEdgeList(String building_edge_id){
         return building_edge_list_.get(building_edge_id);
     }
     public String getBuildingNodeID(){
@@ -47,12 +47,16 @@ public class BuildingManager {
 
     //道路と建物の接続時に作成する2つのnodeを追加するメソッドを考える
 
-    public void setBuildingNodeList(ArrayList nodes){
+    public void setBuildingNodeList(ArrayList<String> nodes){
         building_node_id_++;
         building_node_list_.put(String.valueOf(building_node_id_),nodes);
     }
-    public void setBuildingEdgeList(ArrayList edges){
+    public void setBuildingEdgeList(ArrayList<String> edges){
         building_edge_id_++;
         building_edge_list_.put(String.valueOf(building_edge_id_),edges);
+    }
+    public void insertBuildingInNode(String building_ID,int building_edge_Index,String node_ID){
+        ((ArrayList)building_node_list_.get(building_ID)).add(building_edge_Index,node_ID);
+        return;
     }
 }

@@ -69,7 +69,7 @@ public class RoadManager {
     //
     //道路と建物の接続時に作成する２つのnodeを追加するメソッドを考える
     //
-    public void setTmpRoadList(ArrayList nodes){
+    public void setTmpRoadList(ArrayList<String> nodes){
         road_node_id_++;
         tmp_road_list_.put(String.valueOf(road_node_id_),nodes);
     }
@@ -93,5 +93,9 @@ public class RoadManager {
         }
         minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp_list);
         //建物を反時計回りに作るのであれば，建物で使っているedgeをminusにする処理も必要
+    }
+    public void insertRoadInNode(String road_ID,int road_edge_Index,String node_ID){
+        ((ArrayList)tmp_road_list_.get(road_ID)).add(road_edge_Index,node_ID);
+        return;
     }
 }
