@@ -44,6 +44,11 @@ public class MakeEdge {
 
             node_List_to_make_edge.add(tmp_node);
             node_List_to_make_edge.add(next_tmp_node);
+            if (nm.containsNode(j)) {
+                System.out.println("存在しているnode");
+            }else{
+                System.out.println("存在しないnode");
+            }
 
             nm.setUsedNodeList(tmp_node);
             nm.setUsedNodeList(next_tmp_node);

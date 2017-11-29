@@ -45,6 +45,9 @@ public class NodeManager {
     public int getNodeSize() {
         return node_id_;
     }
+    public boolean containsNode(int id){
+        return gml_node_map_.containsKey(String.valueOf(id));
+    }
 
     //gml用のnodeをnodeIDと共に追加
     //引数の型を合わせないと　考えるのはあとで　node_id_の++忘れない

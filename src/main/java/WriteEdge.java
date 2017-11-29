@@ -7,13 +7,13 @@ public class WriteEdge {
 
     private Document document;
     private Element rcrMap;
-    private NodeManager     nm;
-    private EdgeManager     em;
+    private NodeManager nm;
+    private EdgeManager em;
 
     public WriteEdge(Document doc,
                      Element rcr,
-                     NodeManager     nm,
-                     EdgeManager     em){
+                     NodeManager nm,
+                     EdgeManager em){
         this.document = doc;
         this.rcrMap = rcr;
         this.nm = nm;
@@ -58,7 +58,6 @@ public class WriteEdge {
             Attr hrefPlus = this.document.createAttribute("xlink:href");
             hrefPlus.setValue("#" + write_gml_edge.get(1));
             rcrDirectednodePlus.setAttributeNode(hrefPlus);
-
 
         }
 
