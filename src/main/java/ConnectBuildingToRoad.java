@@ -1,6 +1,7 @@
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.awt.geom.Line2D;
 class ConnectBuildingToRoad {
 
     private HashMap<String,String> alreadyConnectBuilding = new HashMap<String,String>();
@@ -19,8 +20,12 @@ class ConnectBuildingToRoad {
         int building_list_size = Integer.parseInt(building_manager_.getBuildingNodeID());
         for (int building_id = 1; building_id<=building_list_size ; building_id++ ) {
             ArrayList<String> connect_building = building_manager_.getBuildingNodeList(String.valueOf(building_id));
+            System.out.println();
+            System.out.println("buildingID:"+building_id);
             if (checkCrossingRoad(connect_building)) {
                 connectObject(connect_building,building_id);
+            }else{
+              removeRelatedObjects(""+building_id);
             }
         }
     }
@@ -60,13 +65,14 @@ class ConnectBuildingToRoad {
 
         Double distance;
 
-        System.out.println();
-        System.out.println("buildingID:"+building_ID);
+
 
         Point2D.Double point_A = new Point2D.Double();
         Point2D.Double point_B = new Point2D.Double();
         Point2D.Double point_C = new Point2D.Double();
         Point2D.Double point_D = new Point2D.Double();
+
+
 
         for (int i=0; i<building_List.size()-1;i++ ) {
             System.out.println();
@@ -74,6 +80,12 @@ class ConnectBuildingToRoad {
 
             start_point.setLocation(node_manager_.getX(building_List.get(i)),node_manager_.getY(building_List.get(i)));
             end_point.setLocation(node_manager_.getX(building_List.get(i+1)),node_manager_.getY(building_List.get(i+1)));
+
+            if(Math.hypot(start_point.getX() - end_point.getX(),start_point.getY() - end_point.getY()) < 2.0){
+              continue;
+            }
+
+
 
             middle_point.setLocation((start_point.getX()+end_point.getX())/2,(start_point.getY()+end_point.getY())/2);
             difference_point.setLocation(start_point.getX()-end_point.getX(),start_point.getY()-end_point.getY());
@@ -88,13 +100,25 @@ class ConnectBuildingToRoad {
             check_point.setLocation(Math.cos(radian_90)*30.0+middle_point.getX(),Math.sin(radian_90)*this.search_object_distance+middle_point.getY());
 
             int road_list_size = Integer.parseInt(road_manager_.getRoadNodeID());
+
+
+            ArrayList<String> check_array = building_manager_.getBuildingConnectedRoad(""+building_ID);
             for (int k = 1; k<=road_list_size;k++ ) {
 
-                check_arr = road_manager_.getRoadNodeList(String.valueOf(k));
+                if (check_array.contains(""+k)) {
+                  continue;
+                }
+                if (road_manager_.containRemoveRoadList(""+k)) {
+                  continue;
+                }
 
+
+                check_arr = road_manager_.getRoadNodeList(String.valueOf(k));
                 for (int m = 0; m<check_arr.size()-1;m++ ) {
                     tmp_start_point.setLocation(node_manager_.getX(check_arr.get(m)),node_manager_.getY(check_arr.get(m)));
                     tmp_end_point.setLocation(node_manager_.getX(check_arr.get(m+1)),node_manager_.getY(check_arr.get(m+1)));
+
+                    if(checkProperDegree(middle_point,check_point,tmp_start_point,tmp_end_point)) continue;
 
                     if (checkCrossingLineSegment(middle_point,check_point,tmp_start_point,tmp_end_point)) {
                         //直行している線分が交差している場合
@@ -142,12 +166,19 @@ class ConnectBuildingToRoad {
                 int building_list_size = Integer.parseInt(building_manager_.getBuildingNodeID());
                 for (int k = 1; k<building_list_size;k++ ) {
                     if (k != building_ID) {
+
+                        if (building_manager_.containRemoveBuildingList(""+k)) {
+                          continue;
+                        }
                         check_arr = building_manager_.getBuildingNodeList(String.valueOf(k));
 
                         for (int m = 0; m<check_arr.size()-1;m++ ) {
 
                             tmp_start_point.setLocation(node_manager_.getX(check_arr.get(m)),node_manager_.getY(check_arr.get(m)));
                             tmp_end_point.setLocation(node_manager_.getX(check_arr.get(m+1)),node_manager_.getY(check_arr.get(m+1)));
+
+                            //角度計算
+                            if(checkProperDegree(middle_point,check_point,tmp_start_point,tmp_end_point)) continue;
 
                             if (checkCrossingLineSegment(middle_point,check_point,tmp_start_point,tmp_end_point)) {
                                 //直行している線分が交差している場合
@@ -156,6 +187,9 @@ class ConnectBuildingToRoad {
                                 distance = Math.hypot(cross_point.getX() - middle_point.getX(),cross_point.getY() - middle_point.getY());
                                 System.out.println("distance:"+distance);
                                 System.out.println("nearstDistance"+nearest_distance);
+
+
+
                                 if (checkContainNode(cross_point)) {
 
                                     System.out.println("node近くになし");
@@ -236,10 +270,14 @@ class ConnectBuildingToRoad {
 
         switch (nearest_Shape_Type) {
             case "none":
+            removeRelatedObjects(""+building_ID);
+
 
             break;
 
             case "road":
+
+
 
             point_A.setLocation(node_manager_.getX(building_List.get(connect_building_edge_point_A)),node_manager_.getY(building_List.get(connect_building_edge_point_A)));
 
@@ -340,8 +378,9 @@ class ConnectBuildingToRoad {
             addRoadArr2.add(plus_node_ID);
 
             road_manager_.setTmpRoadList(addRoadArr2);
-
+            road_manager_.setRoadConnectedObject(nearest_Shape_ID,road_manager_.getRoadNodeID(),""+building_ID);
             break;
+
 
             case "building":
 
@@ -442,6 +481,7 @@ class ConnectBuildingToRoad {
             addRoadArr1.add(plus_node_ID);
 
             road_manager_.setTmpRoadList(addRoadArr1);
+            building_manager_.setBuildingConnectedObject(nearest_Shape_ID,road_manager_.getRoadNodeID(),""+building_ID);
             this.alreadyConnectBuilding.put(nearest_Shape_ID,""+building_ID);
             break;
         }
@@ -480,6 +520,12 @@ class ConnectBuildingToRoad {
                     point_D.setLocation(node_manager_.getX(building_List.get(m+1)),node_manager_.getY(building_List.get(m+1)));
 
                     if (checkCrossingLineSegment(point_A,point_B,point_C,point_D)) {
+                      System.out.println("道にかぶっています");
+                      System.out.println("roadID:"+i);
+                      System.out.println("roadnodeID_1:"+(k+1));
+                      System.out.println("roadnodeID_2:"+(k+2));
+                      System.out.println("BuildingnodeID_1:"+(m+1));
+                      System.out.println("BuildingnodeID_2:"+(m+2));
                         return false;
                     }
                 }
@@ -541,12 +587,19 @@ class ConnectBuildingToRoad {
 
     private Boolean checkCrossingLineSegment(Point2D.Double a,Point2D.Double b,Point2D.Double c,Point2D.Double d){
         //２線分を比べ交差していたらtrueを返す
-        Double ta = (c.getX() - d.getX()) * (a.getY() - c.getY()) + (c.getY() - d.getY()) * (c.getX() - a.getX());
-        Double tb = (c.getX() - d.getX()) * (b.getY() - c.getY()) + (c.getY() - d.getY()) * (c.getX() - a.getX());
-        Double tc = (a.getX() - b.getX()) * (c.getY() - a.getY()) + (a.getY() - b.getY()) * (a.getX() - c.getX());
-        Double td = (a.getX() - b.getX()) * (d.getY() - a.getY()) + (a.getY() - b.getY()) * (a.getX() - d.getX());
-        if ((tc * td) < 0 && (ta * tb) < 0) {
-            return true;
+
+
+        // Double ta = (c.getX() - d.getX()) * (a.getY() - c.getY()) + (c.getY() - d.getY()) * (c.getX() - a.getX());
+        // Double tb = (c.getX() - d.getX()) * (b.getY() - c.getY()) + (c.getY() - d.getY()) * (c.getX() - a.getX());
+        // Double tc = (a.getX() - b.getX()) * (c.getY() - a.getY()) + (a.getY() - b.getY()) * (a.getX() - c.getX());
+        // Double td = (a.getX() - b.getX()) * (d.getY() - a.getY()) + (a.getY() - b.getY()) * (a.getX() - d.getX());
+        // if ((tc * td) < 0 && (ta * tb) < 0) {
+        //     return true;
+        // }
+        Line2D.Double aa = new Line2D.Double(a,b);
+        Line2D.Double bb = new Line2D.Double(c,d);
+        if (aa.intersectsLine(bb)) {
+          return true;
         }
         return false;
     }
@@ -559,7 +612,7 @@ class ConnectBuildingToRoad {
             Point2D.Double comp_point = new Point2D.Double();
             comp_point.setLocation(node_manager_.getX(String.valueOf(i)),node_manager_.getY(String.valueOf(i)));
             distance = Math.hypot(comp_point.getX()-point.getX(),comp_point.getY()-point.getY());
-            if (distance < 1.1) {
+            if (distance < 1.0) {
                 return false;
             }
         }
@@ -573,5 +626,65 @@ class ConnectBuildingToRoad {
     }
     public RoadManager getRoadManeger(){
         return road_manager_;
+    }
+
+    public void removeRelatedObjects(String building_id){
+      ArrayList<String> check_road_array = building_manager_.getBuildingConnectedRoad(building_id);
+      ArrayList<String> check_building_array = building_manager_.getBuildingConnectedBuilding(building_id);
+
+      building_manager_.setRemoveBuildingList(building_id);
+
+      if (check_road_array.size() > 0) {
+        for (int i=0; i<check_road_array.size();i++ ) {
+          removeRelatedRoadObjects(check_road_array.get(i));
+        }
+      }
+      if (check_building_array.size()>0) {
+        for (int i=0; i<check_building_array.size();i++ ) {
+          removeRelatedObjects(check_building_array.get(i));
+        }
+      }
+      return;
+    }
+    public void removeRelatedRoadObjects(String road_id){
+      ArrayList<String> check_road_array = road_manager_.getRoadConnectedRoad(road_id);
+      ArrayList<String> check_building_array = road_manager_.getRoadConnectedBuilding(road_id);
+      road_manager_.setRemoveRoadList(road_id);
+
+      if (check_road_array.size() > 0) {
+        for (int i=0; i<check_road_array.size();i++ ) {
+          removeRelatedRoadObjects(check_road_array.get(i));
+        }
+      }
+      if (check_building_array.size()>0) {
+        for (int i=0; i<check_building_array.size();i++ ) {
+          removeRelatedObjects(check_building_array.get(i));
+        }
+      }
+      return;
+    }
+    private Boolean checkProperDegree(Point2D.Double a,Point2D.Double b,Point2D.Double c,Point2D.Double d){
+      //ベクトルの長さを計算する
+
+      double length_A = Math.hypot(b.getX()-a.getX(),b.getY()-a.getY());
+      double length_B = Math.hypot(d.getX()-c.getX(),d.getY()-c.getY());
+      Point2D.Double va = new Point2D.Double(b.getX()-a.getX(),b.getY()-a.getY());
+      Point2D.Double vb = new Point2D.Double(d.getX()-c.getX(),d.getY()-c.getY());
+
+      double dot_product = va.getX() * vb.getX() + va.getY() * vb.getY();
+	     //内積とベクトル長さを使ってcosθを求める
+	    double cos_sita = dot_product / ( length_A * length_B );
+
+	    //cosθからθを求める
+	    double sita = Math.acos( cos_sita );
+
+	    //ラジアンでなく0～180の角度でほしい場合はコメント外す
+	    sita = sita * 180.0 / Math.PI;
+
+	    double degree = sita%180.0;
+      if(degree < 135 && degree > 45){
+        return false;
+      }
+      return true;
     }
 }

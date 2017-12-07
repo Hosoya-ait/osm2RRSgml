@@ -21,16 +21,22 @@ public class MakeEdge {
     public void makeNodeToEdge () {
         int building_highest_num =  Integer.parseInt(bm.getBuildingNodeID());
         for (int i=1; i<=building_highest_num; i++) {
-            ArrayList<String> write_nodebuilding = bm.getBuildingNodeList(""+i);
-            ArrayList<String> edge_list_to_make_building = makeEdge(write_nodebuilding);
-            bm.setBuildingEdgeList(edge_list_to_make_building);
+            if (bm.containRemoveBuildingList(String.valueOf(i))==false) {
+              ArrayList<String> write_nodebuilding = bm.getBuildingNodeList(""+i);
+              ArrayList<String> edge_list_to_make_building = makeEdge(write_nodebuilding);
+              bm.setBuildingEdgeList(edge_list_to_make_building);
+            }
+
         }
 
         int road_highest_num = Integer.parseInt(rm.getRoadNodeID());
         for (int i=1; i<=road_highest_num; i++){
-            ArrayList<String> write_noderoad = rm.getRoadNodeList(""+i);
-            ArrayList<String> edge_list_to_make_road = makeEdge(write_noderoad);
-            rm.setRoadMap(edge_list_to_make_road);
+            if (rm.containRemoveRoadList(String.valueOf(i)) == false) {
+              ArrayList<String> write_noderoad = rm.getRoadNodeList(""+i);
+              ArrayList<String> edge_list_to_make_road = makeEdge(write_noderoad);
+              rm.setRoadMap(edge_list_to_make_road);
+            }
+
         }
     }
 
@@ -45,9 +51,9 @@ public class MakeEdge {
             node_List_to_make_edge.add(tmp_node);
             node_List_to_make_edge.add(next_tmp_node);
             if (nm.containsNode(j)) {
-                System.out.println("存在しているnode");
+                //System.out.println("存在しているnode");
             }else{
-                System.out.println("存在しないnode");
+                //System.out.println("存在しないnode");
             }
 
             nm.setUsedNodeList(tmp_node);
