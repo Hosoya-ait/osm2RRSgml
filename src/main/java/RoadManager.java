@@ -14,13 +14,19 @@ public class RoadManager {
     private int road_edge_id_ = 0;
 //    //minusのedgesを管理する用のid
 //    private int minus_edges_id_ = 0;
+    private HashMap<String,ArrayList<String>> road_connected_road_list_ = new HashMap<String,ArrayList<String>>();
+    private HashMap<String,ArrayList<String>> road_connected_building_list_ = new HashMap<String,ArrayList<String>>();
+
+
+
+    private ArrayList<String> remove_road_ = new ArrayList<String>();
 
     //road_node_id_に対応したnodeのArrayを返す
-    public ArrayList getRoadNodeList(String road_node_id){
+    public ArrayList<String> getRoadNodeList(String road_node_id){
         return tmp_road_list_.get(road_node_id);
     }
     //road_edge_id_に対応したedgeのArrayを返す
-    public ArrayList getRoadEdgeList(String road_edge_id){
+    public ArrayList<String> getRoadEdgeList(String road_edge_id){
         return road_map_.get(road_edge_id);
     }
     //road_node_id_の値を返す
@@ -32,11 +38,11 @@ public class RoadManager {
         return String.valueOf(road_edge_id_);
     }
     //マイナスにすべきedge_id_のnodeのArrayを返す
-    public ArrayList getMinusDirectionEdgeMap(String road_edge_id){
+    public ArrayList<String> getMinusDirectionEdgeMap(String road_edge_id){
         return minus_direction_edge_map_.get(road_edge_id);
     }
     //引数のnodeを含んだroadID集合のArrayを返す
-    public ArrayList getRoadIDContainNode(String node_id){
+    public ArrayList<String> getRoadIDContainNode(String node_id){
         for(int i=0; road_node_id_>i; i++){
             if(tmp_road_list_.get(i).contains(node_id)){
                 return tmp_road_list_.get(i);
@@ -45,55 +51,109 @@ public class RoadManager {
         return null;
     }
     //引数のedgeを含んだroad_edge_id_の集合のArrayを返す
-    public ArrayList getRoadIDContainEdge(String edge_id){
-//        System.out.println("edge_id = " + edge_id);
-//        System.out.println("road_edge_id_ = " + road_edge_id_);
-        for(int i=1; i<=road_edge_id_; i++){
-//            System.out.println("road_map_.get(String.valueOf(i)) = " + road_map_.get(String.valueOf(i)));
-//            System.out.println("true" + road_map_.get(i));
-            if(road_map_.get(String.valueOf(i)).contains(edge_id)){
-//                System.out.println("true");
+    //機能を変更
+    public ArrayList<String> getRoadIDContainEdge(String road_id,String edge_id){
+        for(int i=1; i<=road_edge_id_-1; i++){
+
+            ArrayList<String> check_list = road_map_.get(String.valueOf(i));
+            if(check_list.contains(edge_id)){
                 return road_map_.get(String.valueOf(i));
             }
         }
         return null;
     }
 
+    public Boolean containMinusDirectionEdge(String road_id,String edge_id ){
+        if (minus_direction_edge_map_.containsKey(road_id)) {
+            ArrayList<String> tmp_check_list = minus_direction_edge_map_.get(road_id);
+            if (tmp_check_list.contains(edge_id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean containRemoveRoadList(String road_id){
+        if (remove_road_.contains(road_id)) {
+          //System.out.println("除外");
+          return true;
+        }
+        return false;
+    }
     //
     //道路と建物の接続時に作成する２つのnodeを追加するメソッドを考える
     //
-
-
-    public void setTmpRoadList(ArrayList nodes){
+    public void setTmpRoadList(ArrayList<String> nodes){
         road_node_id_++;
         tmp_road_list_.put(String.valueOf(road_node_id_),nodes);
     }
     //内部でマイナスをつけるべきedgeをminus_direction_edge_map_へセットする
     //minus_direction_edge_map_は(roadID,minusにすべきedge集合)
     public void setRoadMap(ArrayList<String> edges){
+
         road_edge_id_++;
+
         road_map_.put(String.valueOf(road_edge_id_),edges);
+        setMinusDirectionEdgeMap (edges);
+    }
 
-        ArrayList<String> tmp = new ArrayList<>();
-
-//        System.out.println("edges = "+edges);
-
-        for (int i=0; i<edges.size(); i++) {
-            if (getRoadIDContainEdge(edges.get(i)) != null) {
-//                System.out.println("アアアアアアアアアアアアアアアあ");
-                tmp.add(edges.get(i));
+    //既に存在しているedgeを使用したとき書き込み時にminusにするようにする処理
+    public void setMinusDirectionEdgeMap (ArrayList<String> check_Edges) {
+        ArrayList<String> tmp_list = new ArrayList<String>();
+        for (int i=0; i<check_Edges.size(); i++) {
+            if (getRoadIDContainEdge( String.valueOf(road_edge_id_),check_Edges.get(i)) != null ) {
+                tmp_list.add(check_Edges.get(i));
             }
         }
-//        System.out.println("tmp = " + tmp);
-//        System.out.println("road_edge_id_  = " + road_edge_id_);
-        minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp);
-
+        minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp_list);
         //建物を反時計回りに作るのであれば，建物で使っているedgeをminusにする処理も必要
-
-        //setMinusDirectionEdgeMapの処理かく
-        //別のメソッドとして書いた方が計算量削減になるはず
     }
-    public void setMinusDirectionEdgeMap (ArrayList minusEdges) {
+    public void insertRoadInNode(String road_ID,int road_edge_Index,String node_ID){
+        ((ArrayList)tmp_road_list_.get(road_ID)).add(road_edge_Index,node_ID);
+        return;
+    }
+
+    public void setRemoveRoadList(String road_id){
+      remove_road_.add(road_id);
+    }
+
+
+
+    public void setRoadConnectedObject(String connected_road,String road_id,String building_id){
+      if (checkRoadConnected(connected_road)) {
+        ((ArrayList)road_connected_road_list_.get(connected_road)).add(road_id);
+        ((ArrayList)road_connected_building_list_.get(connected_road)).add(building_id);
+      }else{
+        ArrayList<String> tmp_array_road = new ArrayList<String>();
+        ArrayList<String> tmp_array_building = new ArrayList<String>();
+        tmp_array_road.add(road_id);
+        tmp_array_building.add(building_id);
+
+        road_connected_road_list_.put(connected_road,tmp_array_road);
+        road_connected_building_list_.put(connected_road,tmp_array_building);
+      }
+    }
+
+    public Boolean checkRoadConnected(String road_id){
+      return road_connected_road_list_.containsKey(road_id);
+    }
+
+    public ArrayList<String> getRoadConnectedRoad(String road_id){
+      if (checkRoadConnected(road_id)) {
+        return road_connected_road_list_.get(road_id);
+      }else{
+        ArrayList<String> empty_arr = new ArrayList<String>();
+        return empty_arr;
+      }
+
+    }
+    public ArrayList<String>  getRoadConnectedBuilding(String road_id){
+      if (checkRoadConnected(road_id)) {
+        return road_connected_building_list_.get(road_id);
+      }else{
+        ArrayList<String> empty_arr = new ArrayList<String>();
+        return empty_arr;
+      }
 
     }
 }

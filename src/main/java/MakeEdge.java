@@ -3,8 +3,6 @@ import java.util.ArrayList;
 //edge作成用クラス
 public class MakeEdge {
 
-    private static String tmpNodeID = new String();
-
     private NodeManager     nm;
     private EdgeManager     em;
     private BuildingManager bm;
@@ -20,74 +18,58 @@ public class MakeEdge {
         this.rm = rm;
     }
 
-    public void MakeEdge () {
-        for (int i=1; i<=Integer.parseInt(bm.getBuildingNodeID()); i++) {
-            ArrayList<String> tmpEdgeList = new ArrayList<String>();
-            String tmpNode = (String)bm.getBuildingNodeList(String.valueOf(i)).get(0);
-
-            for (int j=1; j<bm.getBuildingNodeList(String.valueOf(i)).size(); j++) {
-                ArrayList<String> tmpNodeList = new ArrayList<String>();
-                String tmpNodeNext = (String)bm.getBuildingNodeList(String.valueOf(i)).get(j);
-
-                tmpNodeList.add(tmpNode);
-                tmpNodeList.add(tmpNodeNext);
-
-                nm.setUsedNodeList(tmpNode);
-                nm.setUsedNodeList(tmpNodeNext);
-
-                em.setEdgeMap(tmpNodeList);
-                tmpEdgeList.add(em.getEdgeID());
-                tmpNode = tmpNodeNext;
+    public void makeNodeToEdge () {
+        int building_highest_num =  Integer.parseInt(bm.getBuildingNodeID());
+        for (int i=1; i<=building_highest_num; i++) {
+            if (bm.containRemoveBuildingList(String.valueOf(i))==false) {
+              ArrayList<String> write_nodebuilding = bm.getBuildingNodeList(""+i);
+              ArrayList<String> edge_list_to_make_building = makeEdge(write_nodebuilding);
+              bm.setBuildingEdgeList(edge_list_to_make_building);
             }
-            bm.setBuildingEdgeList(tmpEdgeList);
+
         }
 
-        for (int i=1; i<=Integer.parseInt(rm.getRoadNodeID()); i++){
-            ArrayList<String> tmpEdgeList = new ArrayList<String>();
-            ArrayList<String> tmpMinusEdgeList = new ArrayList<String>();
-            String tmpNode = (String)rm.getRoadNodeList(String.valueOf(i)).get(0);
-
-            for (int j=1; j<rm.getRoadNodeList(String.valueOf(i)).size(); j++) {
-                ArrayList tmpNodeList = new ArrayList();
-                String tmpNodeNext = (String)rm.getRoadNodeList(String.valueOf(i)).get(j);
-
-                tmpNodeList.add(tmpNode);
-                tmpNodeList.add(tmpNodeNext);
-
-                nm.setUsedNodeList(tmpNode);
-                nm.setUsedNodeList(tmpNodeNext);
-
-                //すでにあるEdgeか判定
-                String checkEdgeId = new String();
-                checkEdgeId = checkEdge(tmpNode, tmpNodeNext);
-
-                if (checkEdgeId == "0") {
-                    em.setEdgeMap(tmpNodeList);
-                    tmpEdgeList.add(em.getEdgeID());
-                }else{
-                    tmpEdgeList.add(checkEdgeId);
-                }
-                tmpNode = tmpNodeNext;
+        int road_highest_num = Integer.parseInt(rm.getRoadNodeID());
+        for (int i=1; i<=road_highest_num; i++){
+            if (rm.containRemoveRoadList(String.valueOf(i)) == false) {
+              ArrayList<String> write_noderoad = rm.getRoadNodeList(""+i);
+              ArrayList<String> edge_list_to_make_road = makeEdge(write_noderoad);
+              rm.setRoadMap(edge_list_to_make_road);
             }
-//            System.out.println("tmpEdgeList = "  +tmpEdgeList);
 
-
-            // ここでやってるマイナスの処理多分間違ってる　全部マイナスにしてるから
-            rm.setRoadMap(tmpEdgeList);
         }
     }
 
-    private String checkEdge(String node1,String node2){
-        this.tmpNodeID = "0";
+//渡されたnodeの入っているlistに対して入ってる順番にedgeを作る、また作ったedgeのlistを返す
+    private ArrayList<String> makeEdge(ArrayList<String> write_node){
+        String tmp_node = write_node.get(0);
+        ArrayList<String> object_edge_list = new ArrayList<String>();
+        for (int j=1; j<write_node.size(); j++) {
+            ArrayList<String> node_List_to_make_edge = new ArrayList<String>();
+            String next_tmp_node = write_node.get(j);
 
-        for (int i=1; i<=Integer.parseInt(em.getEdgeID()); i++) {
-
-            if (em.getEdgeNodeList(String.valueOf(i)).contains(node1)) {
-                if (em.getEdgeNodeList(String.valueOf(i)).contains(node2)) {
-                    this.tmpNodeID = String.valueOf(i);
-                }
+            node_List_to_make_edge.add(tmp_node);
+            node_List_to_make_edge.add(next_tmp_node);
+            if (nm.containsNode(j)) {
+                //System.out.println("存在しているnode");
+            }else{
+                //System.out.println("存在しないnode");
             }
+
+            nm.setUsedNodeList(tmp_node);
+            nm.setUsedNodeList(next_tmp_node);
+
+            //すでにあるEdgeか判定
+            String check_edge_ID = new String();
+            check_edge_ID = em.checkExistEdge(tmp_node, next_tmp_node);
+            if (check_edge_ID == "0") {
+                em.setEdgeMap(node_List_to_make_edge);
+                object_edge_list.add(em.getEdgeID());
+            }else{
+                object_edge_list.add(check_edge_ID);
+            }
+            tmp_node = next_tmp_node;
         }
-        return this.tmpNodeID;
+        return object_edge_list;
     }
 }

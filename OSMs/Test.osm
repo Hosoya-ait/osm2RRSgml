@@ -5,7 +5,7 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路伏見' />
   </node>
-  <node id='286748257' timestamp='2016-04-21T14:11:54Z' uid='728316' user='TKE-waka' version='12' changeset='38758244' lat='35.1688659' lon='136.9057327'>
+  <node id='286748257' action='delete' timestamp='2016-04-21T14:11:54Z' uid='728316' user='TKE-waka' version='12' changeset='38758244' lat='35.1688659' lon='136.9057327'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路伊勢町' />
     <tag k='traffic_signals' v='signal' />
@@ -22,32 +22,32 @@
     <tag k='name:ja' v='広小路竪三蔵' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='287041483' timestamp='2013-08-09T12:45:50Z' uid='146930' user='Tom_G3X' version='12' changeset='17278711' lat='35.1679526' lon='136.8923766'>
+  <node id='287041483' action='delete' timestamp='2013-08-09T12:45:50Z' uid='146930' user='Tom_G3X' version='12' changeset='17278711' lat='35.1679526' lon='136.8923766'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='納屋橋東' />
     <tag k='name:ja' v='納屋橋東' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='287041585' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1654138' lon='136.8979421' />
-  <node id='287041589' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1647486' lon='136.8980117' />
-  <node id='287041592' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1639623' lon='136.8980939' />
-  <node id='287041610' timestamp='2010-02-14T07:14:23Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1602393' lon='136.8984152' />
-  <node id='287041614' timestamp='2010-02-14T07:14:23Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1596654' lon='136.8984539' />
-  <node id='287041617' timestamp='2010-02-14T07:14:24Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1592112' lon='136.8984845' />
-  <node id='287041620' timestamp='2015-01-26T04:39:06Z' uid='651065' user='futurumspes' version='12' changeset='28410278' lat='35.1581796' lon='136.8985205'>
+  <node id='287041585' action='delete' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1654138' lon='136.8979421' />
+  <node id='287041589' action='delete' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1647486' lon='136.8980117' />
+  <node id='287041592' action='delete' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='6' changeset='40970036' lat='35.1639623' lon='136.8980939' />
+  <node id='287041610' action='delete' timestamp='2010-02-14T07:14:23Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1602393' lon='136.8984152' />
+  <node id='287041614' action='delete' timestamp='2010-02-14T07:14:23Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1596654' lon='136.8984539' />
+  <node id='287041617' action='delete' timestamp='2010-02-14T07:14:24Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.1592112' lon='136.8984845' />
+  <node id='287041620' action='delete' timestamp='2015-01-26T04:39:06Z' uid='651065' user='futurumspes' version='12' changeset='28410278' lat='35.1581796' lon='136.8985205'>
     <tag k='crossing' v='traffic_signals' />
     <tag k='crossing_ref' v='zebra' />
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='西大須' />
     <tag k='name:ja' v='西大須' />
   </node>
-  <node id='287041626' timestamp='2013-08-28T12:25:50Z' uid='728316' user='TKE-waka' version='9' changeset='17553698' lat='35.156501' lon='136.8986422' />
-  <node id='287041632' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='7' changeset='40970036' lat='35.1545903' lon='136.8987664' />
-  <node id='287041633' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='9' changeset='40970036' lat='35.1544028' lon='136.8987753' />
-  <node id='287041634' timestamp='2012-12-11T08:42:57Z' uid='651065' user='futurumspes' version='5' changeset='14235543' lat='35.1533002' lon='136.8988384' />
-  <node id='287041636' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1522629' lon='136.8989122' />
-  <node id='287041643' timestamp='2012-11-05T13:48:19Z' uid='728316' user='TKE-waka' version='3' changeset='13760945' lat='35.1492916' lon='136.8990888' />
-  <node id='321616048' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='19' changeset='28410278' lat='35.1626477' lon='136.8982205'>
+  <node id='287041626' action='delete' timestamp='2013-08-28T12:25:50Z' uid='728316' user='TKE-waka' version='9' changeset='17553698' lat='35.156501' lon='136.8986422' />
+  <node id='287041632' action='delete' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='7' changeset='40970036' lat='35.1545903' lon='136.8987664' />
+  <node id='287041633' action='delete' timestamp='2016-07-23T12:12:01Z' uid='146930' user='Tom_G3X' version='9' changeset='40970036' lat='35.1544028' lon='136.8987753' />
+  <node id='287041634' action='delete' timestamp='2012-12-11T08:42:57Z' uid='651065' user='futurumspes' version='5' changeset='14235543' lat='35.1533002' lon='136.8988384' />
+  <node id='287041636' action='delete' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1522629' lon='136.8989122' />
+  <node id='287041643' action='delete' timestamp='2012-11-05T13:48:19Z' uid='728316' user='TKE-waka' version='3' changeset='13760945' lat='35.1492916' lon='136.8990888' />
+  <node id='321616048' action='delete' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='19' changeset='28410278' lat='35.1626477' lon='136.8982205'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='若宮北' />
     <tag k='name:ja' v='若宮北' />
@@ -75,16 +75,16 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路桑名町' />
   </node>
-  <node id='334505534' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1662913' lon='136.8989057' />
-  <node id='334505540' timestamp='2011-09-17T02:44:45Z' uid='146930' user='Tom_G3X' version='7' changeset='9320801' lat='35.1668339' lon='136.8964633' />
+  <node id='334505534' action='delete' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1662913' lon='136.8989057' />
+  <node id='334505540' action='delete' timestamp='2011-09-17T02:44:45Z' uid='146930' user='Tom_G3X' version='7' changeset='9320801' lat='35.1668339' lon='136.8964633' />
   <node id='334505541' timestamp='2013-07-26T18:15:41Z' uid='146930' user='Tom_G3X' version='10' changeset='17105078' lat='35.1676422' lon='136.8963784' />
-  <node id='352695138' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='14' changeset='35127465' lat='35.1689425' lon='136.9068315'>
+  <node id='352695138' action='delete' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='14' changeset='35127465' lat='35.1689425' lon='136.9068315'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='栄' />
     <tag k='name:ja' v='栄' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='360084977' timestamp='2013-07-19T12:30:23Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699871' lon='136.9083615'>
+  <node id='360084977' action='delete' timestamp='2013-07-19T12:30:23Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699871' lon='136.9083615'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -99,7 +99,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085023' timestamp='2010-12-12T13:05:21Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695851' lon='136.892104'>
+  <node id='360085023' action='delete' timestamp='2010-12-12T13:05:21Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695851' lon='136.892104'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -114,7 +114,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085027' timestamp='2010-12-12T13:08:15Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695536' lon='136.8925186'>
+  <node id='360085027' action='delete' timestamp='2010-12-12T13:08:15Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695536' lon='136.8925186'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -129,7 +129,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085031' timestamp='2010-12-12T13:06:03Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695752' lon='136.8912896'>
+  <node id='360085031' action='delete' timestamp='2010-12-12T13:06:03Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695752' lon='136.8912896'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -144,7 +144,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085035' timestamp='2010-12-12T13:05:09Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695847' lon='136.8916284'>
+  <node id='360085035' action='delete' timestamp='2010-12-12T13:05:09Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695847' lon='136.8916284'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -159,7 +159,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085039' timestamp='2010-12-12T13:07:10Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1694182' lon='136.8900087'>
+  <node id='360085039' action='delete' timestamp='2010-12-12T13:07:10Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1694182' lon='136.8900087'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -174,7 +174,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085043' timestamp='2013-08-16T11:06:40Z' uid='146930' user='Tom_G3X' version='3' changeset='17370316' lat='35.1695357' lon='136.8907231'>
+  <node id='360085043' action='delete' timestamp='2013-08-16T11:06:40Z' uid='146930' user='Tom_G3X' version='3' changeset='17370316' lat='35.1695357' lon='136.8907231'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -189,7 +189,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085046' timestamp='2013-08-16T11:06:41Z' uid='146930' user='Tom_G3X' version='2' changeset='17370316' lat='35.1691946' lon='136.8890621'>
+  <node id='360085046' action='delete' timestamp='2013-08-16T11:06:41Z' uid='146930' user='Tom_G3X' version='2' changeset='17370316' lat='35.1691946' lon='136.8890621'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -204,7 +204,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085050' timestamp='2013-08-16T11:06:41Z' uid='146930' user='Tom_G3X' version='2' changeset='17370316' lat='35.1693027' lon='136.8895962'>
+  <node id='360085050' action='delete' timestamp='2013-08-16T11:06:41Z' uid='146930' user='Tom_G3X' version='2' changeset='17370316' lat='35.1693027' lon='136.8895962'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -309,7 +309,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085079' timestamp='2010-12-12T13:05:12Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695341' lon='136.8928419'>
+  <node id='360085079' action='delete' timestamp='2010-12-12T13:05:12Z' uid='146930' user='Tom_G3X' version='2' changeset='6635770' lat='35.1695341' lon='136.8928419'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -339,7 +339,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085091' timestamp='2009-03-14T03:37:15Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.170807' lon='136.884129'>
+  <node id='360085091' action='delete' timestamp='2009-03-14T03:37:15Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.170807' lon='136.884129'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -355,7 +355,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085095' timestamp='2009-03-14T03:37:15Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.171193' lon='136.883933'>
+  <node id='360085095' action='delete' timestamp='2009-03-14T03:37:15Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.171193' lon='136.883933'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -371,7 +371,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085099' timestamp='2017-09-24T18:51:11Z' uid='339581' user='nyuriks' version='8' changeset='52336383' lat='35.171304' lon='136.883881'>
+  <node id='360085099' action='delete' timestamp='2017-09-24T18:51:11Z' uid='339581' user='nyuriks' version='8' changeset='52336383' lat='35.171304' lon='136.883881'>
     <tag k='KSJ2:LIN' v='1号線東山線' />
     <tag k='KSJ2:STN' v='名古屋' />
     <tag k='name' v='名古屋' />
@@ -387,7 +387,7 @@
     <tag k='wikidata' v='Q49381' />
     <tag k='wikipedia' v='ja:名古屋駅' />
   </node>
-  <node id='360085115' timestamp='2009-03-14T03:37:18Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168761' lon='136.887011'>
+  <node id='360085115' action='delete' timestamp='2009-03-14T03:37:18Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168761' lon='136.887011'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -403,7 +403,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085120' timestamp='2009-03-14T03:37:19Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168631' lon='136.886273'>
+  <node id='360085120' action='delete' timestamp='2009-03-14T03:37:19Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168631' lon='136.886273'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -419,7 +419,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085124' timestamp='2009-03-14T03:37:19Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168497' lon='136.885457'>
+  <node id='360085124' action='delete' timestamp='2009-03-14T03:37:19Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168497' lon='136.885457'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -435,7 +435,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085128' timestamp='2009-03-14T03:37:20Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168502' lon='136.88527'>
+  <node id='360085128' action='delete' timestamp='2009-03-14T03:37:20Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168502' lon='136.88527'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -451,7 +451,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085132' timestamp='2009-03-14T03:37:20Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.16853' lon='136.885111'>
+  <node id='360085132' action='delete' timestamp='2009-03-14T03:37:20Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.16853' lon='136.885111'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -467,7 +467,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085136' timestamp='2009-03-14T03:37:21Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168612' lon='136.884977'>
+  <node id='360085136' action='delete' timestamp='2009-03-14T03:37:21Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168612' lon='136.884977'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -483,7 +483,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085141' timestamp='2009-03-14T03:37:22Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168732' lon='136.884862'>
+  <node id='360085141' action='delete' timestamp='2009-03-14T03:37:22Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.168732' lon='136.884862'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -499,7 +499,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085145' timestamp='2009-03-14T03:37:22Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.169894' lon='136.884475'>
+  <node id='360085145' action='delete' timestamp='2009-03-14T03:37:22Z' uid='69966' user='ikiya' version='1' changeset='803912' lat='35.169894' lon='136.884475'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -515,7 +515,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085202' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699661' lon='136.9079436'>
+  <node id='360085202' action='delete' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699661' lon='136.9079436'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -530,7 +530,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085206' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1698482' lon='136.9060051'>
+  <node id='360085206' action='delete' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1698482' lon='136.9060051'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -545,7 +545,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085211' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699058' lon='136.9067792'>
+  <node id='360085211' action='delete' timestamp='2013-07-19T12:30:24Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699058' lon='136.9067792'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -620,7 +620,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085244' timestamp='2013-07-19T12:30:25Z' uid='146930' user='Tom_G3X' version='4' changeset='17011382' lat='35.1696694' lon='136.903375'>
+  <node id='360085244' action='delete' timestamp='2013-07-19T12:30:25Z' uid='146930' user='Tom_G3X' version='4' changeset='17011382' lat='35.1696694' lon='136.903375'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -635,7 +635,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='360085247' timestamp='2013-07-19T12:30:25Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1697504' lon='136.9046047'>
+  <node id='360085247' action='delete' timestamp='2013-07-19T12:30:25Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1697504' lon='136.9046047'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
@@ -724,7 +724,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014196' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1729863' lon='136.8970155'>
+  <node id='361014196' action='delete' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1729863' lon='136.8970155'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -739,7 +739,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014197' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1743573' lon='136.8968482'>
+  <node id='361014197' action='delete' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1743573' lon='136.8968482'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -754,7 +754,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014199' timestamp='2017-09-05T19:55:47Z' uid='339581' user='nyuriks' version='6' changeset='51761763' lat='35.1754768' lon='136.8967098'>
+  <node id='361014199' action='delete' timestamp='2017-09-05T19:55:47Z' uid='339581' user='nyuriks' version='6' changeset='51761763' lat='35.1754768' lon='136.8967098'>
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
     <tag k='KSJ2:STN' v='丸の内' />
     <tag k='name' v='丸の内' />
@@ -798,7 +798,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014209' timestamp='2011-02-11T11:55:53Z' uid='146930' user='Tom_G3X' version='2' changeset='7254419' lat='35.1574354' lon='136.9059739'>
+  <node id='361014209' action='delete' timestamp='2011-02-11T11:55:53Z' uid='146930' user='Tom_G3X' version='2' changeset='7254419' lat='35.1574354' lon='136.9059739'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -828,7 +828,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014382' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1618122' lon='136.898195'>
+  <node id='361014382' action='delete' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1618122' lon='136.898195'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -843,7 +843,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014384' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.164024' lon='136.8979583'>
+  <node id='361014384' action='delete' timestamp='2013-07-19T12:30:27Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.164024' lon='136.8979583'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -858,7 +858,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014386' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1657846' lon='136.8977914'>
+  <node id='361014386' action='delete' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1657846' lon='136.8977914'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -873,7 +873,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014387' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1669454' lon='136.8976628'>
+  <node id='361014387' action='delete' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1669454' lon='136.8976628'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -888,7 +888,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014399' timestamp='2017-09-24T18:51:17Z' uid='339581' user='nyuriks' version='9' changeset='52336383' lat='35.1610095' lon='136.8982402'>
+  <node id='361014399' action='delete' timestamp='2017-09-24T18:51:17Z' uid='339581' user='nyuriks' version='9' changeset='52336383' lat='35.1610095' lon='136.8982402'>
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
     <tag k='KSJ2:STN' v='大須観音' />
     <tag k='name' v='大須観音' />
@@ -903,7 +903,7 @@
     <tag k='wikidata' v='Q862936' />
     <tag k='wikipedia' v='ja:大須観音駅' />
   </node>
-  <node id='361014437' timestamp='2009-03-16T04:48:50Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158135' lon='136.898949'>
+  <node id='361014437' action='delete' timestamp='2009-03-16T04:48:50Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158135' lon='136.898949'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -919,7 +919,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014439' timestamp='2009-03-16T04:48:51Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158084' lon='136.899153'>
+  <node id='361014439' action='delete' timestamp='2009-03-16T04:48:51Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158084' lon='136.899153'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -935,7 +935,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014440' timestamp='2009-03-16T04:48:51Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158031' lon='136.8994'>
+  <node id='361014440' action='delete' timestamp='2009-03-16T04:48:51Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158031' lon='136.8994'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -951,7 +951,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014442' timestamp='2009-03-16T04:48:52Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157984' lon='136.899585'>
+  <node id='361014442' action='delete' timestamp='2009-03-16T04:48:52Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157984' lon='136.899585'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -967,7 +967,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014444' timestamp='2009-03-16T04:48:53Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158514' lon='136.898431'>
+  <node id='361014444' action='delete' timestamp='2009-03-16T04:48:53Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158514' lon='136.898431'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -983,7 +983,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014446' timestamp='2009-03-16T04:48:53Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158356' lon='136.898597'>
+  <node id='361014446' action='delete' timestamp='2009-03-16T04:48:53Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158356' lon='136.898597'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -999,7 +999,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014449' timestamp='2009-03-16T04:48:54Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158252' lon='136.89872'>
+  <node id='361014449' action='delete' timestamp='2009-03-16T04:48:54Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158252' lon='136.89872'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1015,7 +1015,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014450' timestamp='2009-03-16T04:48:55Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158194' lon='136.898805'>
+  <node id='361014450' action='delete' timestamp='2009-03-16T04:48:55Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.158194' lon='136.898805'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1031,7 +1031,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014452' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1598168' lon='136.8983214'>
+  <node id='361014452' action='delete' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1598168' lon='136.8983214'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1046,7 +1046,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014454' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1591346' lon='136.898337'>
+  <node id='361014454' action='delete' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1591346' lon='136.898337'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1061,7 +1061,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014456' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1588635' lon='136.8983419'>
+  <node id='361014456' action='delete' timestamp='2013-07-19T12:30:28Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1588635' lon='136.8983419'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1076,7 +1076,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014458' timestamp='2013-07-19T12:30:29Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1586529' lon='136.8983807'>
+  <node id='361014458' action='delete' timestamp='2013-07-19T12:30:29Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1586529' lon='136.8983807'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1091,7 +1091,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014480' timestamp='2009-03-16T04:49:06Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157572' lon='136.904033'>
+  <node id='361014480' action='delete' timestamp='2009-03-16T04:49:06Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157572' lon='136.904033'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1107,7 +1107,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014482' timestamp='2009-03-16T04:49:08Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157754' lon='136.901675'>
+  <node id='361014482' action='delete' timestamp='2009-03-16T04:49:08Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157754' lon='136.901675'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1123,7 +1123,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014484' timestamp='2009-03-16T04:49:09Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157475' lon='136.905448'>
+  <node id='361014484' action='delete' timestamp='2009-03-16T04:49:09Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157475' lon='136.905448'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1139,7 +1139,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014486' timestamp='2009-03-16T04:49:09Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157927' lon='136.899998'>
+  <node id='361014486' action='delete' timestamp='2009-03-16T04:49:09Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157927' lon='136.899998'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1155,7 +1155,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014488' timestamp='2009-03-16T04:49:10Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157954' lon='136.899801'>
+  <node id='361014488' action='delete' timestamp='2009-03-16T04:49:10Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157954' lon='136.899801'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1171,7 +1171,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014490' timestamp='2009-03-16T04:49:11Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157799' lon='136.901263'>
+  <node id='361014490' action='delete' timestamp='2009-03-16T04:49:11Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157799' lon='136.901263'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1187,7 +1187,7 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='361014491' timestamp='2009-03-16T04:49:12Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157884' lon='136.900391'>
+  <node id='361014491' action='delete' timestamp='2009-03-16T04:49:12Z' uid='69966' user='ikiya' version='1' changeset='820768' lat='35.157884' lon='136.900391'>
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -1203,35 +1203,35 @@
     <tag k='source' v='KSJ2' />
     <tag k='source_ref' v='http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html' />
   </node>
-  <node id='431196915' timestamp='2013-07-18T07:55:42Z' uid='1613384' user='kurestone' version='12' changeset='16996348' lat='35.1701169' lon='136.9090154'>
+  <node id='431196915' action='delete' timestamp='2013-07-18T07:55:42Z' uid='1613384' user='kurestone' version='12' changeset='16996348' lat='35.1701169' lon='136.9090154'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通久屋' />
     <tag k='name:ja' v='錦通久屋' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='549890864' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='11' changeset='28410278' lat='35.1620461' lon='136.8982969'>
+  <node id='549890864' action='delete' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='11' changeset='28410278' lat='35.1620461' lon='136.8982969'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='若宮南' />
     <tag k='name:ja' v='若宮南' />
   </node>
-  <node id='549890867' timestamp='2013-01-08T07:24:32Z' uid='69966' user='ikiya' version='8' changeset='14571182' lat='35.1698401' lon='136.8926756' />
-  <node id='549890868' timestamp='2013-01-07T08:05:22Z' uid='69966' user='ikiya' version='11' changeset='14559469' lat='35.1696229' lon='136.8926492'>
+  <node id='549890867' action='delete' timestamp='2013-01-08T07:24:32Z' uid='69966' user='ikiya' version='8' changeset='14571182' lat='35.1698401' lon='136.8926756' />
+  <node id='549890868' action='delete' timestamp='2013-01-07T08:05:22Z' uid='69966' user='ikiya' version='11' changeset='14559469' lat='35.1696229' lon='136.8926492'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦橋東' />
     <tag k='name:ja' v='錦橋東' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='549902892' timestamp='2010-12-26T07:13:24Z' uid='146930' user='Tom_G3X' version='6' changeset='6765662' lat='35.1608386' lon='136.8983811' />
-  <node id='549902896' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='10' changeset='16532359' lat='35.1625865' lon='136.8969207' />
-  <node id='549902905' timestamp='2010-02-14T07:14:31Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.164495' lon='136.8980382' />
-  <node id='549926907' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1649793' lon='136.8966647' />
+  <node id='549902892' action='delete' timestamp='2010-12-26T07:13:24Z' uid='146930' user='Tom_G3X' version='6' changeset='6765662' lat='35.1608386' lon='136.8983811' />
+  <node id='549902896' action='delete' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='10' changeset='16532359' lat='35.1625865' lon='136.8969207' />
+  <node id='549902905' action='delete' timestamp='2010-02-14T07:14:31Z' uid='146930' user='Tom_G3X' version='5' changeset='3870771' lat='35.164495' lon='136.8980382' />
+  <node id='549926907' action='delete' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1649793' lon='136.8966647' />
   <node id='549926910' timestamp='2013-07-26T18:15:40Z' uid='146930' user='Tom_G3X' version='11' changeset='17105078' lat='35.1681194' lon='136.894907'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路中ノ町' />
     <tag k='name:ja' v='広小路中ノ町' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='552070373' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='14' changeset='17011382' lat='35.172945' lon='136.8971239'>
+  <node id='552070373' action='delete' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='14' changeset='17011382' lat='35.172945' lon='136.8971239'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='日銀前' />
     <tag k='name:en' v='Bank of Japan (Nichigin)' />
@@ -1244,12 +1244,12 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通伏見' />
   </node>
-  <node id='552171295' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='14' changeset='17011382' lat='35.1729547' lon='136.8969049'>
+  <node id='552171295' action='delete' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='14' changeset='17011382' lat='35.1729547' lon='136.8969049'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='日銀前' />
     <tag k='name:en' v='Bank of Japan (Nichigin)' />
   </node>
-  <node id='552171297' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='13' changeset='17011382' lat='35.1730408' lon='136.8968916'>
+  <node id='552171297' action='delete' timestamp='2013-07-19T12:30:16Z' uid='146930' user='Tom_G3X' version='13' changeset='17011382' lat='35.1730408' lon='136.8968916'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='日銀前' />
     <tag k='name:en' v='Bank of Japan (Nichigin)' />
@@ -1258,17 +1258,17 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通本町' />
   </node>
-  <node id='552171306' timestamp='2013-07-19T12:30:17Z' uid='146930' user='Tom_G3X' version='13' changeset='17011382' lat='35.1697317' lon='136.903268'>
+  <node id='552171306' action='delete' timestamp='2013-07-19T12:30:17Z' uid='146930' user='Tom_G3X' version='13' changeset='17011382' lat='35.1697317' lon='136.903268'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通七間町' />
   </node>
-  <node id='552171309' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='13' changeset='16830533' lat='35.1698115' lon='136.9044622'>
+  <node id='552171309' action='delete' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='13' changeset='16830533' lat='35.1698115' lon='136.9044622'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通呉服町' />
   </node>
-  <node id='552171311' timestamp='2013-07-19T12:30:30Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1698865' lon='136.9056183' />
-  <node id='552171322' timestamp='2013-07-19T12:30:30Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1699645' lon='136.9067036' />
-  <node id='552171325' timestamp='2013-07-27T03:35:17Z' uid='146930' user='Tom_G3X' version='12' changeset='17109197' lat='35.1700533' lon='136.9081213'>
+  <node id='552171311' action='delete' timestamp='2013-07-19T12:30:30Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1698865' lon='136.9056183' />
+  <node id='552171322' action='delete' timestamp='2013-07-19T12:30:30Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1699645' lon='136.9067036' />
+  <node id='552171325' action='delete' timestamp='2013-07-27T03:35:17Z' uid='146930' user='Tom_G3X' version='12' changeset='17109197' lat='35.1700533' lon='136.9081213'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通久屋' />
     <tag k='name:ja' v='錦通久屋' />
@@ -1291,8 +1291,8 @@
     <tag k='wikidata' v='Q1207921' />
     <tag k='wikipedia' v='ja:中区 (名古屋市)' />
   </node>
-  <node id='571823722' timestamp='2012-12-02T01:12:37Z' uid='651065' user='futurumspes' version='6' changeset='14119440' lat='35.1655346' lon='136.8965932' />
-  <node id='571827092' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='13' changeset='35127465' lat='35.1687826' lon='136.9045384'>
+  <node id='571823722' action='delete' timestamp='2012-12-02T01:12:37Z' uid='651065' user='futurumspes' version='6' changeset='14119440' lat='35.1655346' lon='136.8965932' />
+  <node id='571827092' action='delete' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='13' changeset='35127465' lat='35.1687826' lon='136.9045384'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路呉服町' />
   </node>
@@ -1310,17 +1310,17 @@
   <node id='573399009' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1702836' lon='136.8996452' />
   <node id='573399010' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1711564' lon='136.8984102' />
   <node id='573399011' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='10' changeset='16830533' lat='35.1720825' lon='136.8983108' />
-  <node id='573399014' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1732523' lon='136.8993337'>
+  <node id='573399014' action='delete' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1732523' lon='136.8993337'>
     <tag k='highway' v='traffic_signals' />
   </node>
-  <node id='573399015' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1731017' lon='136.899352'>
+  <node id='573399015' action='delete' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1731017' lon='136.899352'>
     <tag k='highway' v='traffic_signals' />
   </node>
-  <node id='573399017' timestamp='2014-02-16T12:44:47Z' uid='728316' user='TKE-waka' version='12' changeset='20594287' lat='35.1733363' lon='136.9005294'>
+  <node id='573399017' action='delete' timestamp='2014-02-16T12:44:47Z' uid='728316' user='TKE-waka' version='12' changeset='20594287' lat='35.1733363' lon='136.9005294'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='桜橋長者町' />
   </node>
-  <node id='573399018' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1730227' lon='136.8982136' />
+  <node id='573399018' action='delete' timestamp='2013-07-05T05:08:51Z' uid='146930' user='Tom_G3X' version='12' changeset='16830533' lat='35.1730227' lon='136.8982136' />
   <node id='575732095' timestamp='2013-07-26T14:05:19Z' uid='146930' user='Tom_G3X' version='7' changeset='17102215' lat='35.1696715' lon='136.8994214'>
     <tag k='amenity' v='restaurant' />
     <tag k='cuisine' v='韓国スンドゥブ鍋専門店' />
@@ -1342,7 +1342,7 @@
   </node>
   <node id='576051271' timestamp='2013-06-18T10:07:12Z' uid='728316' user='TKE-waka' version='7' changeset='16601435' lat='35.1701445' lon='136.8974304' />
   <node id='576051272' timestamp='2013-06-18T10:07:12Z' uid='728316' user='TKE-waka' version='7' changeset='16601435' lat='35.1720257' lon='136.8972233' />
-  <node id='576051280' timestamp='2014-02-16T12:44:47Z' uid='728316' user='TKE-waka' version='12' changeset='20594287' lat='35.1731821' lon='136.9005457'>
+  <node id='576051280' action='delete' timestamp='2014-02-16T12:44:47Z' uid='728316' user='TKE-waka' version='12' changeset='20594287' lat='35.1731821' lon='136.9005457'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='桜橋長者町' />
   </node>
@@ -1353,22 +1353,22 @@
   <node id='576051285' timestamp='2013-07-26T15:44:20Z' uid='146930' user='Tom_G3X' version='11' changeset='17103455' lat='35.1713008' lon='136.9007354' />
   <node id='576051290' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1703644' lon='136.9008239' />
   <node id='576051291' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='11' changeset='17011382' lat='35.1704356' lon='136.9019995' />
-  <node id='576051292' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1705124' lon='136.9031823' />
-  <node id='576051293' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='10' changeset='16830533' lat='35.1706048' lon='136.9043783' />
-  <node id='576051294' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1706741' lon='136.9055486' />
+  <node id='576051292' action='delete' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1705124' lon='136.9031823' />
+  <node id='576051293' action='delete' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='10' changeset='16830533' lat='35.1706048' lon='136.9043783' />
+  <node id='576051294' action='delete' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1706741' lon='136.9055486' />
   <node id='576051295' timestamp='2013-07-05T05:08:52Z' uid='146930' user='Tom_G3X' version='9' changeset='16830533' lat='35.1722424' lon='136.9006458' />
-  <node id='576051300' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1707504' lon='136.906611' />
+  <node id='576051300' action='delete' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1707504' lon='136.906611' />
   <node id='577417372' timestamp='2010-12-12T13:05:23Z' uid='146930' user='Tom_G3X' version='4' changeset='6635770' lat='35.1703769' lon='136.8995025'>
     <tag k='name' v='Circle-K' />
     <tag k='shop' v='convenience' />
   </node>
   <node id='588394189' timestamp='2013-07-19T12:30:31Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1709104' lon='136.8946549' />
-  <node id='599442328' timestamp='2013-01-09T06:41:29Z' uid='69966' user='ikiya' version='8' changeset='14582886' lat='35.1661401' lon='136.8965312'>
+  <node id='599442328' action='delete' timestamp='2013-01-09T06:41:29Z' uid='69966' user='ikiya' version='8' changeset='14582886' lat='35.1661401' lon='136.8965312'>
     <tag k='highway' v='traffic_signals' />
   </node>
   <node id='599442331' timestamp='2012-12-28T14:11:19Z' uid='651065' user='futurumspes' version='8' changeset='14439051' lat='35.1695393' lon='136.8933571' />
   <node id='599442332' timestamp='2013-01-08T07:24:32Z' uid='69966' user='ikiya' version='7' changeset='14571182' lat='35.1699762' lon='136.8947074' />
-  <node id='599442336' timestamp='2012-12-28T12:02:50Z' uid='651065' user='futurumspes' version='7' changeset='14437572' lat='35.1707922' lon='136.8927662' />
+  <node id='599442336' action='delete' timestamp='2012-12-28T12:02:50Z' uid='651065' user='futurumspes' version='7' changeset='14437572' lat='35.1707922' lon='136.8927662' />
   <node id='599442344' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='7' changeset='17011382' lat='35.1701363' lon='136.8971981' />
   <node id='599442345' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='7' changeset='17011382' lat='35.1700685' lon='136.896119' />
   <node id='599442346' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='7' changeset='17011382' lat='35.1709901' lon='136.8960069' />
@@ -1378,10 +1378,10 @@
   </node>
   <node id='599442349' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='9' changeset='17011382' lat='35.1720016' lon='136.8970017' />
   <node id='599442350' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1719426' lon='136.8959097' />
-  <node id='599442367' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1728425' lon='136.8958063' />
-  <node id='599473344' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1634344' lon='136.8968258' />
-  <node id='599473345' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1639509' lon='136.8967776' />
-  <node id='599473346' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1643254' lon='136.8967385' />
+  <node id='599442367' action='delete' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1728425' lon='136.8958063' />
+  <node id='599473344' action='delete' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1634344' lon='136.8968258' />
+  <node id='599473345' action='delete' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1639509' lon='136.8967776' />
+  <node id='599473346' action='delete' timestamp='2013-06-13T03:59:30Z' uid='728316' user='TKE-waka' version='7' changeset='16532359' lat='35.1643254' lon='136.8967385' />
   <node id='599473350' timestamp='2013-07-27T03:35:16Z' uid='146930' user='Tom_G3X' version='11' changeset='17109197' lat='35.1694372' lon='136.8947551'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通中ノ町' />
@@ -1389,21 +1389,21 @@
     <tag k='source' v='Bing 2010' />
   </node>
   <node id='599473351' timestamp='2013-07-26T18:15:41Z' uid='146930' user='Tom_G3X' version='8' changeset='17105078' lat='35.1674511' lon='136.8963989' />
-  <node id='599483401' timestamp='2015-01-26T04:39:07Z' uid='651065' user='futurumspes' version='12' changeset='28410278' lat='35.1662256' lon='136.8978477'>
+  <node id='599483401' action='delete' timestamp='2015-01-26T04:39:07Z' uid='651065' user='futurumspes' version='12' changeset='28410278' lat='35.1662256' lon='136.8978477'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='三蔵' />
     <tag k='name:ja' v='三蔵' />
   </node>
   <node id='599483402' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='7' changeset='17011382' lat='35.1671576' lon='136.8977373' />
-  <node id='599483403' timestamp='2010-12-12T13:07:41Z' uid='146930' user='Tom_G3X' version='6' changeset='6635770' lat='35.1652829' lon='136.897955' />
-  <node id='599483404' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='8' changeset='17011382' lat='35.1653469' lon='136.8990004' />
-  <node id='599483405' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='8' changeset='17011382' lat='35.16542' lon='136.9001409' />
-  <node id='599483406' timestamp='2015-08-19T02:17:36Z' uid='728316' user='TKE-waka' version='11' changeset='33429425' lat='35.1663621' lon='136.9000393'>
+  <node id='599483403' action='delete' timestamp='2010-12-12T13:07:41Z' uid='146930' user='Tom_G3X' version='6' changeset='6635770' lat='35.1652829' lon='136.897955' />
+  <node id='599483404' action='delete' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='8' changeset='17011382' lat='35.1653469' lon='136.8990004' />
+  <node id='599483405' action='delete' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='8' changeset='17011382' lat='35.16542' lon='136.9001409' />
+  <node id='599483406' action='delete' timestamp='2015-08-19T02:17:36Z' uid='728316' user='TKE-waka' version='11' changeset='33429425' lat='35.1663621' lon='136.9000393'>
     <tag k='highway' v='traffic_signals' />
   </node>
   <node id='599483407' timestamp='2013-01-09T06:41:29Z' uid='69966' user='ikiya' version='7' changeset='14582886' lat='35.1672294' lon='136.8988056' />
-  <node id='599483411' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='9' changeset='17011382' lat='35.1654963' lon='136.9013075' />
-  <node id='599483414' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='9' changeset='17011382' lat='35.1664452' lon='136.9012114' />
+  <node id='599483411' action='delete' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='9' changeset='17011382' lat='35.1654963' lon='136.9013075' />
+  <node id='599483414' action='delete' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='9' changeset='17011382' lat='35.1664452' lon='136.9012114' />
   <node id='599483427' timestamp='2016-04-21T14:11:54Z' uid='728316' user='TKE-waka' version='13' changeset='38758244' lat='35.1684554' lon='136.8998453'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路長者町' />
@@ -1415,18 +1415,18 @@
     <tag k='name' v='広小路長者町' />
   </node>
   <node id='599483431' timestamp='2013-07-19T12:30:32Z' uid='146930' user='Tom_G3X' version='7' changeset='17011382' lat='35.1673747' lon='136.9011218' />
-  <node id='599483432' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='8' changeset='35127465' lat='35.1687019' lon='136.9033802'>
+  <node id='599483432' action='delete' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='8' changeset='35127465' lat='35.1687019' lon='136.9033802'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路七間町' />
   </node>
-  <node id='599485588' timestamp='2012-12-28T12:02:49Z' uid='651065' user='futurumspes' version='7' changeset='14437572' lat='35.1679492' lon='136.8922254' />
-  <node id='599485597' timestamp='2013-07-18T05:48:03Z' uid='1613384' user='kurestone' version='8' changeset='16995214' lat='35.1708508' lon='136.9080357' />
-  <node id='599869040' timestamp='2016-03-10T10:03:51Z' uid='728316' user='TKE-waka' version='10' changeset='37729993' lat='35.151512' lon='136.8989569'>
+  <node id='599485588' action='delete' timestamp='2012-12-28T12:02:49Z' uid='651065' user='futurumspes' version='7' changeset='14437572' lat='35.1679492' lon='136.8922254' />
+  <node id='599485597' action='delete' timestamp='2013-07-18T05:48:03Z' uid='1613384' user='kurestone' version='8' changeset='16995214' lat='35.1708508' lon='136.9080357' />
+  <node id='599869040' action='delete' timestamp='2016-03-10T10:03:51Z' uid='728316' user='TKE-waka' version='10' changeset='37729993' lat='35.151512' lon='136.8989569'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='古渡町' />
     <tag k='ref' v='中-116-011' />
   </node>
-  <node id='599869041' timestamp='2016-03-10T10:03:51Z' uid='728316' user='TKE-waka' version='12' changeset='37729993' lat='35.151327' lon='136.8989573'>
+  <node id='599869041' action='delete' timestamp='2016-03-10T10:03:51Z' uid='728316' user='TKE-waka' version='12' changeset='37729993' lat='35.151327' lon='136.8989573'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='古渡町' />
     <tag k='ref' v='中-116-011' />
@@ -1463,26 +1463,26 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路長者町' />
   </node>
-  <node id='601303012' timestamp='2015-11-06T14:17:56Z' uid='94578' user='andygol' version='11' changeset='35127465' lat='35.1685893' lon='136.903376'>
+  <node id='601303012' action='delete' timestamp='2015-11-06T14:17:56Z' uid='94578' user='andygol' version='11' changeset='35127465' lat='35.1685893' lon='136.903376'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路七間町' />
   </node>
-  <node id='601303013' timestamp='2016-04-21T14:11:53Z' uid='728316' user='TKE-waka' version='11' changeset='38758244' lat='35.1687489' lon='136.9057416'>
+  <node id='601303013' action='delete' timestamp='2016-04-21T14:11:53Z' uid='728316' user='TKE-waka' version='11' changeset='38758244' lat='35.1687489' lon='136.9057416'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路伊勢町' />
     <tag k='traffic_signals' v='signal' />
   </node>
-  <node id='601303015' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='11' changeset='35127465' lat='35.1686684' lon='136.9045488'>
+  <node id='601303015' action='delete' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='11' changeset='35127465' lat='35.1686684' lon='136.9045488'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='広小路呉服町' />
   </node>
-  <node id='601303016' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='13' changeset='35127465' lat='35.1688244' lon='136.9068601'>
+  <node id='601303016' action='delete' timestamp='2015-11-06T14:17:57Z' uid='94578' user='andygol' version='13' changeset='35127465' lat='35.1688244' lon='136.9068601'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='栄' />
     <tag k='name:ja' v='栄' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='601348887' timestamp='2013-01-07T08:05:21Z' uid='69966' user='ikiya' version='9' changeset='14559469' lat='35.1694872' lon='136.8926342'>
+  <node id='601348887' action='delete' timestamp='2013-01-07T08:05:21Z' uid='69966' user='ikiya' version='9' changeset='14559469' lat='35.1694872' lon='136.8926342'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦橋東' />
     <tag k='name:ja' v='錦橋東' />
@@ -1529,42 +1529,42 @@
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通本町' />
   </node>
-  <node id='601348905' timestamp='2013-07-19T12:30:17Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1695965' lon='136.9032843'>
+  <node id='601348905' action='delete' timestamp='2013-07-19T12:30:17Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.1695965' lon='136.9032843'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通七間町' />
   </node>
-  <node id='601348906' timestamp='2013-07-19T12:30:18Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1696699' lon='136.9044749'>
+  <node id='601348906' action='delete' timestamp='2013-07-19T12:30:18Z' uid='146930' user='Tom_G3X' version='12' changeset='17011382' lat='35.1696699' lon='136.9044749'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通呉服町' />
   </node>
-  <node id='601348907' timestamp='2013-07-19T12:30:33Z' uid='146930' user='Tom_G3X' version='11' changeset='17011382' lat='35.1697485' lon='136.9056348' />
-  <node id='601348908' timestamp='2013-07-19T12:30:33Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.169825' lon='136.9067214' />
-  <node id='601348909' timestamp='2013-07-27T03:35:16Z' uid='146930' user='Tom_G3X' version='11' changeset='17109197' lat='35.1699123' lon='136.9081321'>
+  <node id='601348907' action='delete' timestamp='2013-07-19T12:30:33Z' uid='146930' user='Tom_G3X' version='11' changeset='17011382' lat='35.1697485' lon='136.9056348' />
+  <node id='601348908' action='delete' timestamp='2013-07-19T12:30:33Z' uid='146930' user='Tom_G3X' version='10' changeset='17011382' lat='35.169825' lon='136.9067214' />
+  <node id='601348909' action='delete' timestamp='2013-07-27T03:35:16Z' uid='146930' user='Tom_G3X' version='11' changeset='17109197' lat='35.1699123' lon='136.9081321'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通久屋' />
     <tag k='name:ja' v='錦通久屋' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='601348910' timestamp='2013-07-27T03:35:17Z' uid='146930' user='Tom_G3X' version='12' changeset='17109197' lat='35.1699702' lon='136.9090304'>
+  <node id='601348910' action='delete' timestamp='2013-07-27T03:35:17Z' uid='146930' user='Tom_G3X' version='12' changeset='17109197' lat='35.1699702' lon='136.9090304'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='錦通久屋' />
     <tag k='name:ja' v='錦通久屋' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='660252667' timestamp='2016-03-10T10:03:50Z' uid='728316' user='TKE-waka' version='7' changeset='37729993' lat='35.1538918' lon='136.8988077'>
+  <node id='660252667' action='delete' timestamp='2016-03-10T10:03:50Z' uid='728316' user='TKE-waka' version='7' changeset='37729993' lat='35.1538918' lon='136.8988077'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='松原' />
     <tag k='ref' v='中-116-010' />
   </node>
-  <node id='660252670' timestamp='2013-08-28T12:25:50Z' uid='728316' user='TKE-waka' version='4' changeset='17553698' lat='35.1548499' lon='136.8987508' />
-  <node id='660711534' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='7' changeset='28410278' lat='35.1580476' lon='136.8985283'>
+  <node id='660252670' action='delete' timestamp='2013-08-28T12:25:50Z' uid='728316' user='TKE-waka' version='4' changeset='17553698' lat='35.1548499' lon='136.8987508' />
+  <node id='660711534' action='delete' timestamp='2015-01-26T04:39:05Z' uid='651065' user='futurumspes' version='7' changeset='28410278' lat='35.1580476' lon='136.8985283'>
     <tag k='crossing' v='traffic_signals' />
     <tag k='crossing_ref' v='zebra' />
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='西大須' />
     <tag k='name:ja' v='西大須' />
   </node>
-  <node id='660917971' timestamp='2012-11-05T13:48:19Z' uid='728316' user='TKE-waka' version='2' changeset='13760945' lat='35.15007' lon='136.8990535' />
+  <node id='660917971' action='delete' timestamp='2012-11-05T13:48:19Z' uid='728316' user='TKE-waka' version='2' changeset='13760945' lat='35.15007' lon='136.8990535' />
   <node id='691823185' timestamp='2013-07-19T12:30:35Z' uid='146930' user='Tom_G3X' version='4' changeset='17011382' lat='35.1700564' lon='136.8947995' />
   <node id='691823188' timestamp='2013-07-19T12:30:35Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699124' lon='136.894804' />
   <node id='691823191' timestamp='2013-07-19T12:30:35Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1695452' lon='136.8948307' />
@@ -1617,7 +1617,7 @@
   <node id='919620311' timestamp='2010-09-20T15:37:16Z' uid='162500' user='nobichan' version='1' changeset='5830074' lat='35.1709879' lon='136.8974448' />
   <node id='919620313' timestamp='2010-09-20T15:37:16Z' uid='162500' user='nobichan' version='1' changeset='5830074' lat='35.1709667' lon='136.8974476' />
   <node id='919620314' timestamp='2010-09-20T15:37:16Z' uid='162500' user='nobichan' version='1' changeset='5830074' lat='35.1709647' lon='136.8974301' />
-  <node id='919635518' timestamp='2010-09-20T16:15:11Z' uid='162500' user='nobichan' version='1' changeset='5830331' lat='35.1614066' lon='136.8983365' />
+  <node id='919635518' action='delete' timestamp='2010-09-20T16:15:11Z' uid='162500' user='nobichan' version='1' changeset='5830331' lat='35.1614066' lon='136.8983365' />
   <node id='919635598' timestamp='2011-09-17T03:48:12Z' uid='146930' user='Tom_G3X' version='3' changeset='9320917' lat='35.1683919' lon='136.8978476' />
   <node id='919635600' timestamp='2016-07-23T12:37:20Z' uid='146930' user='Tom_G3X' version='3' changeset='40970529' lat='35.1683304' lon='136.8971056' />
   <node id='919635605' timestamp='2010-12-12T13:07:24Z' uid='146930' user='Tom_G3X' version='3' changeset='6635770' lat='35.1698529' lon='136.8957334' />
@@ -1706,16 +1706,16 @@
   <node id='925634668' timestamp='2013-07-19T12:30:36Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699829' lon='136.8960241' />
   <node id='925634669' timestamp='2013-07-19T12:30:36Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1699725' lon='136.8960381' />
   <node id='935193100' timestamp='2010-10-02T15:15:00Z' uid='162500' user='nobichan' version='1' changeset='5936926' lat='35.1681982' lon='136.8949961' />
-  <node id='936296460' timestamp='2013-07-18T05:48:04Z' uid='1613384' user='kurestone' version='6' changeset='16995214' lat='35.1707638' lon='136.9067875' />
-  <node id='936296473' timestamp='2013-07-19T12:30:37Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1698383' lon='136.906885' />
-  <node id='936296480' timestamp='2013-07-27T03:35:16Z' uid='146930' user='Tom_G3X' version='6' changeset='17109197' lat='35.1688338' lon='136.9069991'>
+  <node id='936296460' action='delete' timestamp='2013-07-18T05:48:04Z' uid='1613384' user='kurestone' version='6' changeset='16995214' lat='35.1707638' lon='136.9067875' />
+  <node id='936296473' action='delete' timestamp='2013-07-19T12:30:37Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1698383' lon='136.906885' />
+  <node id='936296480' action='delete' timestamp='2013-07-27T03:35:16Z' uid='146930' user='Tom_G3X' version='6' changeset='17109197' lat='35.1688338' lon='136.9069991'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='栄' />
     <tag k='name:ja' v='栄' />
     <tag k='source' v='Bing 2010' />
   </node>
-  <node id='936296493' timestamp='2013-07-19T12:30:37Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1699802' lon='136.9068778' />
-  <node id='936296510' timestamp='2013-07-18T05:48:02Z' uid='1613384' user='kurestone' version='5' changeset='16995214' lat='35.1689523' lon='136.9069719'>
+  <node id='936296493' action='delete' timestamp='2013-07-19T12:30:37Z' uid='146930' user='Tom_G3X' version='6' changeset='17011382' lat='35.1699802' lon='136.9068778' />
+  <node id='936296510' action='delete' timestamp='2013-07-18T05:48:02Z' uid='1613384' user='kurestone' version='5' changeset='16995214' lat='35.1689523' lon='136.9069719'>
     <tag k='highway' v='traffic_signals' />
     <tag k='name' v='栄' />
     <tag k='name:ja' v='栄' />
@@ -1936,12 +1936,12 @@
   <node id='1799135413' timestamp='2013-07-19T12:30:21Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1706393' lon='136.8967032' />
   <node id='1799135414' timestamp='2013-07-19T12:30:21Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1708543' lon='136.8961452' />
   <node id='1799135415' timestamp='2013-07-19T12:30:21Z' uid='146930' user='Tom_G3X' version='3' changeset='17011382' lat='35.1708908' lon='136.8966774' />
-  <node id='1935238975' timestamp='2012-09-27T13:13:47Z' uid='728316' user='TKE-waka' version='1' changeset='13271939' lat='35.1527194' lon='136.8988833' />
-  <node id='1941434384' timestamp='2013-08-28T12:25:49Z' uid='728316' user='TKE-waka' version='4' changeset='17553698' lat='35.1558045' lon='136.8986819' />
-  <node id='1941452622' timestamp='2013-08-28T12:25:49Z' uid='728316' user='TKE-waka' version='3' changeset='17553698' lat='35.1555719' lon='136.8986982' />
-  <node id='1977942147' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1593251' lon='136.8984768' />
-  <node id='1977942165' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1601057' lon='136.8984242' />
-  <node id='1977942171' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1604' lon='136.8984061' />
+  <node id='1935238975' action='delete' timestamp='2012-09-27T13:13:47Z' uid='728316' user='TKE-waka' version='1' changeset='13271939' lat='35.1527194' lon='136.8988833' />
+  <node id='1941434384' action='delete' timestamp='2013-08-28T12:25:49Z' uid='728316' user='TKE-waka' version='4' changeset='17553698' lat='35.1558045' lon='136.8986819' />
+  <node id='1941452622' action='delete' timestamp='2013-08-28T12:25:49Z' uid='728316' user='TKE-waka' version='3' changeset='17553698' lat='35.1555719' lon='136.8986982' />
+  <node id='1977942147' action='delete' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1593251' lon='136.8984768' />
+  <node id='1977942165' action='delete' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1601057' lon='136.8984242' />
+  <node id='1977942171' action='delete' timestamp='2012-10-22T14:18:34Z' uid='728316' user='TKE-waka' version='1' changeset='13593464' lat='35.1604' lon='136.8984061' />
   <node id='2023827751' timestamp='2017-09-24T18:51:41Z' uid='339581' user='nyuriks' version='2' changeset='52336383' lat='35.1684492' lon='136.8960708'>
     <tag k='addr:full' v='愛知県名古屋市中区錦1-19-24' />
     <tag k='addr:postcode' v='460-0003' />
@@ -1963,7 +1963,7 @@
     <tag k='wikidata' v='Q2882956' />
     <tag k='wikipedia' v='ja:みずほ銀行' />
   </node>
-  <node id='2054449514' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1518566' lon='136.8989453' />
+  <node id='2054449514' action='delete' timestamp='2013-07-19T12:30:22Z' uid='146930' user='Tom_G3X' version='2' changeset='17011382' lat='35.1518566' lon='136.8989453' />
   <node id='2062625516' timestamp='2016-01-17T23:46:01Z' uid='378532' user='nyampire' version='4' changeset='36645516' lat='35.1685614' lon='136.8994519'>
     <tag k='addr:full' v='愛知県名古屋市中区錦2-18-19' />
     <tag k='addr:postcode' v='460-0003' />
@@ -2470,7 +2470,7 @@
     <tag k='amenity' v='restaurant' />
     <tag k='name' v='Grill man' />
   </node>
-  <node id='2344004493' timestamp='2013-06-14T04:07:44Z' uid='728316' user='TKE-waka' version='1' changeset='16545263' lat='35.1654496' lon='136.8966041' />
+  <node id='2344004493' action='delete' timestamp='2013-06-14T04:07:44Z' uid='728316' user='TKE-waka' version='1' changeset='16545263' lat='35.1654496' lon='136.8966041' />
   <node id='2351789592' timestamp='2013-06-19T03:48:56Z' uid='728316' user='TKE-waka' version='1' changeset='16612161' lat='35.1685987' lon='136.8977696' />
   <node id='2351789593' timestamp='2013-06-19T03:48:56Z' uid='728316' user='TKE-waka' version='1' changeset='16612161' lat='35.1686099' lon='136.8979263' />
   <node id='2351789594' timestamp='2013-06-19T03:48:56Z' uid='728316' user='TKE-waka' version='1' changeset='16612161' lat='35.1687544' lon='136.8979108' />
@@ -2843,8 +2843,8 @@
     <tag k='amenity' v='toilets' />
     <tag k='wheelchair' v='yes' />
   </node>
-  <node id='2397993225' timestamp='2013-07-27T03:35:14Z' uid='146930' user='Tom_G3X' version='1' changeset='17109197' lat='35.1699202' lon='136.9085687' />
-  <node id='2397993226' timestamp='2013-07-27T03:35:14Z' uid='146930' user='Tom_G3X' version='1' changeset='17109197' lat='35.1701093' lon='136.9085439' />
+  <node id='2397993225' action='delete' timestamp='2013-07-27T03:35:14Z' uid='146930' user='Tom_G3X' version='1' changeset='17109197' lat='35.1699202' lon='136.9085687' />
+  <node id='2397993226' action='delete' timestamp='2013-07-27T03:35:14Z' uid='146930' user='Tom_G3X' version='1' changeset='17109197' lat='35.1701093' lon='136.9085439' />
   <node id='2400127034' timestamp='2013-07-29T07:19:30Z' uid='1613384' user='kurestone' version='1' changeset='17134950' lat='35.1709187' lon='136.9005459'>
     <tag k='name' v='N-MARK B1' />
     <tag k='tourism' v='museum' />
@@ -2910,9 +2910,9 @@
     <tag k='amenity' v='restaurant' />
     <tag k='name' v='Brasserie GLOUTON' />
   </node>
-  <node id='2618835681' timestamp='2014-01-11T17:59:11Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1627589' lon='136.8969014' />
-  <node id='2618835684' timestamp='2014-01-11T17:59:11Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1643842' lon='136.8967319' />
-  <node id='2618835694' timestamp='2014-01-11T17:59:12Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1660951' lon='136.8965358' />
+  <node id='2618835681' action='delete' timestamp='2014-01-11T17:59:11Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1627589' lon='136.8969014' />
+  <node id='2618835684' action='delete' timestamp='2014-01-11T17:59:11Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1643842' lon='136.8967319' />
+  <node id='2618835694' action='delete' timestamp='2014-01-11T17:59:12Z' uid='162500' user='nobichan' version='1' changeset='19939294' lat='35.1660951' lon='136.8965358' />
   <node id='3528371603' timestamp='2015-05-19T12:48:23Z' uid='94578' user='andygol' version='1' changeset='31282812' lat='35.1692046' lon='136.8971924' />
   <node id='3528371604' timestamp='2015-05-19T12:48:23Z' uid='94578' user='andygol' version='1' changeset='31282812' lat='35.1693401' lon='136.897179' />
   <node id='3528371605' timestamp='2015-05-19T12:48:23Z' uid='94578' user='andygol' version='1' changeset='31282812' lat='35.1701279' lon='136.8970648' />
@@ -3070,9 +3070,7 @@
     <tag k='name:en' v='Hobby off' />
     <tag k='shop' v='books' />
   </node>
-  <way id='26213799' timestamp='2014-10-20T08:46:03Z' uid='728316' user='TKE-waka' version='13' changeset='26208386'>
-    <nd ref='599485588' />
-    <nd ref='287041483' />
+  <way id='26213799' action='modify' timestamp='2014-10-20T08:46:03Z' uid='728316' user='TKE-waka' version='13' changeset='26208386'>
     <nd ref='287041472' />
     <nd ref='549926910' />
     <nd ref='287041453' />
@@ -3088,43 +3086,10 @@
     <tag k='source' v='Bing 2010' />
     <tag k='surface' v='paved' />
   </way>
-  <way id='26213829' timestamp='2015-01-26T04:39:45Z' uid='651065' user='futurumspes' version='27' changeset='28410278'>
+  <way id='26213829' action='modify' timestamp='2015-01-26T04:39:45Z' uid='651065' user='futurumspes' version='27' changeset='28410278'>
     <nd ref='286748238' />
     <nd ref='601303000' />
     <nd ref='599483402' />
-    <nd ref='599483401' />
-    <nd ref='287041585' />
-    <nd ref='599483403' />
-    <nd ref='287041589' />
-    <nd ref='549902905' />
-    <nd ref='287041592' />
-    <nd ref='321616048' />
-    <nd ref='549890864' />
-    <nd ref='919635518' />
-    <nd ref='549902892' />
-    <nd ref='1977942171' />
-    <nd ref='287041610' />
-    <nd ref='1977942165' />
-    <nd ref='287041614' />
-    <nd ref='1977942147' />
-    <nd ref='287041617' />
-    <nd ref='287041620' />
-    <nd ref='660711534' />
-    <nd ref='287041626' />
-    <nd ref='1941434384' />
-    <nd ref='1941452622' />
-    <nd ref='660252670' />
-    <nd ref='287041632' />
-    <nd ref='287041633' />
-    <nd ref='660252667' />
-    <nd ref='287041634' />
-    <nd ref='1935238975' />
-    <nd ref='287041636' />
-    <nd ref='2054449514' />
-    <nd ref='599869040' />
-    <nd ref='599869041' />
-    <nd ref='660917971' />
-    <nd ref='287041643' />
     <tag k='highway' v='trunk' />
     <tag k='lanes' v='5' />
     <tag k='name' v='伏見通り' />
@@ -3136,17 +3101,12 @@
     <tag k='source' v='Bing 2012' />
     <tag k='surface' v='paved' />
   </way>
-  <way id='26229042' timestamp='2014-10-20T08:47:12Z' uid='728316' user='TKE-waka' version='15' changeset='26208386'>
+  <way id='26229042' action='modify' timestamp='2014-10-20T08:47:12Z' uid='728316' user='TKE-waka' version='15' changeset='26208386'>
     <nd ref='286748238' />
     <nd ref='334505520' />
     <nd ref='599483427' />
     <nd ref='599483429' />
     <nd ref='573250653' />
-    <nd ref='599483432' />
-    <nd ref='571827092' />
-    <nd ref='286748257' />
-    <nd ref='352695138' />
-    <nd ref='936296510' />
     <tag k='alt_name' v='名古屋長久手線' />
     <tag k='highway' v='primary' />
     <tag k='lanes' v='2' />
@@ -3158,8 +3118,7 @@
     <tag k='source' v='Bing 2010' />
     <tag k='surface' v='paved' />
   </way>
-  <way id='30312013' timestamp='2015-05-19T12:48:24Z' uid='94578' user='andygol' version='18' changeset='31282812'>
-    <nd ref='549890868' />
+  <way id='30312013' action='modify' timestamp='2015-05-19T12:48:24Z' uid='94578' user='andygol' version='18' changeset='31282812'>
     <nd ref='599442331' />
     <nd ref='334171277' />
     <nd ref='334505412' />
@@ -3175,14 +3134,6 @@
     <nd ref='573399006' />
     <nd ref='576051284' />
     <nd ref='552171303' />
-    <nd ref='552171306' />
-    <nd ref='552171309' />
-    <nd ref='552171311' />
-    <nd ref='552171322' />
-    <nd ref='936296493' />
-    <nd ref='552171325' />
-    <nd ref='2397993226' />
-    <nd ref='431196915' />
     <tag k='highway' v='tertiary' />
     <tag k='lanes' v='3' />
     <tag k='name' v='錦通' />
@@ -3191,18 +3142,16 @@
     <tag k='source' v='Bing 2010' />
     <tag k='surface' v='paved' />
   </way>
-  <way id='30334661' timestamp='2017-03-10T19:23:58Z' uid='1696339' user='topstone' version='10' changeset='46747040'>
+  <way id='30334661' action='modify' timestamp='2017-03-10T19:23:58Z' uid='1696339' user='topstone' version='10' changeset='46747040'>
     <nd ref='334505473' />
     <nd ref='334505510' />
     <nd ref='573399010' />
     <nd ref='573399011' />
-    <nd ref='573399018' />
     <tag k='highway' v='unclassified' />
     <tag k='name' v='桑名町通' />
     <tag k='oneway' v='yes' />
   </way>
-  <way id='30334662' timestamp='2014-07-10T07:03:57Z' uid='2169963' user='arekushi1' version='8' changeset='24057927'>
-    <nd ref='599442367' />
+  <way id='30334662' action='modify' timestamp='2014-07-10T07:03:57Z' uid='2169963' user='arekushi1' version='8' changeset='24057927'>
     <nd ref='599442350' />
     <nd ref='599442346' />
     <nd ref='599442345' />
@@ -3213,7 +3162,7 @@
     <tag k='oneway' v='yes' />
     <tag k='source' v='http://www.openstreetmap.org/user/Amei/traces/551490;http://www.openstreetmap.org/user/Amei/traces/551500' />
   </way>
-  <way id='32077508' timestamp='2017-03-08T11:21:44Z' uid='5218634' user='user123123' version='5' changeset='46677779'>
+  <way id='32077508' action='modify' timestamp='2017-03-08T11:21:44Z' uid='5218634' user='user123123' version='5' changeset='46677779'>
     <nd ref='360085059' />
     <nd ref='360085055' />
     <nd ref='360085068' />
@@ -3221,26 +3170,6 @@
     <nd ref='360085075' />
     <nd ref='360085072' />
     <nd ref='360085083' />
-    <nd ref='360085079' />
-    <nd ref='360085027' />
-    <nd ref='360085023' />
-    <nd ref='360085035' />
-    <nd ref='360085031' />
-    <nd ref='360085043' />
-    <nd ref='360085039' />
-    <nd ref='360085050' />
-    <nd ref='360085046' />
-    <nd ref='360085115' />
-    <nd ref='360085120' />
-    <nd ref='360085124' />
-    <nd ref='360085128' />
-    <nd ref='360085132' />
-    <nd ref='360085136' />
-    <nd ref='360085141' />
-    <nd ref='360085145' />
-    <nd ref='360085091' />
-    <nd ref='360085095' />
-    <nd ref='360085099' />
     <tag k='KSJ2:LIN' v='1号線東山線' />
     <tag k='electrified' v='rail' />
     <tag k='frequency' v='0' />
@@ -3258,13 +3187,7 @@
     <tag k='tunnel' v='yes' />
     <tag k='voltage' v='600' />
   </way>
-  <way id='32077515' timestamp='2016-09-06T03:36:31Z' uid='728316' user='TKE-waka' version='6' changeset='41945159'>
-    <nd ref='360084977' />
-    <nd ref='360085202' />
-    <nd ref='360085211' />
-    <nd ref='360085206' />
-    <nd ref='360085247' />
-    <nd ref='360085244' />
+  <way id='32077515' action='modify' timestamp='2016-09-06T03:36:31Z' uid='728316' user='TKE-waka' version='6' changeset='41945159'>
     <nd ref='360085256' />
     <nd ref='360085251' />
     <nd ref='360085231' />
@@ -3288,40 +3211,12 @@
     <tag k='tunnel' v='yes' />
     <tag k='voltage' v='600' />
   </way>
-  <way id='32167788' timestamp='2011-12-18T17:56:16Z' uid='42429' user='42429' version='5' changeset='10149039'>
-    <nd ref='361014199' />
-    <nd ref='361014197' />
-    <nd ref='361014196' />
+  <way id='32167788' action='modify' timestamp='2011-12-18T17:56:16Z' uid='42429' user='42429' version='5' changeset='10149039'>
     <nd ref='361014194' />
     <nd ref='361014192' />
     <nd ref='361014201' />
     <nd ref='361014203' />
     <nd ref='361014377' />
-    <nd ref='361014387' />
-    <nd ref='361014386' />
-    <nd ref='361014384' />
-    <nd ref='361014382' />
-    <nd ref='361014399' />
-    <nd ref='361014452' />
-    <nd ref='361014454' />
-    <nd ref='361014456' />
-    <nd ref='361014458' />
-    <nd ref='361014444' />
-    <nd ref='361014446' />
-    <nd ref='361014449' />
-    <nd ref='361014450' />
-    <nd ref='361014437' />
-    <nd ref='361014439' />
-    <nd ref='361014440' />
-    <nd ref='361014442' />
-    <nd ref='361014488' />
-    <nd ref='361014486' />
-    <nd ref='361014491' />
-    <nd ref='361014490' />
-    <nd ref='361014482' />
-    <nd ref='361014480' />
-    <nd ref='361014484' />
-    <nd ref='361014209' />
     <tag k='KSJ2:INT' v='3' />
     <tag k='KSJ2:INT_label' v='公営鉄道' />
     <tag k='KSJ2:LIN' v='3号線鶴舞線' />
@@ -3343,13 +3238,7 @@
     <tag k='tunnel' v='yes' />
     <tag k='voltage' v='1500' />
   </way>
-  <way id='45330923' timestamp='2017-04-25T07:07:24Z' uid='3091368' user='Jeffrey Friedl' version='10' changeset='48112556'>
-    <nd ref='599485597' />
-    <nd ref='936296460' />
-    <nd ref='576051300' />
-    <nd ref='576051294' />
-    <nd ref='576051293' />
-    <nd ref='576051292' />
+  <way id='45330923' action='modify' timestamp='2017-04-25T07:07:24Z' uid='3091368' user='Jeffrey Friedl' version='10' changeset='48112556'>
     <nd ref='576051291' />
     <nd ref='576051290' />
     <nd ref='573399009' />
@@ -3363,9 +3252,7 @@
     <tag k='source' v='NRPB of MLIT Japan' />
     <tag k='source:ja' v='国土画像情報（オルソ化空中写真）国土計画局' />
   </way>
-  <way id='45330926' timestamp='2014-07-09T15:19:50Z' uid='2169963' user='arekushi1' version='10' changeset='24047780'>
-    <nd ref='599483411' />
-    <nd ref='599483414' />
+  <way id='45330926' action='modify' timestamp='2014-07-09T15:19:50Z' uid='2169963' user='arekushi1' version='10' changeset='24047780'>
     <nd ref='599483431' />
     <nd ref='601303009' />
     <nd ref='599483429' />
@@ -3378,8 +3265,7 @@
     <tag k='source' v='NRPB of MLIT Japan' />
     <tag k='source:ja' v='国土画像情報（オルソ化空中写真）国土計画局' />
   </way>
-  <way id='46978441' timestamp='2014-07-10T07:08:53Z' uid='2169963' user='arekushi1' version='5' changeset='24057927'>
-    <nd ref='599442336' />
+  <way id='46978441' action='modify' timestamp='2014-07-10T07:08:53Z' uid='2169963' user='arekushi1' version='5' changeset='24057927'>
     <nd ref='588394189' />
     <nd ref='599442346' />
     <nd ref='599442347' />
@@ -3391,27 +3277,18 @@
     <tag k='source' v='NRPB of MLIT Japan' />
     <tag k='source:ja' v='国土画像情報（オルソ化空中写真）国土計画局' />
   </way>
-  <way id='46978442' timestamp='2015-05-19T12:48:24Z' uid='94578' user='andygol' version='4' changeset='31282812'>
+  <way id='46978442' action='modify' timestamp='2015-05-19T12:48:24Z' uid='94578' user='andygol' version='4' changeset='31282812'>
     <nd ref='599442344' />
     <nd ref='3528371606' />
     <nd ref='3528371605' />
     <nd ref='599442345' />
     <nd ref='599442332' />
-    <nd ref='549890867' />
     <tag k='highway' v='unclassified' />
     <tag k='name' v='本重町通り' />
     <tag k='name:en' v='Honshige-chō-dōri' />
     <tag k='oneway' v='yes' />
   </way>
-  <way id='47183327' timestamp='2015-05-19T12:48:25Z' uid='94578' user='andygol' version='7' changeset='31282812'>
-    <nd ref='601348910' />
-    <nd ref='2397993225' />
-    <nd ref='601348909' />
-    <nd ref='936296473' />
-    <nd ref='601348908' />
-    <nd ref='601348907' />
-    <nd ref='601348906' />
-    <nd ref='601348905' />
+  <way id='47183327' action='modify' timestamp='2015-05-19T12:48:25Z' uid='94578' user='andygol' version='7' changeset='31282812'>
     <nd ref='601348904' />
     <nd ref='601348903' />
     <nd ref='601348900' />
@@ -3427,7 +3304,6 @@
     <nd ref='601348890' />
     <nd ref='601348891' />
     <nd ref='601348888' />
-    <nd ref='601348887' />
     <tag k='highway' v='tertiary' />
     <tag k='lanes' v='3' />
     <tag k='name' v='錦通' />
@@ -3711,7 +3587,7 @@
     <nd ref='925634668' />
     <tag k='natural' v='scrub' />
   </way>
-  <way id='80162310' timestamp='2015-08-25T21:52:48Z' uid='2377377' user='abel801' version='7' changeset='33584026'>
+  <way id='80162310' action='modify' timestamp='2015-08-25T21:52:48Z' uid='2377377' user='abel801' version='7' changeset='33584026'>
     <nd ref='334505448' />
     <nd ref='601348893' />
     <nd ref='2085668171' />
@@ -3720,31 +3596,17 @@
     <nd ref='3714289916' />
     <nd ref='334505541' />
     <nd ref='599473351' />
-    <nd ref='334505540' />
-    <nd ref='599442328' />
-    <nd ref='2618835694' />
-    <nd ref='571823722' />
-    <nd ref='2344004493' />
-    <nd ref='549926907' />
-    <nd ref='2618835684' />
-    <nd ref='599473346' />
-    <nd ref='599473345' />
-    <nd ref='599473344' />
-    <nd ref='2618835681' />
-    <nd ref='549902896' />
     <tag k='highway' v='unclassified' />
     <tag k='name' v='御園通り' />
     <tag k='name:en' v='Misono dōri' />
     <tag k='oneway' v='yes' />
     <tag k='source' v='http://www.openstreetmap.org/user/Amei/traces/551490;http://www.openstreetmap.org/user/Amei/traces/551500' />
   </way>
-  <way id='81048922' timestamp='2014-07-09T15:27:24Z' uid='2169963' user='arekushi1' version='2' changeset='24047780'>
+  <way id='81048922' action='modify' timestamp='2014-07-09T15:27:24Z' uid='2169963' user='arekushi1' version='2' changeset='24047780'>
     <nd ref='576051284' />
     <nd ref='576051290' />
     <nd ref='576051285' />
     <nd ref='576051295' />
-    <nd ref='576051280' />
-    <nd ref='573399017' />
     <tag k='highway' v='unclassified' />
     <tag k='name' v='長者町通' />
     <tag k='name:en' v='Chōjamachi dōri' />
@@ -3752,9 +3614,7 @@
     <tag k='source' v='NRPB of MLIT Japan' />
     <tag k='source:ja' v='国土画像情報（オルソ化空中写真）国土計画局' />
   </way>
-  <way id='81048923' timestamp='2017-03-10T19:24:01Z' uid='1696339' user='topstone' version='3' changeset='46747040'>
-    <nd ref='599483404' />
-    <nd ref='334505534' />
+  <way id='81048923' action='modify' timestamp='2017-03-10T19:24:01Z' uid='1696339' user='topstone' version='3' changeset='46747040'>
     <nd ref='599483407' />
     <nd ref='601303003' />
     <nd ref='334505520' />
@@ -3765,22 +3625,18 @@
     <tag k='name:en' v='Kuwana-chō-dōri' />
     <tag k='oneway' v='yes' />
   </way>
-  <way id='81048932' timestamp='2016-07-23T12:12:00Z' uid='146930' user='Tom_G3X' version='3' changeset='40970036'>
+  <way id='81048932' action='modify' timestamp='2016-07-23T12:12:00Z' uid='146930' user='Tom_G3X' version='3' changeset='40970036'>
     <nd ref='573399006' />
     <nd ref='601348900' />
     <nd ref='599483427' />
     <nd ref='601303001' />
     <nd ref='599483428' />
-    <nd ref='599483406' />
-    <nd ref='599483405' />
     <tag k='highway' v='unclassified' />
     <tag k='name' v='長島町通' />
     <tag k='name:en' v='Osashimachō dōri' />
     <tag k='oneway' v='yes' />
   </way>
-  <way id='81048933' timestamp='2010-10-11T00:54:05Z' uid='162500' user='nobichan' version='1' changeset='6008039'>
-    <nd ref='573399014' />
-    <nd ref='573399015' />
+  <way id='81048933' action='modify' timestamp='2010-10-11T00:54:05Z' uid='162500' user='nobichan' version='1' changeset='6008039'>
     <nd ref='573399007' />
     <nd ref='573399008' />
     <nd ref='573399009' />
@@ -3956,8 +3812,7 @@
     <tag k='building' v='yes' />
     <tag k='source' v='bing' />
   </way>
-  <way id='163165896' timestamp='2016-03-26T22:47:34Z' uid='624003' user='eugenebata' version='3' changeset='38091596'>
-    <nd ref='552070373' />
+  <way id='163165896' action='modify' timestamp='2016-03-26T22:47:34Z' uid='624003' user='eugenebata' version='3' changeset='38091596'>
     <nd ref='576051272' />
     <nd ref='576051270' />
     <nd ref='576051271' />
@@ -3981,12 +3836,7 @@
     <tag k='name' v='マルカン酢伏見ビル' />
     <tag k='source' v='Bing' />
   </way>
-  <way id='198539243' timestamp='2014-10-20T08:47:12Z' uid='728316' user='TKE-waka' version='4' changeset='26208386'>
-    <nd ref='936296480' />
-    <nd ref='601303016' />
-    <nd ref='601303013' />
-    <nd ref='601303015' />
-    <nd ref='601303012' />
+  <way id='198539243' action='modify' timestamp='2014-10-20T08:47:12Z' uid='728316' user='TKE-waka' version='4' changeset='26208386'>
     <nd ref='601303005' />
     <nd ref='601303009' />
     <nd ref='601303001' />
@@ -5864,7 +5714,7 @@
     <tag k='source' v='GSI/KIBAN 2500' />
     <tag k='source_ref' v='http://wiki.osm.org/wiki/GSI_KIBAN' />
   </way>
-  <way id='229140291' timestamp='2016-03-26T22:52:45Z' uid='624003' user='eugenebata' version='3' changeset='38091596'>
+  <way id='229140291' action='modify' timestamp='2016-03-26T22:52:45Z' uid='624003' user='eugenebata' version='3' changeset='38091596'>
     <nd ref='601302998' />
     <nd ref='552171291' />
     <nd ref='601348896' />
@@ -5872,8 +5722,6 @@
     <nd ref='599442344' />
     <nd ref='599442347' />
     <nd ref='599442349' />
-    <nd ref='552171295' />
-    <nd ref='552171297' />
     <tag k='highway' v='trunk' />
     <tag k='lanes' v='5' />
     <tag k='motorroad' v='no' />
@@ -6222,7 +6070,7 @@
     <tag k='type' v='route' />
     <tag k='via' v='徳川園' />
   </relation>
-  <relation id='421984' timestamp='2016-09-06T03:36:30Z' uid='728316' user='TKE-waka' version='10' changeset='41945159'>
+  <relation id='421984' action='modify' timestamp='2016-09-06T03:36:30Z' uid='728316' user='TKE-waka' version='10' changeset='41945159'>
     <member type='node' ref='360085108' role='' />
     <member type='way' ref='32077533' role='' />
     <member type='way' ref='32077534' role='' />
@@ -6243,7 +6091,6 @@
     <member type='node' ref='360085103' role='' />
     <member type='way' ref='32077510' role='' />
     <member type='way' ref='32077504' role='' />
-    <member type='node' ref='360085099' role='' />
     <member type='way' ref='32077506' role='' />
     <member type='way' ref='32077540' role='' />
     <member type='way' ref='32077537' role='' />
