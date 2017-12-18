@@ -75,7 +75,7 @@ public class RoadManager {
 
     public Boolean containRemoveRoadList(String road_id){
         if (remove_road_.contains(road_id)) {
-          System.out.println("除外");
+          //System.out.println("除外");
           return true;
         }
         return false;

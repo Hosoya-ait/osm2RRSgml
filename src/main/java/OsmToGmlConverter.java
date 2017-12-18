@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class OsmToGmlConverter {
 
     //作成するファイル
-    public static String fileName = "./GMLs/ootakuSmall1.gml";
+    public static String fileName = "./GMLs/ootakuLarge.gml";
     //読み込むファイル
-    public static String fileLocation = "./OSMs/ootakuSmall1.osm";
+    public static String fileLocation = "./OSMs/ootakuLarge.osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -39,7 +39,8 @@ public class OsmToGmlConverter {
 
         ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         expansionHighway.ExpantionHighway();
-
+        // ExpansionHighwayPointToRoad expansionHighway = new ExpansionHighwayPointToRoad(nm,hm,rm);
+        // expansionHighway.ExpantionHighway();
 
 
         // 森島が行数減らしてからリファクタリングする
