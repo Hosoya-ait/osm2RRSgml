@@ -3,12 +3,19 @@ import org.w3c.dom.Document;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class OsmToGmlConverter {
 
-    //作成するファイル
-    public static String fileName = "./GMLs/ootakuLarge.gml";
+
+
     //読み込むファイル
-    public static String fileLocation = "./OSMs/ootakuLarge.osm";
+    public static String readFileName = "building";
+
+    //作成するファイル
+    public static String fileName = "./GMLs/"+readFileName+".gml";
+
+    //読み込むファイルの場所
+    public static String fileLocation = "./OSMs/"+readFileName+".osm";
 
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
@@ -37,14 +44,17 @@ public class OsmToGmlConverter {
         ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,hm,bm);
         readOsmFile1.readosmFile();
 
-        ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
-        expansionHighway.ExpantionHighway();
-        // ExpansionHighwayPointToRoad expansionHighway = new ExpansionHighwayPointToRoad(nm,hm,rm);
+        // ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         // expansionHighway.ExpantionHighway();
+        ExpansionHighwaySimplePoint expansionHighway = new ExpansionHighwaySimplePoint(nm,hm,rm);
+        expansionHighway.ExpantionHighway();
 
+        AreaManager am = new AreaManager(nm,bm,rm);
 
         // 森島が行数減らしてからリファクタリングする
-        ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad(nm,bm,rm);
+        //ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad(nm,bm,rm,am);
+        ConnectBuildingToRoadTest connectBuildingToRoad = new ConnectBuildingToRoadTest(nm,bm,rm,am);
+
         connectBuildingToRoad.connect();
         // nm = connectBuildingToRoad.getNodeManeger();
         // bm = connectBuildingToRoad.getBuildingManeger();

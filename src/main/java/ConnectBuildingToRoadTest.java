@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.awt.geom.Line2D;
 import java.awt.Point;
 
-class ConnectBuildingToRoad {
+class ConnectBuildingToRoadTest {
 
     private HashMap<String,ArrayList<String>> alreadyConnectBuilding = new HashMap<String,ArrayList<String>>();
     private NodeManager     node_manager_ = new NodeManager();
@@ -18,7 +18,7 @@ class ConnectBuildingToRoad {
     private HashMap<String,ArrayList<String>> BuildingConnectedBuilding = new HashMap<String,ArrayList<String>>();
     private HashMap<String,ArrayList<String>> BuildingConnectedRoad = new HashMap<String,ArrayList<String>>();
 
-    public ConnectBuildingToRoad(NodeManager node_manager_,BuildingManager building_manager_,RoadManager road_manager_,AreaManager area_manager_ ){
+    public ConnectBuildingToRoadTest(NodeManager node_manager_,BuildingManager building_manager_,RoadManager road_manager_,AreaManager area_manager_ ){
         this.node_manager_ = node_manager_;
         this.building_manager_ = building_manager_;
         this.road_manager_ = road_manager_ ;
@@ -29,9 +29,9 @@ class ConnectBuildingToRoad {
         int building_list_size = Integer.parseInt(building_manager_.getBuildingNodeID());
         for (int building_id = 1; building_id<=building_list_size ; building_id++ ) {
             ArrayList<String> connect_building = building_manager_.getBuildingNodeList(String.valueOf(building_id));
-            System.out.println();
+            //System.out.println();
             System.out.println("connectBuildingToRoad:"+building_id+"/"+building_list_size);
-            System.out.println("buildingID:"+building_id);
+            //System.out.println("buildingID:"+building_id);
 
             Point buildingArea = area_manager_.buildingBelongArea(String.valueOf(building_id));
             if (checkCrossingRoad(String.valueOf(building_id),connect_building,buildingArea)) {
@@ -87,14 +87,14 @@ class ConnectBuildingToRoad {
 
 
         for (int i=0; i<building_List.size()-1;i++ ) {
-            System.out.println();
-            System.out.println("edge:"+i+","+(i+1));
+            //System.out.println();
+            //System.out.println("edge:"+i+","+(i+1));
 
             start_point.setLocation(node_manager_.getX(building_List.get(i)),node_manager_.getY(building_List.get(i)));
             end_point.setLocation(node_manager_.getX(building_List.get(i+1)),node_manager_.getY(building_List.get(i+1)));
 
             if(Math.hypot(start_point.getX() - end_point.getX(),start_point.getY() - end_point.getY()) < 2.0){
-                System.out.println("建物がわのedgeが短い");
+                //System.out.println("建物がわのedgeが短い");
                 continue;
             }
 
@@ -116,54 +116,55 @@ class ConnectBuildingToRoad {
             ArrayList<String> check_array = building_manager_.getBuildingConnectedRoad(""+building_ID);
 
             Point buildingArea = area_manager_.buildingBelongArea(String.valueOf(building_ID));
-            System.out.println("Point:"+buildingArea.x+"."+buildingArea.y);
+            //System.out.println("Point:"+buildingArea.x+"."+buildingArea.y);
             ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
-            System.out.println("roadListSize:"+roadList.size());
+            //System.out.println("roadListSize:"+roadList.size());
 
-            for (int k = 0; k<roadList.size();k++ ) {
-                String checkRoadID = roadList.get(k);
+            //for (int k = 0; k<roadList.size();k++ ) {
+            for (int k = 1; k<=road_list_size;k++ ) {
+                //String checkRoadID = roadList.get(k);
 
-                if (check_array.contains(checkRoadID)) {
-                    System.out.println("自分に接続されているため除外");
+                if (check_array.contains(k+"")) {
+                    //System.out.println("自分に接続されているため除外");
                   continue;
                 }
-                if (road_manager_.containRemoveRoadList(checkRoadID)) {
-                    System.out.println("除外させるリストに入っている");
+                if (road_manager_.containRemoveRoadList(k+"")) {
+                    //System.out.println("除外させるリストに入っている");
                   continue;
                 }
 
 
-                check_arr = road_manager_.getRoadNodeList(checkRoadID);
+                check_arr = road_manager_.getRoadNodeList(String.valueOf(k));
                 for (int m = 0; m<check_arr.size()-1;m++ ) {
                     tmp_start_point.setLocation(node_manager_.getX(check_arr.get(m)),node_manager_.getY(check_arr.get(m)));
                     tmp_end_point.setLocation(node_manager_.getX(check_arr.get(m+1)),node_manager_.getY(check_arr.get(m+1)));
 
 
                     if (checkCrossingLineSegment(middle_point,check_point,tmp_start_point,tmp_end_point)==false) continue;
-                    System.out.println("線分が交差している");
+                    //System.out.println("線分が交差している");
                     //直行している線分が交差している場合
-                    System.out.println("Road");
+                    //System.out.println("Road");
                     cross_point = CheckCrossingPoint(middle_point,check_point,tmp_start_point,tmp_end_point);
                     distance = Math.hypot(cross_point.getX() - middle_point.getX(),cross_point.getY() - middle_point.getY());
-                    System.out.println("CrossP X:"+cross_point.getX()+" Y:"+cross_point.getY());
-                    System.out.println("distance:"+distance);
-                    System.out.println("nearstDistance"+nearest_distance);
+                    //System.out.println("CrossP X:"+cross_point.getX()+" Y:"+cross_point.getY());
+                    //System.out.println("distance:"+distance);
+                    //System.out.println("nearstDistance"+nearest_distance);
 
                     if(checkProperDegree(middle_point,check_point,tmp_start_point,tmp_end_point)) continue;
-                    System.out.println("角度が急でない");
+                    //System.out.println("角度が急でない");
 
-                    if (checkContainNode(cross_point)==false) continue;
-                    System.out.println("node近くになし");
+                    if (checkContainNode(cross_point,buildingArea)==false) continue;
+                    //System.out.println("node近くになし");
 
-                    if (checkCrossingBuilding(middle_point,cross_point,""+building_ID,checkRoadID,"road",m,buildingArea)==false)continue;
+                    if (checkCrossingBuilding(middle_point,cross_point,""+building_ID,""+k,"road",m,buildingArea)==false)continue;
 
-                    System.out.println("重なっているEDGEなし");
-                    System.out.println("追加処理");
+                    //System.out.println("重なっているEDGEなし");
+                    //System.out.println("追加処理");
 
                     if(distance == 0)continue;
                     if (nearest_Shape_Type == "none") {
                         nearest_Shape_Type = "road";
-                        nearest_Shape_ID = checkRoadID;
+                        nearest_Shape_ID = ""+k;
                         nearest_point.setLocation(cross_point);
                         connect_edge_point_A = m;
                         connect_edge_point_B = m+1;
@@ -172,7 +173,7 @@ class ConnectBuildingToRoad {
                         connect_building_edge_point_B = i+1;
                     }else if(distance < nearest_distance || nearest_Shape_Type == "building") {
                         nearest_Shape_Type = "road";
-                        nearest_Shape_ID = checkRoadID;
+                        nearest_Shape_ID = ""+k;
                         nearest_point.setLocation(cross_point);
                         connect_edge_point_A = m;
                         connect_edge_point_B = m+1;
@@ -183,7 +184,7 @@ class ConnectBuildingToRoad {
                 }
             }
             if (nearest_Shape_Type == "road"){
-                System.out.println("roadに繋げられるためbuildingの処理は行わない");
+                //System.out.println("roadに繋げられるためbuildingの処理は行わない");
                 continue;
             }
 
@@ -191,14 +192,15 @@ class ConnectBuildingToRoad {
 
             ArrayList<String> buildingList = area_manager_.getSearchBuildingList(buildingArea);
 
-            for (int k = 0; k<buildingList.size();k++ ) {
-                String buildingID = buildingList.get(k);
+            //for (int k = 0; k<buildingList.size();k++ ) {
+            for (int k = 1; k<building_list_size;k++ ) {
+                //String buildingID = buildingList.get(k);
 
-                System.out.println("building:"+k+"/"+buildingList.size());
-                if (Integer.parseInt(buildingID) == building_ID)continue;
-                if (building_manager_.containRemoveBuildingList(buildingID))continue;
+                //System.out.println("building:"+k+"/"+buildingList.size());
+                if (k == building_ID)continue;
+                if (building_manager_.containRemoveBuildingList(""+k))continue;
 
-                check_arr = building_manager_.getBuildingNodeList(buildingID);
+                check_arr = building_manager_.getBuildingNodeList(String.valueOf(k));
 
                 for (int m = 0; m<check_arr.size()-1;m++ ) {
 
@@ -208,36 +210,36 @@ class ConnectBuildingToRoad {
 
                     if (checkCrossingLineSegment(middle_point,check_point,tmp_start_point,tmp_end_point)==false) continue;
                     //直行している線分が交差している場合
-                    System.out.println("Building");
+                    //System.out.println("Building");
                     cross_point = CheckCrossingPoint(middle_point,check_point,tmp_start_point,tmp_end_point);
                     distance = Math.hypot(cross_point.getX() - middle_point.getX(),cross_point.getY() - middle_point.getY());
-                    System.out.println("CrossP X:"+cross_point.getX()+" Y:"+cross_point.getY());
-                    System.out.println("distance:"+distance);
-                    System.out.println("nearstDistance"+nearest_distance);
+                    //System.out.println("CrossP X:"+cross_point.getX()+" Y:"+cross_point.getY());
+                    //System.out.println("distance:"+distance);
+                    //System.out.println("nearstDistance"+nearest_distance);
 
                     //角度計算
                     if(checkProperDegree(middle_point,check_point,tmp_start_point,tmp_end_point)) continue;
-                    System.out.println("角度が急ではない");
+                    //System.out.println("角度が急ではない");
 
-                    if (checkContainNode(cross_point) ==false) continue;
-                    System.out.println("node近くになし");
+                    if (checkContainNode(cross_point,buildingArea) ==false) continue;
+                    //System.out.println("node近くになし");
 
-                    if (checkCrossingBuilding(middle_point,cross_point,""+building_ID,buildingID,"building",m,buildingArea) == false) continue;
-                    System.out.println("重なっているEDGEなし");
+                    if (checkCrossingBuilding(middle_point,cross_point,""+building_ID,k+"","building",m,buildingArea) == false) continue;
+                    //System.out.println("重なっているEDGEなし");
 
                     if (this.alreadyConnectBuilding.containsKey(""+building_ID)){
-                        if (((ArrayList)this.alreadyConnectBuilding.get(""+building_ID)).contains(buildingID)) {
-                            System.out.println("すでにこのBuildingに接続されているBuilding");
+                        if (((ArrayList)this.alreadyConnectBuilding.get(""+building_ID)).contains(k+"")) {
+                            //System.out.println("すでにこのBuildingに接続されているBuilding");
                             continue;
                         }
                     }
 
-                    System.out.println("追加処理");
+                    //System.out.println("追加処理");
 
                     if (distance == 0)continue;
                     if (nearest_Shape_Type == "none") {
                         nearest_Shape_Type = "building";
-                        nearest_Shape_ID = buildingID;
+                        nearest_Shape_ID = k+"";
                         nearest_point.setLocation(cross_point);
                         connect_edge_point_A = m;
                         connect_edge_point_B = m+1;
@@ -246,7 +248,7 @@ class ConnectBuildingToRoad {
                         connect_building_edge_point_B = i+1;
                     }else if (distance < nearest_distance) {
                         nearest_Shape_Type = "building";
-                        nearest_Shape_ID = buildingID;
+                        nearest_Shape_ID = k+"";
                         nearest_point.setLocation(cross_point);
                         connect_edge_point_A = m;
                         connect_edge_point_B = m+1;
@@ -299,7 +301,7 @@ class ConnectBuildingToRoad {
         switch (nearest_Shape_Type) {
             case "none":
             //removeRelatedObjects(""+building_ID);
-            System.out.println("---------------接続道路なし---------------------");
+            //System.out.println("---------------接続道路なし---------------------");
 
             break;
 
@@ -328,6 +330,7 @@ class ConnectBuildingToRoad {
             add_node_map_plus.put("x",building_point_start.getX());
 
             plus_node_ID = node_manager_.addGmlNode(add_node_map_plus);
+            area_manager_.setNode(plus_node_ID);
 
             building_point_end.setLocation(Math.cos(radian_180)*default_road_width+middle_point.getX(),Math.sin(radian_180)*default_road_width+middle_point.getY());
 
@@ -337,10 +340,11 @@ class ConnectBuildingToRoad {
             add_node_map_minus.put("x",building_point_end.getX());
 
             minus_node_ID = node_manager_.addGmlNode(add_node_map_minus);
+            area_manager_.setNode(minus_node_ID);
 
             building_manager_.insertBuildingInNode(String.valueOf(building_ID),connect_building_edge_point_B,minus_node_ID);
             building_manager_.insertBuildingInNode(String.valueOf(building_ID),connect_building_edge_point_B+1,plus_node_ID);
-            System.out.println(connect_edge_point_B);
+            //System.out.println(connect_edge_point_B);
 
             //roadの方にnode追加
 
@@ -372,7 +376,7 @@ class ConnectBuildingToRoad {
             add_node_map_plus.put("x",road_point_start.getX());
 
             plus_road_node_ID  = node_manager_.addGmlNode(add_node_map_plus);
-
+            area_manager_.setNode(plus_road_node_ID);
 
             road_minus_X = Math.cos(radian_180)*default_road_width+nearest_point.getX();
             road_minus_Y = Math.sin(radian_180)*default_road_width+nearest_point.getY();
@@ -385,17 +389,18 @@ class ConnectBuildingToRoad {
             add_node_map_minus.put("x",road_point_end.getX());
 
             minus_road_node_ID = node_manager_.addGmlNode(add_node_map_minus);
+            area_manager_.setNode(minus_road_node_ID);
 
             road_manager_.insertRoadInNode(nearest_Shape_ID,connect_edge_point_B,minus_road_node_ID);
             road_manager_.insertRoadInNode(nearest_Shape_ID,connect_edge_point_B+1,plus_road_node_ID );
 
             ArrayList<String> addRoadArr2 = new ArrayList<String>();
 
-            System.out.println("addroadNode:");
-            System.out.println(plus_node_ID);
-            System.out.println(plus_road_node_ID);
-            System.out.println(minus_road_node_ID);
-            System.out.println(minus_node_ID);
+            //System.out.println("addroadNode:");
+            //System.out.println(plus_node_ID);
+            //System.out.println(plus_road_node_ID);
+            //System.out.println(minus_road_node_ID);
+            //System.out.println(minus_node_ID);
 
 
             addRoadArr2.add(plus_node_ID);
@@ -406,6 +411,7 @@ class ConnectBuildingToRoad {
 
             road_manager_.setTmpRoadList(addRoadArr2);
             road_manager_.setRoadConnectedObject(nearest_Shape_ID,road_manager_.getRoadNodeID(),""+building_ID);
+            area_manager_.setRoad(road_manager_.getRoadNodeID());
             break;
 
 
@@ -432,6 +438,7 @@ class ConnectBuildingToRoad {
             add_node_map_plus.put("x",building_point_start.getX());
 
             plus_node_ID = node_manager_.addGmlNode(add_node_map_plus);
+            area_manager_.setNode(plus_node_ID);
 
             building_point_end.setLocation(Math.cos(radian_180)*default_road_width+middle_point.getX(),Math.sin(radian_180)*default_road_width+middle_point.getY());
 
@@ -441,10 +448,11 @@ class ConnectBuildingToRoad {
             add_node_map_minus.put("x",building_point_end.getX());
 
             minus_node_ID = node_manager_.addGmlNode(add_node_map_minus);
+            area_manager_.setNode(minus_node_ID);
 
             building_manager_.insertBuildingInNode(String.valueOf(building_ID),connect_building_edge_point_B,minus_node_ID);
             building_manager_.insertBuildingInNode(String.valueOf(building_ID),connect_building_edge_point_B+1,plus_node_ID);
-            System.out.println(connect_edge_point_B);
+            //System.out.println(connect_edge_point_B);
 
             //接続先のBuildingの方にnode追加
 
@@ -475,7 +483,7 @@ class ConnectBuildingToRoad {
             add_node_map_plus.put("x",road_point_start.getX());
 
             plus_road_node_ID = node_manager_.addGmlNode(add_node_map_plus);
-
+            area_manager_.setNode(plus_road_node_ID);
 
             road_minus_X = Math.cos(radian_180)*default_road_width+nearest_point.getX();
             road_minus_Y = Math.sin(radian_180)*default_road_width+nearest_point.getY();
@@ -488,17 +496,18 @@ class ConnectBuildingToRoad {
             add_node_map_minus.put("x",road_point_end.getX());
 
             minus_road_node_ID = node_manager_.addGmlNode(add_node_map_minus);
+            area_manager_.setNode(minus_road_node_ID);
 
             building_manager_.insertBuildingInNode(nearest_Shape_ID,connect_edge_point_B,minus_road_node_ID);
             building_manager_.insertBuildingInNode(nearest_Shape_ID,connect_edge_point_B+1,plus_road_node_ID);
 
             ArrayList<String> addRoadArr1 = new ArrayList<String>();
 
-            System.out.println("addroadNode:");
-            System.out.println(plus_node_ID);
-            System.out.println(plus_road_node_ID);
-            System.out.println(minus_road_node_ID);
-            System.out.println(minus_node_ID);
+            //System.out.println("addroadNode:");
+            //System.out.println(plus_node_ID);
+            //System.out.println(plus_road_node_ID);
+            //System.out.println(minus_road_node_ID);
+            //System.out.println(minus_node_ID);
 
 
             addRoadArr1.add(plus_node_ID);
@@ -509,7 +518,7 @@ class ConnectBuildingToRoad {
 
             road_manager_.setTmpRoadList(addRoadArr1);
             building_manager_.setBuildingConnectedObject(nearest_Shape_ID,road_manager_.getRoadNodeID(),""+building_ID);
-
+            area_manager_.setRoad(road_manager_.getRoadNodeID());
 
             if(this.alreadyConnectBuilding.containsKey(nearest_Shape_ID)){
                 ((ArrayList)this.alreadyConnectBuilding.get(nearest_Shape_ID)).add(""+building_ID);
@@ -560,6 +569,49 @@ class ConnectBuildingToRoad {
         return xy;
     }
 
+    // private Boolean checkCrossingRoad(String building_ID,ArrayList<String> building_List,Point buildingArea){
+    //     //ArrayList<String> check_Road = new ArrayList<String>();
+    //     //すべてのRoadの線分に対して交差しているか判定交差していなければtrueが帰る
+    //     Point2D.Double point_A = new Point2D.Double();
+    //     Point2D.Double point_B = new Point2D.Double();
+    //     Point2D.Double point_C = new Point2D.Double();
+    //     Point2D.Double point_D = new Point2D.Double();
+    //
+    //     int road_list_size = Integer.parseInt(road_manager_.getRoadNodeID());
+    //
+    //     ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
+    //
+    //     for (int i = 0; i<roadList.size();i++ ) {
+    //
+    //         String roadID = roadList.get(i);
+    //         //他の建物から接続している道を判定に入れないように処理
+    //         if(((ArrayList)building_manager_.getBuildingConnectedRoad(building_ID)).contains(roadID)) continue;
+    //
+    //
+    //         ArrayList<String> check_Road = road_manager_.getRoadNodeList(roadID);
+    //
+    //         for (int k = 0; k<check_Road.size()-1;k++ ) {
+    //             point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
+    //             point_B.setLocation(node_manager_.getX(check_Road.get(k+1)),node_manager_.getY(check_Road.get(k+1)));
+    //
+    //             for (int m = 0; m<building_List.size()-1;m++ ) {
+    //                 point_C.setLocation(node_manager_.getX(building_List.get(m)),node_manager_.getY(building_List.get(m)));
+    //                 point_D.setLocation(node_manager_.getX(building_List.get(m+1)),node_manager_.getY(building_List.get(m+1)));
+    //
+    //                 if (checkCrossingLineSegment(point_A,point_B,point_C,point_D)) {
+    //                     //System.out.println("道にかぶっています");
+    //                     //System.out.println("roadID:"+roadID);
+    //                     //System.out.println("roadnodeID_1:"+(k+1));
+    //                     //System.out.println("roadnodeID_2:"+(k+2));
+    //                     //System.out.println("BuildingnodeID_1:"+(m+1));
+    //                     //System.out.println("BuildingnodeID_2:"+(m+2));
+    //                     return false;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return true;
+    // }
     private Boolean checkCrossingRoad(String building_ID,ArrayList<String> building_List,Point buildingArea){
         //ArrayList<String> check_Road = new ArrayList<String>();
         //すべてのRoadの線分に対して交差しているか判定交差していなければtrueが帰る
@@ -570,16 +622,16 @@ class ConnectBuildingToRoad {
 
         int road_list_size = Integer.parseInt(road_manager_.getRoadNodeID());
 
-        ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
+        //ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
 
-        for (int i = 0; i<roadList.size();i++ ) {
+        for (int i = 1; i<road_list_size;i++ ) {
 
-            String roadID = roadList.get(i);
+            //String roadID = roadList.get(i);
             //他の建物から接続している道を判定に入れないように処理
-            if(((ArrayList)building_manager_.getBuildingConnectedRoad(building_ID)).contains(roadID)) continue;
+            if(((ArrayList)building_manager_.getBuildingConnectedRoad(building_ID)).contains(String.valueOf(i))) continue;
 
 
-            ArrayList<String> check_Road = road_manager_.getRoadNodeList(roadID);
+            ArrayList<String> check_Road = road_manager_.getRoadNodeList(String.valueOf(i));
 
             for (int k = 0; k<check_Road.size()-1;k++ ) {
                 point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
@@ -590,12 +642,12 @@ class ConnectBuildingToRoad {
                     point_D.setLocation(node_manager_.getX(building_List.get(m+1)),node_manager_.getY(building_List.get(m+1)));
 
                     if (checkCrossingLineSegment(point_A,point_B,point_C,point_D)) {
-                        System.out.println("道にかぶっています");
-                        System.out.println("roadID:"+roadID);
-                        System.out.println("roadnodeID_1:"+(k+1));
-                        System.out.println("roadnodeID_2:"+(k+2));
-                        System.out.println("BuildingnodeID_1:"+(m+1));
-                        System.out.println("BuildingnodeID_2:"+(m+2));
+                        //System.out.println("道にかぶっています");
+                        //System.out.println("roadID:"+roadID);
+                        //System.out.println("roadnodeID_1:"+(k+1));
+                        //System.out.println("roadnodeID_2:"+(k+2));
+                        //System.out.println("BuildingnodeID_1:"+(m+1));
+                        //System.out.println("BuildingnodeID_2:"+(m+2));
                         return false;
                     }
                 }
@@ -604,6 +656,88 @@ class ConnectBuildingToRoad {
         return true;
     }
 
+    // private Boolean checkCrossingBuilding(Point2D.Double origin_point,
+    //                                       Point2D.Double connect_point,
+    //                                       String building_ID,
+    //                                       String object_ID,
+    //                                       String object_type,
+    //                                       int object_edge_num,
+    //                                       Point buildingArea){
+    //     //すべてのRoadの線分に対して交差しているか判定交差していなければtrueが帰る
+    //     //System.out.println("交差判定");
+    //     //System.out.println("接続先:"+object_type+"  ID:"+object_ID);
+    //     //System.out.println("edgeNumber:"+object_edge_num);
+    //     //System.out.println("building_ID:"+building_ID);
+    //     //仮処理
+    //     Point2D.Double point_A = new Point2D.Double();
+    //     Point2D.Double point_B = new Point2D.Double();
+    //
+    //     int building_list_size = Integer.parseInt(building_manager_.getBuildingNodeID());
+    //
+    //
+    //     ArrayList<String> buildingList = area_manager_.getSearchBuildingList(buildingArea);
+    //     for (int i = 0; i<buildingList.size();i++ ) {
+    //         String buildingID = buildingList.get(i);
+    //
+    //         ArrayList<String> check_Road = building_manager_.getBuildingNodeList(buildingID);
+    //
+    //         if (buildingID == building_ID){
+    //             //System.out.println("自分自身のためcontinue");
+    //             continue;
+    //         }
+    //
+    //
+    //         for (int k = 0; k<check_Road.size()-1;k++ ) {
+    //             //if (object_type == "building" &&  i == Integer.parseInt(object_ID) && k == object_edge_num) continue;
+    //             if (object_type == "building" &&  buildingID == object_ID && object_edge_num == k){
+    //                 //System.out.println("接続したい先の建物のEDGEなためcontinue");
+    //                 continue;
+    //             }
+    //             point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
+    //             point_B.setLocation(node_manager_.getX(check_Road.get(k+1)),node_manager_.getY(check_Road.get(k+1)));
+    //
+    //             if (checkCrossingLineSegment(origin_point,connect_point,point_A,point_B)) {
+    //                 //System.out.println("建物に交差");
+    //                 //System.out.println("building:"+buildingID);
+    //                 //System.out.println("edgeA:"+k);
+    //                 //System.out.println("edgeB:"+(k+1));
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    //     int road_list_size = Integer.parseInt(road_manager_.getRoadNodeID());
+    //
+    //     ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
+    //
+    //     for (int i = 0; i<roadList.size();i++ ) {
+    //
+    //         String roadID = roadList.get(i);
+    //
+    //         ArrayList<String> check_Road = road_manager_.getRoadNodeList(roadID);
+    //
+    //         // if (object_type == "road" &&  i == Integer.parseInt(object_ID) ) {
+    //         //     //System.out.println("接続したい先の道のEDGEなためcontinue");
+    //         //     System.out.println("i:"+i);
+    //         //     System.out.println("object_ID:"+object_ID);
+    //         //     continue;
+    //         // }
+    //
+    //         for (int k = 0; k<check_Road.size()-1;k++ ) {
+    //             if (object_type == "road" &&  roadID == object_ID && k == object_edge_num) continue;
+    //             point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
+    //             point_B.setLocation(node_manager_.getX(check_Road.get(k+1)),node_manager_.getY(check_Road.get(k+1)));
+    //
+    //             if (checkCrossingLineSegment(origin_point,connect_point,point_A,point_B)) {
+    //                 //System.out.println("道に交差");
+    //                 //System.out.println("road:"+roadID);
+    //                 //System.out.println("edgeA:"+k);
+    //                 //System.out.println("edgeB:"+(k+1));
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    //     return true;
+    // }
     private Boolean checkCrossingBuilding(Point2D.Double origin_point,
                                           Point2D.Double connect_point,
                                           String building_ID,
@@ -611,81 +745,63 @@ class ConnectBuildingToRoad {
                                           String object_type,
                                           int object_edge_num,
                                           Point buildingArea){
-        //すべてのRoadの線分に対して交差しているか判定交差していなければtrueが帰る
-        System.out.println("交差判定");
-        System.out.println("接続先:"+object_type+"  ID:"+object_ID);
-        System.out.println("edgeNumber:"+object_edge_num);
-        //System.out.println("building_ID:"+building_ID);
-        //仮処理
         Point2D.Double point_A = new Point2D.Double();
         Point2D.Double point_B = new Point2D.Double();
 
         int building_list_size = Integer.parseInt(building_manager_.getBuildingNodeID());
 
 
-        ArrayList<String> buildingList = area_manager_.getSearchBuildingList(buildingArea);
-        for (int i = 0; i<buildingList.size();i++ ) {
-            String buildingID = buildingList.get(i);
+        //ArrayList<String> buildingList = area_manager_.getSearchBuildingList(buildingArea);
+        for (int i = 1; i<building_list_size;i++) {
+            //String buildingID = buildingList.get(i);
 
-            ArrayList<String> check_Road = building_manager_.getBuildingNodeList(buildingID);
+            ArrayList<String> check_Road = building_manager_.getBuildingNodeList(String.valueOf(i));
 
-            if (buildingID == building_ID){
-                System.out.println("自分自身のためcontinue");
+            if (i == Integer.parseInt(building_ID)){
+                //System.out.println("自分自身のためcontinue");
                 continue;
             }
 
 
             for (int k = 0; k<check_Road.size()-1;k++ ) {
                 //if (object_type == "building" &&  i == Integer.parseInt(object_ID) && k == object_edge_num) continue;
-                if (object_type == "building" &&  buildingID == object_ID && object_edge_num == k){
-                    System.out.println("接続したい先の建物のEDGEなためcontinue");
+                if (object_type == "building" &&  i == Integer.parseInt(object_ID) && object_edge_num == k){
+                    //System.out.println("接続したい先の建物のEDGEなためcontinue");
                     continue;
                 }
                 point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
                 point_B.setLocation(node_manager_.getX(check_Road.get(k+1)),node_manager_.getY(check_Road.get(k+1)));
 
                 if (checkCrossingLineSegment(origin_point,connect_point,point_A,point_B)) {
-                    System.out.println("建物に交差");
-                    System.out.println("building:"+buildingID);
-                    System.out.println("edgeA:"+k);
-                    System.out.println("edgeB:"+(k+1));
+
                     return false;
                 }
             }
         }
         int road_list_size = Integer.parseInt(road_manager_.getRoadNodeID());
 
-        ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
+        //ArrayList<String> roadList = area_manager_.getSearchRoadList(buildingArea);
 
-        for (int i = 0; i<roadList.size();i++ ) {
+        for (int i = 1; i<road_list_size;i++ ) {
 
-            String roadID = roadList.get(i);
+            //String roadID = roadList.get(i);
 
-            ArrayList<String> check_Road = road_manager_.getRoadNodeList(roadID);
-
-            // if (object_type == "road" &&  i == Integer.parseInt(object_ID) ) {
-            //     System.out.println("接続したい先の道のEDGEなためcontinue");
-            //     System.out.println("i:"+i);
-            //     System.out.println("object_ID:"+object_ID);
-            //     continue;
-            // }
+            ArrayList<String> check_Road = road_manager_.getRoadNodeList(String.valueOf(i));
 
             for (int k = 0; k<check_Road.size()-1;k++ ) {
-                if (object_type == "road" &&  roadID == object_ID && k == object_edge_num) continue;
+                if (object_type == "road" &&  i == Integer.parseInt(object_ID) && k == object_edge_num) continue;
                 point_A.setLocation(node_manager_.getX(check_Road.get(k)),node_manager_.getY(check_Road.get(k)));
                 point_B.setLocation(node_manager_.getX(check_Road.get(k+1)),node_manager_.getY(check_Road.get(k+1)));
 
                 if (checkCrossingLineSegment(origin_point,connect_point,point_A,point_B)) {
-                    System.out.println("道に交差");
-                    System.out.println("road:"+roadID);
-                    System.out.println("edgeA:"+k);
-                    System.out.println("edgeB:"+(k+1));
+
                     return false;
                 }
             }
         }
         return true;
     }
+
 
     private Boolean checkCrossingLineSegment(Point2D.Double a,Point2D.Double b,Point2D.Double c,Point2D.Double d){
         //２線分を比べ交差していたらtrueを返す
@@ -698,13 +814,15 @@ class ConnectBuildingToRoad {
         return false;
     }
 
-    private Boolean checkContainNode(Point2D.Double point){
+    private Boolean checkContainNode(Point2D.Double point,Point buildingArea){
         //x,yから指定した円の範囲にnodeがあった場合falseを返す なかった場合はtrue
         Double distance;
         int node_size = node_manager_.getNodeSize();
-        for (int i=1; i<node_size;i++ ) {
-            Point2D.Double comp_point = new Point2D.Double();
-            comp_point.setLocation(node_manager_.getX(String.valueOf(i)),node_manager_.getY(String.valueOf(i)));
+        ArrayList<String> nodeList = area_manager_.getSearchNodeList(buildingArea);
+
+        for (int i=0; i<nodeList.size();i++ ) {
+            String nodeID = nodeList.get(i);
+            Point2D.Double comp_point = new Point2D.Double(node_manager_.getX(nodeID),node_manager_.getY(nodeID));
             distance = Math.hypot(comp_point.getX()-point.getX(),comp_point.getY()-point.getY());
             if (distance < default_road_width) {
                 return false;
@@ -780,7 +898,7 @@ class ConnectBuildingToRoad {
 	    sita = sita * 180.0 / Math.PI;
 
 	    double degree = sita%180.0;
-        System.out.println("角度:"+degree);
+        //System.out.println("角度:"+degree);
       if(degree < 135 && degree > 45){
         return false;
       }

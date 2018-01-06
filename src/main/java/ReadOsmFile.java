@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.awt.geom.Point2D;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -20,15 +21,13 @@ public class ReadOsmFile {
     private HighwayManager  hm = new HighwayManager();
     private BuildingManager bm = new BuildingManager();
 
-
-    ReadOsmFile(Document        document,
-                NodeManager     nm,
-                HighwayManager  hm,
-                BuildingManager bm) {
+    private CoordinateUtil coordinateUtil;
+    ReadOsmFile(Document document,NodeManager nm,HighwayManager hm,BuildingManager bm) {
         this.document = document;
         this.nm = nm;
         this.hm = hm;
         this.bm = bm;
+        coordinateUtil = new CoordinateUtil();
     }
 
     public void readosmFile () {
@@ -106,8 +105,9 @@ public class ReadOsmFile {
             Double lat = Double.parseDouble(attributeLat.getNodeValue());
             Double lon = Double.parseDouble(attributeLon.getNodeValue());
 
-            lat =lat/0.000009;
-            lon =lon/0.000009;
+
+            // lat =lat/0.000008999229891;
+            // lon =lon/0.00001;
 
             if (referenceLon == 0.0) {
                 referenceLon = lon;
@@ -118,9 +118,13 @@ public class ReadOsmFile {
 
             lat = lat - referenceLat;
             lon = lon - referenceLon;
+            // map.put("y",lat);
+            // map.put("x",lon);
 
-            map.put("y",lat);
-            map.put("x",lon);
+            Point2D.Double point = coordinateUtil.convertLonLat2XY(lon,lat,0,0);
+
+            map.put("y",point.getY());
+            map.put("x",point.getX());
 
             nm.addGmlNode(attributeId.getNodeValue(),map);
         }
@@ -158,22 +162,14 @@ public class ReadOsmFile {
 
     private ArrayList<String> checkDirection(ArrayList<String> tmp_List){
 
-        String point_A = new String();
-        String point_B = new String();
-        String point_C = new String();
-
-        HashMap<String,Double> map_A = new HashMap<String,Double>();
-        HashMap<String,Double> map_B = new HashMap<String,Double>();
-        HashMap<String,Double> map_C = new HashMap<String,Double>();
-
         double sum_sita = 0.0;
         double sum_degree = 0.0;
 
         for (int i = 0; i<tmp_List.size()-2;i++ ) {
 
-            point_A = (String)tmp_List.get(i+0);
-            point_B = (String)tmp_List.get(i+1);
-            point_C = (String)tmp_List.get(i+2);
+            String point_A = (String)tmp_List.get(i+0);
+            String point_B = (String)tmp_List.get(i+1);
+            String point_C = (String)tmp_List.get(i+2);
 
             double dif_BA_X = nm.getX(point_A)-nm.getX(point_B);
             double dif_BA_Y = nm.getY(point_A)-nm.getY(point_B);
@@ -200,8 +196,16 @@ public class ReadOsmFile {
             sum_degree += degree;
         }
 
+        // if(sum_sita>0){
+        //     System.out.println("別の回転方向チェック処理");
+        //     sum_sita = anotherCheckDirection(tmp_List);
+        // }
+
+        //sum_sita = anotherCheckDirection(tmp_List);
+
         if (sum_sita < 0) {
             //逆向き処理
+            System.out.println("逆向き処理");
             ArrayList counter_tmp_List = new ArrayList();
             for (int i=tmp_List.size()-1; i>=0;i-- ) {
                 counter_tmp_List.add(tmp_List.get(i));
@@ -210,5 +214,56 @@ public class ReadOsmFile {
         }
 
         return tmp_List;
+    }
+    private double anotherCheckDirection(ArrayList<String> tmp_List){
+
+
+        ArrayList<Double> degreeList = new ArrayList<Double>();
+
+        double x_sum = 0.0;
+        double y_sum = 0.0;
+        for(int i=0;i<tmp_List.size()-1;i++){
+            x_sum += nm.getX(tmp_List.get(i));
+            y_sum += nm.getY(tmp_List.get(i));
+        }
+        double x_ave = x_sum/((double)tmp_List.size());
+        double y_ave = y_sum/((double)tmp_List.size());
+
+        Point2D.Double centerPoint = new Point2D.Double(x_ave,y_ave);
+
+        double sita_sum = 0.0;
+        for(int i=0;i<tmp_List.size()-1;i++){
+            Point2D.Double tmpPoint = new Point2D.Double(nm.getX(tmp_List.get(i)),nm.getY(tmp_List.get(i)));
+            double x_def = tmpPoint.getX()-centerPoint.getX();
+            double y_def = tmpPoint.getY()-centerPoint.getY();
+            Point2D.Double defPoint = new Point2D.Double(x_def,y_def);
+            double sita = Math.atan2(defPoint.getY(),defPoint.getX());
+            double degree = sita* 180.0 / Math.PI;
+            if(degree < 0.0) degree += 360.0;
+            degreeList.add(degree);
+        }
+        int plus_counter = 0;
+        int minus_counter = 0;
+
+        double beforeDegree = degreeList.get(degreeList.size()-1);
+        double afterDegree;
+        for(int i=0;i<degreeList.size();i++){
+            afterDegree = degreeList.get(i);
+            if (afterDegree<beforeDegree) {
+                minus_counter++;
+            }else{
+                plus_counter++;
+            }
+            beforeDegree = afterDegree;
+        }
+
+
+        if(plus_counter<minus_counter){
+            double sita = 1.0;
+            return sita;
+        }else{
+            double sita = -1.0;
+            return sita;
+        }
     }
 }
