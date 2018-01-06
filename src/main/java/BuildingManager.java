@@ -18,6 +18,9 @@ public class BuildingManager {
 
     private ArrayList<String> remove_building_ = new ArrayList<String>();
 
+    private HashMap<String,ArrayList<String>> reverseEdgeMap = new HashMap<String,ArrayList<String>>();
+
+
 
     public ArrayList<String> getBuildingNodeList(String building_node_id){
         return building_node_list_.get(building_node_id);
@@ -67,6 +70,7 @@ public class BuildingManager {
     public void setBuildingEdgeList(ArrayList<String> edges){
         building_edge_id_++;
         building_edge_list_.put(String.valueOf(building_edge_id_),edges);
+        setReverseEdge(String.valueOf(building_edge_id_),edges);
     }
     public void insertBuildingInNode(String building_ID,int building_edge_Index,String node_ID){
         ((ArrayList)building_node_list_.get(building_ID)).add(building_edge_Index,node_ID);
@@ -91,6 +95,27 @@ public class BuildingManager {
         building_connected_road_list_.put(connected_building,tmp_array_road);
         building_connected_building_list_.put(connected_building,tmp_array_building);
       }
+    }
+
+    private void setReverseEdge(String buildingID,ArrayList<String> edges){
+        ArrayList<String> reverseEdgeList = new ArrayList<String>();
+        int buildingEdgeNum = Integer.parseInt(getBuildingEdgeID());
+        for(int i=1;i<buildingEdgeNum;i++){
+            ArrayList<String> checkList = getBuildingEdgeList(String.valueOf(i));
+            for(int k = 0;k<edges.size();k++){
+                if(checkList.contains(edges.get(k))){
+                    reverseEdgeList.add(edges.get(k));
+                }
+            }
+        }
+        reverseEdgeMap.put(buildingID,reverseEdgeList);
+
+    }
+
+    public Boolean containReverseEdge(String buildingID,String edgeID){
+        ArrayList checkList = reverseEdgeMap.get(buildingID);
+        if(checkList.contains(edgeID)) return true;
+        return false;
     }
 
     public Boolean checkBuildingConnected(String building_id){

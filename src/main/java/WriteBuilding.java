@@ -1,6 +1,7 @@
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
+import java.util.ArrayList;
 
 public class WriteBuilding {
 
@@ -42,7 +43,15 @@ public class WriteBuilding {
                 gmlFace.appendChild(gmlDirectedEdge);
 
                 Attr orientation = this.document.createAttribute("orientation");
-                orientation.setValue("-");
+
+                ArrayList<String> array = bm.getBuildingEdgeList(String.valueOf(i));
+
+                if(bm.containReverseEdge(String.valueOf(i),array.get(j))){
+                    orientation.setValue("-");
+                }else{
+                    orientation.setValue("+");
+                }
+                //orientation.setValue("-");
 
                 gmlDirectedEdge.setAttributeNode(orientation);
 
