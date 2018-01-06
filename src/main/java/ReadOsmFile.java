@@ -151,6 +151,11 @@ public class ReadOsmFile {
                         tmpKey = attributeK.getNodeValue();
                         break;
 
+                    case "area":
+                        checkHighway.setCheckList("area");
+                        break;
+
+
                     default:
                         checkHighway.setCheckList(attributeK.getNodeValue());
                         break;
