@@ -89,7 +89,6 @@ public class CoordinateUtil {
     //     Point2D.Double xyPoint = convertLonLat2XY(osmLon, osmLat, lon0, lat0);
     //
     //     return xyPoint;
-    //
     // }
 
     /**
