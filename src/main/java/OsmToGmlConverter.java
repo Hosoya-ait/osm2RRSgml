@@ -6,17 +6,6 @@ import java.util.HashMap;
 
 public class OsmToGmlConverter {
 
-
-
-    //読み込むファイル
-    public static String readFileName = "building";
-
-    //作成するファイル
-    public static String fileName = "./GMLs/"+readFileName+".gml";
-
-    //読み込むファイルの場所
-    public static String fileLocation = "./OSMs/"+readFileName+".osm";
-
     //付与する名前空間
     public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
     public static String xmlns_gml_namespace_uri="http://www.opengis.net/gml";
@@ -24,6 +13,17 @@ public class OsmToGmlConverter {
 
 
     public static void main(String args[]) throws Exception{
+        mainRun(args[0]);
+    }
+
+    private static void mainRun(String readFileName){
+
+        //作成するファイル
+        String fileName = "./GMLs/"+readFileName+".gml";
+
+        //読み込むファイルの場所
+        String fileLocation = "./OSMs/"+readFileName+".osm";
+
         //データ管理用のManagerクラスのインスタンス生成
         NodeManager     nm = new NodeManager();
         EdgeManager     em = new EdgeManager();
@@ -34,10 +34,23 @@ public class OsmToGmlConverter {
         //計算時間計測開始
         long start = System.currentTimeMillis();
 
-        //読み込み用Documentの作成
-        MakeDocument makeDocument = new MakeDocument();
+        MakeDocument makeDocument =null;
+        try{
+            //読み込み用Documentの作成
+            makeDocument = new MakeDocument();
+        }catch(Exception e){
+            System.out.println("ファイル作成時にエラー");
+        }
+
         //作成したDocumentにファイルの情報を読み込み
-        Document readDocument = makeDocument.MakeReadDocument(fileLocation);
+        Document readDocument = null;
+
+        try{
+            readDocument = makeDocument.MakeReadDocument(fileLocation);
+        }catch (Exception e) {
+            System.out.println("読み込みファイル作成時にエラー");
+        }
+
         //Documentから各種情報の取り出し
         //ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
 
@@ -63,21 +76,55 @@ public class OsmToGmlConverter {
         MakeEdge makeEdge = new MakeEdge(nm,em,bm,rm);
         makeEdge.makeNodeToEdge();
 
-        //書き込み用Documentの作成
-        Document writeDoc = makeDocument.MakeWriteDocument();
+        Document writeDoc = null;
+        try{
+            //書き込み用Documentの作成
+            writeDoc = makeDocument.MakeWriteDocument();
+        }catch(Exception e){
+
+            System.out.println("書き込みファイル作成時のエラー");
+        }
+
+
+
         //書き込み用クラスの作成
         WriteDocument writeDocument = new WriteDocument(nm,em,bm,rm);
         writeDoc = writeDocument.WriteToDocument1(writeDoc);
 
+        WriteGmlFile writeGmlFile = null;
+        try{
+            //Fileに書き込み
+            writeGmlFile = new WriteGmlFile(writeDoc,fileName);
+        }catch (Exception e) {
+            System.out.println("gml作成時にエラー");
+        }
 
-        //Fileに書き込み
-        WriteGmlFile writeGmlFile = new WriteGmlFile(writeDoc);
 
 
         //計算時間計測終了
         long end = System.currentTimeMillis();
         System.out.println("RunTime : " + (end - start)  + "ms");
         System.out.println("owata");
+
+
+        //GCさせるよう
+
+        nm = null;
+        em = null;
+        hm = null;
+        bm = null;
+        rm = null;
+        makeDocument =null;
+        readDocument = null;
+        readOsmFile1 = null;
+        expansionHighway =null;
+        am = null;
+        connectBuildingToRoad = null;
+        makeEdge = null;
+        writeDoc = null;
+        writeDocument =null;
+        writeGmlFile = null;
+
     }
 
 }

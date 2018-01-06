@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class WriteGmlFile {
-    WriteGmlFile(Document document) throws Exception{
+    WriteGmlFile(Document document,String fileName) throws Exception{
         TransformerFactory transFactory = TransformerFactory.newInstance();
         Transformer transformer = transFactory.newTransformer();
 
@@ -20,7 +20,7 @@ public class WriteGmlFile {
 
 
         DOMSource source = new DOMSource(document);
-        File newXML = new File(OsmToGmlConverter.fileName);
+        File newXML = new File(fileName);
         FileOutputStream os = new FileOutputStream(newXML);
         StreamResult result = new StreamResult(os);
 
