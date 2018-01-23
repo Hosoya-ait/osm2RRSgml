@@ -10,6 +10,7 @@
 gradlew
 gradlew.bat
 RunConverter.sh
+!GMLs/
 
 .metadata
 bin/
@@ -68,7 +69,7 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)		
 .classpath
 
-### Java ###
+### Java ##     いじった
 # Compiled class file
 *.class
 
