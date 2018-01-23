@@ -3,15 +3,6 @@
 
 ### Eclipse ###
 
-#細谷のいじり
-.idea
-gradle
-src
-gradlew
-gradlew.bat
-RunConverter.sh
-!GMLs/
-
 .metadata
 bin/
 tmp/
@@ -69,9 +60,9 @@ local.properties
 # JDT-specific (Eclipse Java Development Tools)		
 .classpath
 
-### Java ##     いじった
+### Java ###
 # Compiled class file
-#*.class
+*.class
 
 # Log file
 *.log
