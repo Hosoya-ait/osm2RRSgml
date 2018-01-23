@@ -3,6 +3,14 @@
 
 ### Eclipse ###
 
+#細谷のいじり
+./.idea/
+/gradle/
+/src
+gradlew
+gradlew.bat
+RunConverter.sh
+
 .metadata
 bin/
 tmp/
