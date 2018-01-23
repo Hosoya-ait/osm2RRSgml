@@ -4,9 +4,9 @@
 ### Eclipse ###
 
 #細谷のいじり
-./.idea/
-/gradle/
-/src
+.idea
+gradle
+src
 gradlew
 gradlew.bat
 RunConverter.sh
@@ -71,7 +71,7 @@ local.properties
 
 ### Java ##     いじった
 # Compiled class file
-*.class
+#*.class
 
 # Log file
 *.log
