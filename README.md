@@ -16,7 +16,7 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
 4.「端末」や「ターミナル」などのコマンドラインを使って「osm2RRSgml-master」フォルダ内へ移動する．
 
-5.コマンド「java OsmToGmlConverter Sample1」を入力することで「osm2RRSgml」が起動する．
+5.コマンド 'java OsmToGmlConverter Sample1' を入力することで「osm2RRSgml」が起動する．
 
 6.コマンドライン上に「owata」と表示されていればプログラムは終了している．
 
