@@ -31,7 +31,7 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
     コマンドは「java OsmToGmlConverter [「.osm」を省いたOSMデータの名前]」と入力することで希望のOSMの地図データを変換できる．
 
     つまり，「java OsmToGmlConverter Sample2」とすれば，OSMsフォルダ内にある「Sample2.osm」ファイルが処理され，「GMLs」フォルダ内に
-「Sample2.gml」ファイル(RRSの地図データ形式)が生成される．という流れだ．
+    「Sample2.gml」ファイル(RRSの地図データ形式)が生成される．という流れだ．
 
 *[OSMの地図データの簡単な入手方法]*
 
