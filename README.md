@@ -14,9 +14,9 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
     3.解凍した「osm2RRSgml-master」フォルダを任意の場所に移動させる．
 
-    4.「端末」や「ターミナル」などのコマンドラインを使って「osm2RRSgml-master」フォルダ内へ移動する．
+    4.「端末」や「ターミナル」などのコマンドラインを使って「osm2RRSgml-master」フォルダ内にある「osm2RRSgml」フォルダへ移動する．
 
-    5.コマンド 「java OsmToGmlConverter Sample1」 を入力することで「osm2RRSgml」が起動する．
+    5.コマンド 「java OsmToGmlConverter Sample」 を入力することで「osm2RRSgml」が起動する．
 
     6.コマンドライン上に「owata」と表示されていればプログラムは終了している．
 
@@ -24,14 +24,16 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
     「osm2RRSgml」フォルダ内にある「.class」で終わるファイルはすべてプログラムである．
 
-    「OSMs」フォルダには，サンプルとして札幌市と名古屋市から採取したOSMデータがそれぞれ「Sample1」「Sample2」として入っている．
+    「OSMs」フォルダには，サンプルとして名古屋市栄から採取したOSMデータが「Sample.osm」として入っている．
 
-    「osm2RRSgml」によって処理され，作成されたRRSの地図データは「GMLs」フォルダ内に保存されている．
+    また，変換したいOSMデータは必ず「OSMs」フォルダ内に入れること．
+
+    「osm2RRSgml」によって処理され，作成されたRRSの地図データは「GMLs」フォルダ内に保存される．
 
     コマンドは「java OsmToGmlConverter [「.osm」を省いたOSMデータの名前]」と入力することで希望のOSMの地図データを変換できる．
 
-    つまり，「java OsmToGmlConverter Sample2」とすれば，OSMsフォルダ内にある「Sample2.osm」ファイルが処理され，「GMLs」フォルダ内に
-    「Sample2.gml」ファイル(RRSの地図データ形式)が生成される．という流れだ．
+    つまり，「java OsmToGmlConverter Sample」とすれば，OSMsフォルダ内にある「Sample.osm」ファイルが処理され，「GMLs」フォルダ内に
+    「Sample.gml」ファイル(RRSの地図データ形式)が生成される．という流れだ．
 
 *[OSMの地図データの簡単な入手方法]*
 
@@ -52,9 +54,11 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
     ダウンロードしたら，「gml-editor」で地図データを確認するだけである．
 
+    なお，RRSのプログラムの必須環境として「MacOS」か「Unix系のOS(Ubuntuなど)」でなければいけない．
+
 *[RRSのプログラムのダウンロード方法]*
 
-    以下のコマンドを実行するとカレントディレクトリに「roborescue-v1.2」というフォルダがダウンロードされる．
+    コマンドラインで以下のコマンドを実行するとカレントディレクトリに「roborescue-v1.2」というフォルダがダウンロードされる．
 
     「curl -L -O https://raw.githubusercontent.com/tkmnet/rcrs-scripts/master/install-roborescue.sh」
 
@@ -70,7 +74,12 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
      「apache-ant-[version]/bin/ant gml-editor」
 
-      gml-editorが起動する．
+     ＊ここで[version]の確認方法は，「roborescue-v1.2」のフォルダ内で「ls」コマンドを実行することで，
+     コマンドラインの上部に「apache-ant-[version]」と出るため，この[version]を使う．
+
+     ＊コマンド例「apache-ant-1.9.7/bin/ant gml-editor」
+
+     コマンドを実行するとgml-editorが起動する．
 
     2.「gml-editor」の左上にある「Load」から，「osm2RRSgml」フォルダ内の「GMLs」フォルダ内にあるgmlファイルを選択する．
 
