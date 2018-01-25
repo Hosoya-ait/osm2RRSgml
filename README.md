@@ -68,6 +68,8 @@ OpenStreetMap(略称：OSM)の地図データをRoboCupRescue Simulation(略称�
 
     「BUILD SUCCESSFUL」
 
+    ＊RRSのプログラムに興味のある方はチュートリアルへどうぞ! URL:https://rcrs-adf.github.io/ja/
+
 *[gml-editorを使った地図データの確認方法]*
 
     1.コマンドラインで「roborescue-v1.2」フォルダ内へ移動し，以下のコマンドを入力
