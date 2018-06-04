@@ -94,6 +94,8 @@ public class ExpansionHighwaySimplePoint {
 
         for(String connect_node : connected_Node_List){
             //System.out.println("connectNode:"+connect_node);
+
+            //point_startを起点にθ方向に1.5x√3 の距離にpoint_tmpを設定し、point_tmpを起点に正三角形の2点をpoint_makeとして作成
             point_end.setLocation(nm.getX(connect_node),nm.getY(connect_node));
             point_def.setLocation(point_end.getX()-point_start.getX(),point_end.getY()-point_start.getY());
             radian_start_end = Math.atan2(point_def.getY(),point_def.getX());
@@ -110,7 +112,7 @@ public class ExpansionHighwaySimplePoint {
 
             Line2D.Double line = new Line2D.Double(point_make_1,point_make_2);
 
-            //引いた線の並び替え処理
+            //引いた線の並び替え処理 connect_nodeへの角度が大きい順にdegreeとlineのリストを並び替え
             if(degree_list.size() != 0){
                 for(int i=0;i<degree_list.size();i++){
                     if(degree > degree_list.get(i)){
@@ -146,7 +148,7 @@ public class ExpansionHighwaySimplePoint {
         }
 
 
-        //補正処理
+        //補正処理　lineが交差しているか確認し、交差しているなら交点で2本のlineを繋げ直す
         // System.out.println("引いた線が交差しているか判定");
         if(line_list.size() > 1){
             Line2D.Double line1 = line_list.get(line_list.size()-1);
@@ -188,6 +190,8 @@ public class ExpansionHighwaySimplePoint {
 
         ArrayList<String> makedNodeList = new ArrayList<String>();
 
+        //作成した正三角形の2点をnmに追加し、
+        //正三角形同士の間を埋める道路を作成するためのedgeを構成するnodeをmakeNodeListに記憶する
         for(int i=point_list.size()-1;i>=0; i--){
             map = new HashMap<String,Double>();
             //System.out.println("i:"+i);
@@ -202,7 +206,7 @@ public class ExpansionHighwaySimplePoint {
             map.put("y",point.getY());
             map.put("x",point.getX());
             //System.out.println("Map P X:"+map.get("x")+" Y:"+map.get("y"));
-            current_node = nm.addGmlNode(map);
+            current_node = nm.addGmlNode(map); //gmlに記載するnodeID番号が帰ってくる
             //System.out.println("newNodeID:"+current_node);
             tmp_Road_Node.add(current_node);
 
@@ -238,14 +242,15 @@ public class ExpansionHighwaySimplePoint {
     }
 
 
+    //2直線の交点座標を求める関数
     private Point2D.Double correctionPoint(Line2D.Double line1,Line2D.Double line2){
         //直角にする処理がない
 
 
-        Point2D a = line1.getP1();
-        Point2D b = line1.getP2();
-        Point2D c = line2.getP1();
-        Point2D d = line2.getP2();
+        Point2D a = line1.getP1(); //始点
+        Point2D b = line1.getP2(); //終点
+        Point2D c = line2.getP1(); //始点
+        Point2D d = line2.getP2(); //終点
         //参照url https://gist.github.com/yoshiki/7702066
         Double du = (b.getX() - a.getX())*(d.getY() - c.getY()) - (b.getY() - a.getY())*(d.getX() - c.getX());
         Double u = ((c.getX() - a.getX()) * (d.getY() - c.getY()) - (c.getY() - a.getY())*(d.getX() - c.getX()))/du;
@@ -346,6 +351,8 @@ public class ExpansionHighwaySimplePoint {
 
     }
 
+    //ここまでに一つのhighwayのnode周辺に,他のhighwayのnode方向に対するroad用の頂点と辺（line）を作成した。
+    //そこから、それらのline間を埋めるlineとhighwayのnode間の距離3のlineとの交差した数を返す関数。
     private int nearestLine(String originNode,String connectNode){
         Point2D.Double originPoint = new Point2D.Double(nm.getX(originNode),nm.getY(originNode));
         Point2D.Double connectPoint = new Point2D.Double(nm.getX(connectNode),nm.getY(connectNode));
@@ -377,6 +384,7 @@ public class ExpansionHighwaySimplePoint {
         return startLineNum;
     }
 
+    //highwayの2点間が3*√5より近ければtrueを返す関数　3(道路幅)
     private Boolean checkTooClose(String node1,String node2){
         Point2D.Double point1 = new Point2D.Double(nm.getX(node1),nm.getY(node1));
         Point2D.Double point2 = new Point2D.Double(nm.getX(node2),nm.getY(node2));
