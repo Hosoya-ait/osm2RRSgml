@@ -39,7 +39,8 @@ public class AreaManager {
     private Double min_x;
     private Double min_y;
 
-    double areaBorderDistance = 25.0;
+    //default value 25.0
+    double areaBorderDistance = 100.0;
 
     NodeManager nodeManager;
     BuildingManager buildingManager;
