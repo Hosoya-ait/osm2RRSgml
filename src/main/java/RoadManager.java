@@ -52,11 +52,16 @@ public class RoadManager {
     }
     //引数のedgeを含んだroad_edge_id_の集合のArrayを返す
     //機能を変更
+    //edge_id = 拡張道路を構成するedge集合の1辺
+    //調査対象である拡張道路の1辺が含まれている,拡張道路を構成するedge集合を返す関数
     public ArrayList<String> getRoadIDContainEdge(String road_id,String edge_id){
+        //調査対象であるedge作成された拡張道路以外のedge作成された拡張道路を回す
         for(int i=1; i<=road_edge_id_-1; i++){
-
+            //拡張道路を構成するedge集合を取得
             ArrayList<String> check_list = road_map_.get(String.valueOf(i));
+            //拡張道路を構成するedge集合の中に調査対象である拡張道路の1辺が含まれている場合
             if(check_list.contains(edge_id)){
+                //調査対象である拡張道路の1辺が含まれている,拡張道路を構成するedge集合を返す
                 return road_map_.get(String.valueOf(i));
             }
         }
@@ -89,22 +94,27 @@ public class RoadManager {
     }
     //内部でマイナスをつけるべきedgeをminus_direction_edge_map_へセットする
     //minus_direction_edge_map_は(roadID,minusにすべきedge集合)
+    //edges = 拡張道路を構成するedge集合
     public void setRoadMap(ArrayList<String> edges){
-
         road_edge_id_++;
-
         road_map_.put(String.valueOf(road_edge_id_),edges);
+        //
         setMinusDirectionEdgeMap (edges);
     }
 
     //既に存在しているedgeを使用したとき書き込み時にminusにするようにする処理
+    //check_Edges = 拡張道路を構成するedge集合
     public void setMinusDirectionEdgeMap (ArrayList<String> check_Edges) {
         ArrayList<String> tmp_list = new ArrayList<String>();
+        //拡張道路を構成するedge集合を回す
         for (int i=0; i<check_Edges.size(); i++) {
+            //拡張道路を構成する辺を含む拡張道路が他にある場合
             if (getRoadIDContainEdge( String.valueOf(road_edge_id_),check_Edges.get(i)) != null ) {
+                //他の拡張道路に含まれていることがわかっている1辺を保持する
                 tmp_list.add(check_Edges.get(i));
             }
         }
+        //対象の拡張道路のidと逆方向にするべき辺のリストの対応を登録
         minus_direction_edge_map_.put(String.valueOf(road_edge_id_), tmp_list);
         //建物を反時計回りに作るのであれば，建物で使っているedgeをminusにする処理も必要
     }

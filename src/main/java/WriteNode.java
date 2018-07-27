@@ -12,13 +12,11 @@ public class WriteNode {
     private Document document;
     private Element rcrMap;
     private NodeManager nm;
-    private EdgeManager em;
 
-    public WriteNode(Document doc, Element rcr, NodeManager nm,EdgeManager em){
+    public WriteNode(Document doc, Element rcr, NodeManager nm){
         this.document = doc;
         this.rcrMap = rcr;
         this.nm = nm;
-        this.em = em;
     }
 
     public Document WriteToDocumentNode(){

@@ -28,9 +28,7 @@ public class NodeManager {
         return osm_to_gml_id_.get(osm_id);
     }
     //nodeIDの示すnodeのx座標
-    public double getX(String node_id){
-        return gml_node_map_.get(node_id).get("x");
-    }
+    public double getX(String node_id){ return gml_node_map_.get(node_id).get("x"); }
     //nodeIDの示すnodeのy座標
     public double getY(String node_id){
         return gml_node_map_.get(node_id).get("y");

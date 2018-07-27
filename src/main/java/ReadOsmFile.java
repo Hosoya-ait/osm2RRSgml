@@ -68,6 +68,8 @@ public class ReadOsmFile {
                         itemNodes = itemNodes.getNextSibling();
                     }
 
+                    //直前のgetWayInfoにてそれぞれのタグ情報に対応するNodeの集合がtmpNodeListに入っている。
+                    //NodeListはOSMの管理しているNode集合であるから，始めのNodeが最後にも重複している。
                     switch (tmpKey) {
                         case "building":
                             if (tmpNodeList.size() > 2) {
@@ -165,6 +167,8 @@ public class ReadOsmFile {
         }
     }
 
+    //List内のNodeの順番を時計回りに調整
+    //注意：ここでは扱っていないが、道路のNodeは逆時計回りに管理している。
     private ArrayList<String> checkDirection(ArrayList<String> tmp_List){
 
         double sum_sita = 0.0;

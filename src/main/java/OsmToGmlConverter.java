@@ -64,21 +64,28 @@ public class OsmToGmlConverter {
 
         AreaManager am = new AreaManager(nm,bm,rm);
 
+
         // 森島が行数減らしてからリファクタリングする
         //ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad(nm,bm,rm,am);
-        ConnectBuildingToRoadTest connectBuildingToRoad = new ConnectBuildingToRoadTest(nm,bm,rm,am);
 
+
+
+        ConnectBuildingToRoadTest connectBuildingToRoad = new ConnectBuildingToRoadTest(nm,bm,rm,am);
         connectBuildingToRoad.connect();
+
+
         // nm = connectBuildingToRoad.getNodeManeger();
         // bm = connectBuildingToRoad.getBuildingManeger();
         // rm = connectBuildingToRoad.getRoadManeger();
 
+        //建物と拡張道路の辺の作成・登録と、
+        //他のオブジェクトとかぶる辺を逆方向に保持する関数
         MakeEdge makeEdge = new MakeEdge(nm,em,bm,rm);
         makeEdge.makeNodeToEdge();
 
         Document writeDoc = null;
         try{
-            //書き込み用Documentの作成
+            //書き込み用Documentの作成（テンプレな内容）
             writeDoc = makeDocument.MakeWriteDocument();
         }catch(Exception e){
 
@@ -93,7 +100,7 @@ public class OsmToGmlConverter {
 
         WriteGmlFile writeGmlFile = null;
         try{
-            //Fileに書き込み
+            //Fileに書き込み　(テンプレな内容)
             writeGmlFile = new WriteGmlFile(writeDoc,fileName);
         }catch (Exception e) {
             System.out.println("gml作成時にエラー");
@@ -107,8 +114,7 @@ public class OsmToGmlConverter {
         System.out.println("owata");
 
 
-        //GCさせるよう
-
+        //ガーベジコレクション処理
         nm = null;
         em = null;
         hm = null;

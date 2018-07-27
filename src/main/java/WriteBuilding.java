@@ -46,6 +46,7 @@ public class WriteBuilding {
 
                 ArrayList<String> array = bm.getBuildingEdgeList(String.valueOf(i));
 
+                //逆方向にする辺は-にする処理
                 if(bm.containReverseEdge(String.valueOf(i),array.get(j))){
                     orientation.setValue("-");
                 }else{

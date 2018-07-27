@@ -7,6 +7,15 @@ import org.w3c.dom.DOMImplementation;
 //Documentを作るクラス
 public class MakeDocument{
 
+    //以下の処理は
+    /*
+        「テックコア」
+        http://www.techscore.com/tech/Java/JavaSE/index/
+        にあるDOMのチャプターを勉強することでわかる
+
+        xml形式のファイルの読み込み・作成のテンプレな方法の感じである
+     */
+
     //読み込み用のDocument作成
     public Document MakeReadDocument(String str) throws Exception{
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

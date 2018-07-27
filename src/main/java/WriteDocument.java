@@ -20,9 +20,12 @@ public class WriteDocument {
 
 
 
+    //                                        writeDoc
     public Document WriteToDocument1(Document document){
+        //エレメントrcrMapを作成
         Element rcrMap=document.getDocumentElement();
 
+        //以下2段落はgmlファイルのお約束を入力している
         Attr xmlnsGmlDeclare=document.createAttribute("xmlns:gml");
         xmlnsGmlDeclare.setValue(OsmToGmlConverter.xmlns_gml_namespace_uri);
         rcrMap.setAttributeNode(xmlnsGmlDeclare);
@@ -31,11 +34,14 @@ public class WriteDocument {
         xmlnsXlinkDeclare.setValue(OsmToGmlConverter.xmlns_xlink_namespace_uri);
         rcrMap.setAttributeNode(xmlnsXlinkDeclare);
 
-        WriteNode writeNode = new WriteNode(document,rcrMap,nm,em);
+        //nmで管理されているnodeをgmlへ書き込み
+        WriteNode writeNode = new WriteNode(document,rcrMap,nm);
         document = writeNode.WriteToDocumentNode();
 
+        //emで管理されているedgeをgmlへ書き込み
         WriteEdge writeEdge = new WriteEdge(document,rcrMap,nm,em);
         document = writeEdge.WriteToDocumentEdge();
+
 
         WriteBuilding writeBuilding = new WriteBuilding(document,rcrMap,nm,em,bm,rm);
         document = writeBuilding.WriteToDocumentBuilding();
