@@ -10,41 +10,42 @@ public class ReadOsmFile {
 
     private static ArrayList tmpNodeList = new ArrayList();
     private static String tmpKey = new String();
+
     //基準点用変数
     private static double referenceLat = 0.0;
     private static double referenceLon = 0.0;
 
     private static CheckHighwayTag checkHighway = new CheckHighwayTag();
 
-    private Document  document;
-    private NodeManager     nm = new NodeManager();
-    private HighwayManager  hm = new HighwayManager();
-    private BuildingManager bm = new BuildingManager();
-
     private CoordinateUtil coordinateUtil;
+    private Document        document;
+    private NodeManager     nm;
+    private HighwayManager  hm;
+    private BuildingManager bm;
+
     ReadOsmFile(Document document,NodeManager nm,HighwayManager hm,BuildingManager bm) {
-        this.document = document;
-        this.nm = nm;
-        this.hm = hm;
-        this.bm = bm;
+        this.document  = document;
+        this.nm        = nm;
+        this.hm        = hm;
+        this.bm        = bm;
         coordinateUtil = new CoordinateUtil();
     }
 
-    public void readosmFile () {
+    public void readOsmFile () {
         Node osmNode = document.getDocumentElement();
-        Node elementNodes = osmNode.getFirstChild();
+        Node elementNodeWay = osmNode.getFirstChild();
 
-        //Document内のnode way relationを発見したら処理に入る
-        while(elementNodes != null) {
-            String elementNodesNodeName = elementNodes.getNodeName();
+        //要素名でnodeかwayを発見したら処理
+        while(elementNodeWay != null) {
+            String elementName = elementNodeWay.getNodeName();
 
-            switch (elementNodesNodeName) {
+            switch (elementName) {
                 case "node":
-                    setNodeMap(elementNodes);
+                    //nodeの緯度経度を平面座標(x,y)へ変換し、nmへ登録する処理
+                    setNodeCoordinate(elementNodeWay);
                     break;
 
                 case "way":
-
                     /*
                         osmのwayの構造
                         <way id='32170762' timestamp='2010-03-04T16:20:06Z' uid='146930' user='Tom_G3X' version='4' changeset='4033941'>
@@ -62,7 +63,7 @@ public class ReadOsmFile {
                     tmpKey = new String();
                     checkHighway.clearCheckList();
 
-                    Node itemNodes = elementNodes.getFirstChild();
+                    Node itemNodes = elementNodeWay.getFirstChild();
                     while(itemNodes != null) {
                         getWayInfo(itemNodes);
                         itemNodes = itemNodes.getNextSibling();
@@ -89,16 +90,18 @@ public class ReadOsmFile {
                         default:
                             break;
                     }
-                break;
+                    break;
             }
-            elementNodes = elementNodes.getNextSibling();
+            elementNodeWay = elementNodeWay.getNextSibling();
         }
     }
 
-    private void setNodeMap(Node node) {
+    //nodeの緯度経度を平面座標(x,y)へ変換し、nmへ登録
+    private void setNodeCoordinate(Node node) {
         NamedNodeMap attributes = node.getAttributes();
+
         if (attributes!=null) {
-            HashMap<String,Double> map = new HashMap<String,Double>();
+            HashMap<String,Double> nodeCoordinate = new HashMap<String,Double>();
 
             Node attributeId = attributes.getNamedItem("id");
             Node attributeLat = attributes.getNamedItem("lat");
@@ -118,17 +121,20 @@ public class ReadOsmFile {
                 referenceLat = lat;
             }
 
+            //最初のnodeを基準点(0,0)として扱う? 2018/07/27
             lat = lat - referenceLat;
             lon = lon - referenceLon;
             // map.put("y",lat);
             // map.put("x",lon);
 
+            //平面直角座標系と緯度経度を相互変換
             Point2D.Double point = coordinateUtil.convertLonLat2XY(lon,lat,0,0);
 
-            map.put("y",point.getY());
-            map.put("x",point.getX());
+            nodeCoordinate.put("y",point.getY());
+            nodeCoordinate.put("x",point.getX());
 
-            nm.addGmlNode(attributeId.getNodeValue(),map);
+            String osmNodeId = attributeId.getNodeValue();
+            nm.addGmlNode(osmNodeId,nodeCoordinate);
         }
     }
 

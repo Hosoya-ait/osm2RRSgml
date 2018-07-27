@@ -17,7 +17,7 @@ public class MakeDocument{
      */
 
     //読み込み用のDocument作成
-    public Document MakeReadDocument(String str) throws Exception{
+    public Document ReadDocument(String str) throws Exception{
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(new File(str));
@@ -26,7 +26,7 @@ public class MakeDocument{
     }
 
     //書き込み用のDocument作成
-    public Document MakeWriteDocument()throws Exception{
+    public Document WriteDocument()throws Exception{
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         documentBuilderFactory.setNamespaceAware(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();

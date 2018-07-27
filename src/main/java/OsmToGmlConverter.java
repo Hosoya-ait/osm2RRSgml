@@ -7,9 +7,9 @@ import java.util.HashMap;
 public class OsmToGmlConverter {
 
     //付与する名前空間
-    public static String xmlns_rcr_namespace_uri="urn:roborescue:map:gml";
-    public static String xmlns_gml_namespace_uri="http://www.opengis.net/gml";
-    public static String xmlns_xlink_namespace_uri="http://www.w3.org/1999/xlink";
+    public static String xmlns_rcr_namespace_uri    = "urn:roborescue:map:gml";
+    public static String xmlns_gml_namespace_uri    = "http://www.opengis.net/gml";
+    public static String xmlns_xlink_namespace_uri  = "http://www.w3.org/1999/xlink";
 
 
     public static void main(String args[]) throws Exception{
@@ -18,11 +18,10 @@ public class OsmToGmlConverter {
 
     private static void mainRun(String readFileName){
 
-        //作成するファイル
-        String fileName = "./GMLs/"+readFileName+".gml";
-
-        //読み込むファイルの場所
-        String fileLocation = "./OSMs/"+readFileName+".osm";
+        //作成するgmlファイルのパス
+        String gmlFile = "./GMLs/"+readFileName+".gml";
+        //読み込むosmファイルのパス
+        String osmFile = "./OSMs/"+readFileName+".osm";
 
         //データ管理用のManagerクラスのインスタンス生成
         NodeManager     nm = new NodeManager();
@@ -42,36 +41,31 @@ public class OsmToGmlConverter {
             System.out.println("ファイル作成時にエラー");
         }
 
-        //作成したDocumentにファイルの情報を読み込み
+        //作成したDocumentにosmファイルの情報を読込み
         Document readDocument = null;
-
         try{
-            readDocument = makeDocument.MakeReadDocument(fileLocation);
+            readDocument = makeDocument.ReadDocument(osmFile);
         }catch (Exception e) {
-            System.out.println("読み込みファイル作成時にエラー");
+            System.out.println("読込みファイル作成時にエラー");
         }
 
-        //Documentから各種情報の取り出し
-        //ReadOsmFile readOsmFile = new ReadOsmFile(readDocument);
-
-        ReadOsmFile readOsmFile1 = new ReadOsmFile(readDocument,nm,hm,bm);
-        readOsmFile1.readosmFile();
+        //osmファイルから情報の取り出し
+        ReadOsmFile rOF = new ReadOsmFile(readDocument,nm,hm,bm);
+        rOF.readOsmFile();
 
         // ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         // expansionHighway.ExpantionHighway();
-        ExpansionHighwaySimplePoint expansionHighway = new ExpansionHighwaySimplePoint(nm,hm,rm);
-        expansionHighway.ExpantionHighway();
+        ExpansionHighwaySimplePoint eHSP = new ExpansionHighwaySimplePoint(nm,hm,rm);
+        eHSP.expantionHighway();
+
 
         AreaManager am = new AreaManager(nm,bm,rm);
 
 
         // 森島が行数減らしてからリファクタリングする
         //ConnectBuildingToRoad connectBuildingToRoad = new ConnectBuildingToRoad(nm,bm,rm,am);
-
-
-
-        ConnectBuildingToRoadTest connectBuildingToRoad = new ConnectBuildingToRoadTest(nm,bm,rm,am);
-        connectBuildingToRoad.connect();
+        ConnectBuildingToRoadTest connectBuildingToRoadTest = new ConnectBuildingToRoadTest(nm,bm,rm,am);
+        connectBuildingToRoadTest.connect();
 
 
         // nm = connectBuildingToRoad.getNodeManeger();
@@ -86,7 +80,7 @@ public class OsmToGmlConverter {
         Document writeDoc = null;
         try{
             //書き込み用Documentの作成（テンプレな内容）
-            writeDoc = makeDocument.MakeWriteDocument();
+            writeDoc = makeDocument.WriteDocument();
         }catch(Exception e){
 
             System.out.println("書き込みファイル作成時のエラー");
@@ -101,7 +95,7 @@ public class OsmToGmlConverter {
         WriteGmlFile writeGmlFile = null;
         try{
             //Fileに書き込み　(テンプレな内容)
-            writeGmlFile = new WriteGmlFile(writeDoc,fileName);
+            writeGmlFile = new WriteGmlFile(writeDoc,gmlFile);
         }catch (Exception e) {
             System.out.println("gml作成時にエラー");
         }
@@ -122,10 +116,10 @@ public class OsmToGmlConverter {
         rm = null;
         makeDocument =null;
         readDocument = null;
-        readOsmFile1 = null;
-        expansionHighway =null;
+        rOF = null;
+        eHSP =null;
         am = null;
-        connectBuildingToRoad = null;
+        connectBuildingToRoadTest = null;
         makeEdge = null;
         writeDoc = null;
         writeDocument =null;

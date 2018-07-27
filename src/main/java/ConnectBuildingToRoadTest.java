@@ -11,7 +11,8 @@ class ConnectBuildingToRoadTest {
     private BuildingManager building_manager_ = new BuildingManager();
     private RoadManager     road_manager_ = new RoadManager();
     private AreaManager     area_manager_;
-    private Double search_object_distance = 20.0;
+    //接続道路の長さを設定する
+    private Double search_object_distance = 100.0;
     private Double default_road_width = 0.75;
     private HashMap<String,String> tmp_crosspoint_object_edges = new HashMap<String,String>();
 

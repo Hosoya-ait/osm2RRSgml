@@ -39,7 +39,7 @@ public class ExpansionHighwaySimplePoint {
     }
 
 
-    public void ExpantionHighway() {
+    public void expantionHighway() {
         //各HighwayListに入っている全てのnodeに対して、接続されているnodeを保存(node_Connect_Way_Map)
         for (int i=0; i<hm.getTmpHighwayList().size(); i++) {
             ArrayList<String> check_list = (ArrayList)hm.getTmpHighwayList().get(i);
