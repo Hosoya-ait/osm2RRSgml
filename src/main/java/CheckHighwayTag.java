@@ -13,7 +13,7 @@ class CheckHighwayTag {
     public void setCheckList(String str){
         this.check_List_.add(str);
     }
-    public Boolean checkList(){
+    public Boolean check(){
         String str = new String();
         for (int i=0; i<this.check_List_.size();i++ ) {
             str = this.check_List_.get(i);

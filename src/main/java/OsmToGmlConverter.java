@@ -50,13 +50,13 @@ public class OsmToGmlConverter {
         }
 
         //osmファイルから情報の取り出し
-        ReadOsmFile rOF = new ReadOsmFile(readDocument,nm,hm,bm);
-        rOF.readOsmFile();
+        ReadOsmFile rof = new ReadOsmFile(readDocument,nm,hm,bm);
+        rof.readOsmFile();
 
         // ExpansionHighway expansionHighway = new ExpansionHighway(nm,hm,rm);
         // expansionHighway.ExpantionHighway();
-        ExpansionHighwaySimplePoint eHSP = new ExpansionHighwaySimplePoint(nm,hm,rm);
-        eHSP.expantionHighway();
+        ExpansionHighwaySimplePoint ehsp = new ExpansionHighwaySimplePoint(nm,hm,rm);
+        ehsp.expantionHighway();
 
 
         AreaManager am = new AreaManager(nm,bm,rm);
@@ -116,8 +116,8 @@ public class OsmToGmlConverter {
         rm = null;
         makeDocument =null;
         readDocument = null;
-        rOF = null;
-        eHSP =null;
+        rof = null;
+        ehsp =null;
         am = null;
         connectBuildingToRoadTest = null;
         makeEdge = null;

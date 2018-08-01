@@ -4,18 +4,18 @@ import java.awt.geom.Line2D;
 
 public class ExpansionHighwaySimplePoint {
     //道路を正三角形状に拡張する際の正三角形の高さ
-    private static Double default_road_distance_ = 1.5;
+    private static Double TRIANGLE_ROAD_HEIGHT = 1.5*Math.sqrt(3);
     /*
     道路を拡張する際に、highwayの辺に対して垂直方向に2点nodeを作成する．
     highwayの1点と作成した2点は1辺が3mの正三角形となる．
     作成した2点は正三角形の1辺を形成しており、それぞれの点はhighwayの辺から上下に、正三角形の1辺の半分の距離に作成されるため、
     widthには基本的な幅員(3m)の半分の値を設定する．
     */
-    private static Double default_road_width_ = 1.5;
+    private static Double HALF_OF_EXTENDED_ROAD_WIDTH = 1.5;
 
-    //highwayのnodeごとに、接続されているhighwayのnodeリスト
-    private HashMap<String,ArrayList<String>> node_Connect_Way_Map = new HashMap<String,ArrayList<String>>();
-    //node_Connect_Way_Mapを元に作成されるroadのnodeリスト　内容はnode_Connect_Way_Mapと同じ。書く場所が変わって名前変えてるだけ。
+    //highway内のnodeごとに、接続されているhighway内のnode集合
+    private HashMap<String,ArrayList<String>> connectedNodesForHighwayNode = new HashMap<String,ArrayList<String>>();
+    //connectedNodesForHighwayNodeを元に作成されるroadのnodeリスト　内容はconnectedNodesForHighwayNodeと同じ。書く場所が変わって名前変えてるだけ。
     private HashMap<String,ArrayList<String>> node_have_road_nodes = new HashMap<String,ArrayList<String>>();
     /*
     node_have_road_nodesについて、他のhighwayのnode方向に対して垂直に作成されたlineのそれぞれの片側のnodeを保持するMap.
@@ -40,20 +40,20 @@ public class ExpansionHighwaySimplePoint {
 
 
     public void expantionHighway() {
-        //各HighwayListに入っている全てのnodeに対して、接続されているnodeを保存(node_Connect_Way_Map)
+        //各highwayに入っている全てのnodeに対して、接続されているnodeを保存
         for (int i=0; i<hm.getTmpHighwayList().size(); i++) {
-            ArrayList<String> check_list = (ArrayList)hm.getTmpHighwayList().get(i);
-            for (int j=0; j<check_list.size(); j++) {
-                if (node_Connect_Way_Map.containsKey(check_list.get(j)) != true) {
-                    node_Connect_Way_Map.put(check_list.get(j),nodeConnectedHighwayNode(check_list.get(j)));
+            ArrayList<String> highway = (ArrayList)hm.getTmpHighwayList().get(i);
+            for (int j=0; j<highway.size(); j++) {
+                if (connectedNodesForHighwayNode.containsKey(highway.get(j)) != true) {
+                    connectedNodesForHighwayNode.put(highway.get(j), connectedNodes(highway.get(j)));
                 }
             }
         }
 
-        //全てのhighwayのnodeに対して，拡張したnode集合を紐付け
-        for(Map.Entry<String,ArrayList<String>> entry : node_Connect_Way_Map.entrySet()){
-//            System.out.println("node_Connect_Way_Map = " + entry);
-            node_have_road_nodes.put( entry.getKey() , makePointRoad( entry.getKey() ) );
+        //全てのhighwayのnodeに対して，拡張したnode集合を紐付け Entry<K,V>
+        //forじゃなくEntry使ってるのはおしゃれか？
+        for(Map.Entry<String,ArrayList<String>> entry : connectedNodesForHighwayNode.entrySet()){
+            node_have_road_nodes.put(entry.getKey(), makePointForExtendedRoad(entry.getKey()));
         }
         //拡張したnode集合を用いて道路を作成
         makeNodeRoad();
@@ -61,134 +61,134 @@ public class ExpansionHighwaySimplePoint {
     }
 
     //引数のnodeに隣接しているnode集合を返す
-    private ArrayList<String> nodeConnectedHighwayNode(String node_ID){
-        ArrayList<String> connected_node = new ArrayList<String>();
+    private ArrayList<String>  connectedNodes(String gmlNodeID){
+        ArrayList<String> connectedNodes = new ArrayList<>();
         //全てのhighwayについて、引数のnodeを含むものに対して調べる
         for (int i=0; i<hm.getTmpHighwayList().size(); i++) {
-            ArrayList<String> check_highway = (ArrayList)hm.getTmpHighwayList().get(i);
-            int node_index = check_highway.indexOf(node_ID);
+            ArrayList<String> oneOfHighwayList = (ArrayList)hm.getTmpHighwayList().get(i);
+            int nodeNumber = oneOfHighwayList.indexOf(gmlNodeID);
 
-            if(node_index >= 0){
+            if(nodeNumber >= 0){
                 //引数のnodeがhighway内において最初にある場合
-                if(node_index == 0){
+                if(nodeNumber == 0){
                     //そのhighway内にて2番目にあるnodeと繋がる　● - ○   ●:調べるnode  ○:調べるnodeに接続しているnode
-                    connected_node.add(check_highway.get(1));
+                    connectedNodes.add(oneOfHighwayList.get(1));
                 }
                 //引数のnodeがhighway内において最後にある場合
-                else if(node_index ==check_highway.size()-1) {
+                else if(nodeNumber == oneOfHighwayList.size()-1) {
                     //そのhighway内にて最後から1つ手前のnodeと繋がる　○ - ●
-                    connected_node.add(check_highway.get(node_index-1));
+                    connectedNodes.add(oneOfHighwayList.get(nodeNumber-1));
                 }
                 //引数のnodeがhighway内において最初と最後でない場合
                 else {
                     //そのhighway内にて引数のnodeの前後のnodeと繋がる ○ - ● - ○
-                    connected_node.add(check_highway.get(node_index+1));
-                    connected_node.add(check_highway.get(node_index-1));
+                    connectedNodes.add(oneOfHighwayList.get(nodeNumber+1));
+                    connectedNodes.add(oneOfHighwayList.get(nodeNumber-1));
                 }
             }
         }
 
-        return connected_node;
+        return connectedNodes;
     }
 
     /*
-    highwayのnode(node_ID)を一つずつ拡張し,
+    highwayのnode(highwayNode)を一つずつ拡張し,
     反時計まわりに並び替え、
     交差した部分を調整し、
     tmp_Road_NodeとmakeNodeListを作成する。
     */
-    private ArrayList<String> makePointRoad(String node_ID){
+    private ArrayList<String> makePointForExtendedRoad(String highwayNode){
 
-        ArrayList<Double> degree_list = new ArrayList<Double>();
-        ArrayList<Line2D.Double> line_list = new ArrayList<Line2D.Double>();
-        ArrayList<String> connected_Node_List = node_Connect_Way_Map.get(node_ID);
+        ArrayList<Double> degreeList = new ArrayList<Double>();
+        ArrayList<Line2D.Double> triangleBottomLineList = new ArrayList<Line2D.Double>();
+        ArrayList<String> connectedNodes = connectedNodesForHighwayNode.get(highwayNode);
 
         //引数のhighwayのnodeをスタート地点として設定
-        Point2D.Double point_start = new Point2D.Double(nm.getX(node_ID),nm.getY(node_ID));
-        Point2D.Double point_end = new Point2D.Double();
-        Point2D.Double point_def = new Point2D.Double();
-        double radian_start_end;
-        double radian_make_1;
-        double radian_make_2;
+        Point2D.Double start = new Point2D.Double(nm.getX(highwayNode),nm.getY(highwayNode));
+        Point2D.Double end = new Point2D.Double();
+        Point2D.Double difference = new Point2D.Double();
+        double radianForStartToEnd;
+        double radianPlus90;
+        double radianMinus90;
         double degree;
-        Point2D.Double point_tmp = new Point2D.Double();
-        Point2D.Double point_make_1 = new Point2D.Double();
-        Point2D.Double point_make_2 = new Point2D.Double();
+        Point2D.Double triangleBottom = new Point2D.Double();
+        Point2D.Double radianPlus90Point = new Point2D.Double();
+        Point2D.Double radianMinus90Point = new Point2D.Double();
 
-        //現在対象としているhighwayのnode1つ(node_ID)に接続しているhighwayのnode分回す
-        for(String connect_node : connected_Node_List){
+        //現在対象としているhighwayのnode1つ(highwayNode)に接続しているhighwayのnode分回す
+        for(String connectedNode : connectedNodes){
 
             //引数のnodeに接続しているnodeをゴール地点として設定
-            point_end.setLocation(nm.getX(connect_node),nm.getY(connect_node));
+            end.setLocation(nm.getX(connectedNode),nm.getY(connectedNode));
             //以下でスタート地点とゴール地点との角度を出すためだけの変数を設定
-            point_def.setLocation(point_end.getX()-point_start.getX(),point_end.getY()-point_start.getY());
-            //atan2関数は　Y/X　で計算される傾き(tan)をラジアン値で返す
-            radian_start_end = Math.atan2(point_def.getY(),point_def.getX());
-            //atan2関数の値を度数（-180°~180°）に変換している
-            degree = (radian_start_end*180)/Math.PI;
-            //point_startを起点にθ方向に1.5x√3 の距離にpoint_tmpを設定
-            point_tmp.setLocation(Math.cos(radian_start_end)*default_road_distance_*Math.sqrt(3),Math.sin(radian_start_end)*default_road_distance_*Math.sqrt(3));
-            //point_tmpを起点に正三角形の底辺の2点をpoint_makeとしてそれぞれ作成
-            radian_make_2 = ((degree-90)*Math.PI)/180.0;
-            radian_make_1 = ((degree+90)*Math.PI)/180.0;
-            point_make_1.setLocation(Math.cos(radian_make_1)*default_road_width_+point_tmp.getX()+point_start.getX(),
-                                     Math.sin(radian_make_1)*default_road_width_+point_tmp.getY()+point_start.getY());
-            point_make_2.setLocation(Math.cos(radian_make_2)*default_road_width_+point_tmp.getX()+point_start.getX(),
-                                     Math.sin(radian_make_2)*default_road_width_+point_tmp.getY()+point_start.getY());
-            //point_make_1をline(矢印)の始点、point_make_2を終点として作成
-            Line2D.Double line = new Line2D.Double(point_make_1,point_make_2);
+            difference.setLocation(end.getX()-start.getX(),end.getY()-start.getY());
+            //atan2関数は　Y/X　で計算される傾き(tan)をラジアン値で返す x軸に対しての角度が出る（-180°〜180°）
+            radianForStartToEnd = Math.atan2(difference.getY(),difference.getX());
+            //atan2関数の値を度数（°）に変換している
+            degree = (radianForStartToEnd*180)/Math.PI;
+            //startを起点にθ方向に1.5x√3 の距離にtriangleBottomを設定
+            triangleBottom.setLocation(Math.cos(radianForStartToEnd)*TRIANGLE_ROAD_HEIGHT,Math.sin(radianForStartToEnd)*TRIANGLE_ROAD_HEIGHT);
+            //triangleBottomを起点に正三角形の底辺の2点をpoint_makeとしてそれぞれ作成
+            radianPlus90  = ((degree+90)*Math.PI)/180.0;
+            radianMinus90 = ((degree-90)*Math.PI)/180.0;
+            radianPlus90Point.setLocation (Math.cos(radianPlus90) *HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getX()+start.getX(),
+                                           Math.sin(radianPlus90) *HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getY()+start.getY());
+            radianMinus90Point.setLocation(Math.cos(radianMinus90)*HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getX()+start.getX(),
+                                           Math.sin(radianMinus90)*HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getY()+start.getY());
+            //radianPlus90Pointをline(矢印)の始点、radianMinus90Pointを終点として作成
+            Line2D.Double triangleBottomLine = new Line2D.Double(radianPlus90Point,radianMinus90Point);
 
 
             /*
             作成したlineを反時計回りで（lineに対する垂線の）角度が大きい順に並び替える処理
             lineの向きは総じて時計回りである点に注意！！
             角度の範囲は-180°~180°で行われる
-            degree_listとline_listを作成
+            degreeListとtriangleBottomLineListを作成
             */
-            if(degree_list.size() != 0){
+            if(degreeList.size() != 0){
 
-                for(int i=0;i<degree_list.size();i++){
+                for(int i=0;i<degreeList.size();i++){
 
                     /*
                     調べているdegreeがlistのi番目のdegreeより大きい場合、i番目に調べているdegreeを格納する
                     その際、i番目以降に格納されているものはi+1番目にずれて格納される
                     */
-                    if(degree > degree_list.get(i)){
-                        degree_list.add(i,degree);
-                        line_list.add(i,line);
+                    if(degree > degreeList.get(i)){
+                        degreeList.add(i,degree);
+                        triangleBottomLineList.add(i,triangleBottomLine);
                         break;
                     }
 
                     //調べているdegreeがlistのどの内容よりも小さかった場合、普通にケツに格納する
-                    if(i == degree_list.size()-1){
-                        degree_list.add(degree);
-                        line_list.add(line);
+                    if(i == degreeList.size()-1){
+                        degreeList.add(degree);
+                        triangleBottomLineList.add(triangleBottomLine);
                         break;
                     }
                 }
             }
             //角度の調べが最初の場合は素直にdegreeとlineをリストへ入れる
             else{
-                degree_list.add(degree);
-                line_list.add(line);
+                degreeList.add(degree);
+                triangleBottomLineList.add(triangleBottomLine);
             }
         }
 
 
-        //交差したlineの始点終点補正処理
-        //lineが交差している場合に、2本のlineの始点と終点を交点で設定し直す
-        if(line_list.size() > 1){
-            Line2D.Double line1 = line_list.get(line_list.size()-1);
-            for(int i=0;i<line_list.size();i++){
-                Line2D.Double line2 = line_list.get(i);
+        //交差したtriangleBottomLineの始点終点補正処理
+        //triangleBottomLineが交差している場合に、2本のtriangleBottomLineの始点と終点を交点で設定し直す
+        if(triangleBottomLineList.size() > 1){
+            Line2D.Double line1 = triangleBottomLineList.get(triangleBottomLineList.size()-1);
+            for(int i=0;i<triangleBottomLineList.size();i++){
+                Line2D.Double line2 = triangleBottomLineList.get(i);
                 if(line1.intersectsLine(line2)){
                     Point2D.Double correct_point = correctionPoint(line1,line2);
                     if(i == 0){
-                        ((Line2D.Double)line_list.get(line_list.size()-1)).setLine(line1.getP1(),correct_point);
+                        ((Line2D.Double)triangleBottomLineList.get(triangleBottomLineList.size()-1)).setLine(line1.getP1(),correct_point);
                     }else{
-                        ((Line2D.Double)line_list.get(i-1)).setLine(line1.getP1(),correct_point);
+                        ((Line2D.Double)triangleBottomLineList.get(i-1)).setLine(line1.getP1(),correct_point);
                     }
-                    ((Line2D.Double)line_list.get(i)).setLine(correct_point,line2.getP2());
+                    ((Line2D.Double)triangleBottomLineList.get(i)).setLine(correct_point,line2.getP2());
                 }
                 line1 = line2;
             }
@@ -196,7 +196,7 @@ public class ExpansionHighwaySimplePoint {
 
         //調整した交点はダブルカウントしつつ、反時計回りでlineのnodeをpointo_listに格納する処理
         ArrayList<Point2D.Double> point_list= new ArrayList<Point2D.Double>();
-        for(Line2D.Double line:line_list) {
+        for(Line2D.Double line:triangleBottomLineList) {
             point_list.add((Point2D.Double) line.getP1());
             point_list.add((Point2D.Double) line.getP2());
 //            System.out.println("line.getP1 = " + line.getP1());
@@ -261,14 +261,14 @@ public class ExpansionHighwaySimplePoint {
         拡張で作成した2点と、調べているnode1点の合計3点で、三角形の道路を作成する。
 */
         if (tmp_Road_Node.size()==2) {
-            tmp_Road_Node.add(node_ID);
+            tmp_Road_Node.add(highwayNode);
         }
 
         //道路の面のnode管理で、終わりのnodeを格納
         tmp_Road_Node.add(first_node);
 
         //makedNodeListを格納
-        maked_new_node_map.put(node_ID,makedNodeList);
+        maked_new_node_map.put(highwayNode,makedNodeList);
 
         //残骸
         //rm.setTmpRoadList(tmp_Road_Node);
@@ -282,14 +282,13 @@ public class ExpansionHighwaySimplePoint {
     private Point2D.Double correctionPoint(Line2D.Double line1,Line2D.Double line2){
         //直角にする処理がない
 
-
         Point2D a = line1.getP1(); //始点
         Point2D b = line1.getP2(); //終点
         Point2D c = line2.getP1(); //始点
         Point2D d = line2.getP2(); //終点
         //参照url https://gist.github.com/yoshiki/7702066
-        Double du = (b.getX() - a.getX())*(d.getY() - c.getY()) - (b.getY() - a.getY())*(d.getX() - c.getX());
-        Double u = ((c.getX() - a.getX()) * (d.getY() - c.getY()) - (c.getY() - a.getY())*(d.getX() - c.getX()))/du;
+        Double du    = ( b.getX() - a.getX()) * (d.getY() - c.getY()) - (b.getY() - a.getY()) * (d.getX() - c.getX());
+        Double  u    = ((c.getX() - a.getX()) * (d.getY() - c.getY()) - (c.getY() - a.getY()) * (d.getX() - c.getX())) / du;
         Double tmp_X = a.getX() + u * (b.getX() - a.getX());
         Double tmp_Y = a.getY() + u * (b.getY() - a.getY());
 
@@ -298,7 +297,7 @@ public class ExpansionHighwaySimplePoint {
         return correct_point;
     }
 
-    //highwayの2点間の距離が短い場合の道路作成 (node_have_road_nodesの調整)
+    //highwayの2点間の距離が短い場合の道路作成  (node_have_road_nodesの調整)
     //四角形部分の作成 (rmへ追加)
     //2点間の距離が短い場合を含めた node_have_road_nodes をrmへ追加
     private void makeNodeRoad(){
@@ -337,8 +336,8 @@ public class ExpansionHighwaySimplePoint {
                     //中点の上下に2点作成　つまり，node1とnode2との垂直2等分線上にnodeを2点作成する．
                     Double sitaMinus = ((degree-90)*Math.PI)/180.0;
                     Double sitaPlus = ((degree+90)*Math.PI)/180.0;
-                    Point2D.Double minusPoint = new Point2D.Double(Math.cos(sitaMinus)*default_road_width_+middlePoint.getX(),Math.sin(sitaMinus)*default_road_width_+middlePoint.getY());
-                    Point2D.Double plusPoint = new Point2D.Double(Math.cos(sitaPlus)*default_road_width_+middlePoint.getX(),Math.sin(sitaPlus)*default_road_width_+middlePoint.getY());
+                    Point2D.Double minusPoint = new Point2D.Double(Math.cos(sitaMinus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getX(),Math.sin(sitaMinus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getY());
+                    Point2D.Double plusPoint = new Point2D.Double(Math.cos(sitaPlus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getX(),Math.sin(sitaPlus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getY());
 
                     //作成したnodeの2点をnmに追加
                     HashMap<String,Double> mapMinus = new HashMap<String,Double>();
@@ -452,7 +451,7 @@ public class ExpansionHighwaySimplePoint {
         Point2D.Double point2 = new Point2D.Double(nm.getX(node2),nm.getY(node2));
         Double distance = Math.hypot(point1.getX()-point2.getX(),point1.getY()-point2.getY());
 
-        if (distance <= default_road_distance_*2*Math.sqrt(3)) {
+        if (distance <= TRIANGLE_ROAD_HEIGHT*2) {
             return true;
         }
         else {
