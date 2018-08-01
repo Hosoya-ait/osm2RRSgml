@@ -13,8 +13,8 @@ public class ReadOsmFile {
     private static String keyOfWay = new String();
 
     //基準点用変数
-    private static double referenceLat = 0.0;
-    private static double referenceLon = 0.0;
+    private static double REFERENCE_LAT = 0.0;
+    private static double REFERENCE_LON = 0.0;
 
     //highwayのtag（道路のタイプ）を保持する。道路のタイプでフィルターをかける処理に渡すためにある
     private static CheckHighwayTag checkHighwayTag = new CheckHighwayTag();
@@ -152,16 +152,16 @@ public class ReadOsmFile {
             // lat =lat/0.000008999229891;
             // lon =lon/0.00001;
 
-            if (referenceLon == 0.0) {
-                referenceLon = lon;
+            if (REFERENCE_LON == 0.0) {
+                REFERENCE_LON = lon;
             }
-            if(referenceLat == 0.0){
-                referenceLat = lat;
+            if (REFERENCE_LAT == 0.0){
+                REFERENCE_LAT = lat;
             }
 
             //最初のnodeを基準点(0,0)として扱う? 2018/07/27
-            lat = lat - referenceLat;
-            lon = lon - referenceLon;
+            lat = lat - REFERENCE_LAT;
+            lon = lon - REFERENCE_LON;
             // map.put("y",lat);
             // map.put("x",lon);
 

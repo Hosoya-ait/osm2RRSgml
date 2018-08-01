@@ -4,14 +4,14 @@ import java.awt.geom.Line2D;
 
 public class ExpansionHighwaySimplePoint {
     //道路を正三角形状に拡張する際の正三角形の高さ
-    private static Double TRIANGLE_ROAD_HEIGHT = 1.5*Math.sqrt(3);
+    private static Double TRIANGLE_HEIGHT_FOR_ROAD = 1.5*Math.sqrt(3);
     /*
     道路を拡張する際に、highwayの辺に対して垂直方向に2点nodeを作成する．
     highwayの1点と作成した2点は1辺が3mの正三角形となる．
     作成した2点は正三角形の1辺を形成しており、それぞれの点はhighwayの辺から上下に、正三角形の1辺の半分の距離に作成されるため、
     widthには基本的な幅員(3m)の半分の値を設定する．
     */
-    private static Double HALF_OF_EXTENDED_ROAD_WIDTH = 1.5;
+    private static Double HALF_OF_CONNECTED_ROAD_WIDTH  = 1.5;
 
     //highway内のnodeごとに、接続されているhighway内のnode集合
     private HashMap<String,ArrayList<String>> connectedNodesForHighwayNode = new HashMap<String,ArrayList<String>>();
@@ -127,14 +127,14 @@ public class ExpansionHighwaySimplePoint {
             //atan2関数の値を度数（°）に変換している
             degree = (radianForStartToEnd*180)/Math.PI;
             //startを起点にθ方向に1.5x√3 の距離にtriangleBottomを設定
-            triangleBottom.setLocation(Math.cos(radianForStartToEnd)*TRIANGLE_ROAD_HEIGHT,Math.sin(radianForStartToEnd)*TRIANGLE_ROAD_HEIGHT);
+            triangleBottom.setLocation(Math.cos(radianForStartToEnd)*TRIANGLE_HEIGHT_FOR_ROAD,Math.sin(radianForStartToEnd)*TRIANGLE_HEIGHT_FOR_ROAD);
             //triangleBottomを起点に正三角形の底辺の2点をpoint_makeとしてそれぞれ作成
             radianPlus90  = ((degree+90)*Math.PI)/180.0;
             radianMinus90 = ((degree-90)*Math.PI)/180.0;
-            radianPlus90Point.setLocation (Math.cos(radianPlus90) *HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getX()+start.getX(),
-                                           Math.sin(radianPlus90) *HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getY()+start.getY());
-            radianMinus90Point.setLocation(Math.cos(radianMinus90)*HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getX()+start.getX(),
-                                           Math.sin(radianMinus90)*HALF_OF_EXTENDED_ROAD_WIDTH+triangleBottom.getY()+start.getY());
+            radianPlus90Point.setLocation (Math.cos(radianPlus90) *HALF_OF_CONNECTED_ROAD_WIDTH +triangleBottom.getX()+start.getX(),
+                                           Math.sin(radianPlus90) *HALF_OF_CONNECTED_ROAD_WIDTH +triangleBottom.getY()+start.getY());
+            radianMinus90Point.setLocation(Math.cos(radianMinus90)*HALF_OF_CONNECTED_ROAD_WIDTH +triangleBottom.getX()+start.getX(),
+                                           Math.sin(radianMinus90)*HALF_OF_CONNECTED_ROAD_WIDTH +triangleBottom.getY()+start.getY());
             //radianPlus90Pointをline(矢印)の始点、radianMinus90Pointを終点として作成
             Line2D.Double triangleBottomLine = new Line2D.Double(radianPlus90Point,radianMinus90Point);
 
@@ -336,8 +336,8 @@ public class ExpansionHighwaySimplePoint {
                     //中点の上下に2点作成　つまり，node1とnode2との垂直2等分線上にnodeを2点作成する．
                     Double sitaMinus = ((degree-90)*Math.PI)/180.0;
                     Double sitaPlus = ((degree+90)*Math.PI)/180.0;
-                    Point2D.Double minusPoint = new Point2D.Double(Math.cos(sitaMinus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getX(),Math.sin(sitaMinus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getY());
-                    Point2D.Double plusPoint = new Point2D.Double(Math.cos(sitaPlus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getX(),Math.sin(sitaPlus)*HALF_OF_EXTENDED_ROAD_WIDTH+middlePoint.getY());
+                    Point2D.Double minusPoint = new Point2D.Double(Math.cos(sitaMinus)*HALF_OF_CONNECTED_ROAD_WIDTH +middlePoint.getX(),Math.sin(sitaMinus)*HALF_OF_CONNECTED_ROAD_WIDTH +middlePoint.getY());
+                    Point2D.Double plusPoint = new Point2D.Double(Math.cos(sitaPlus)*HALF_OF_CONNECTED_ROAD_WIDTH +middlePoint.getX(),Math.sin(sitaPlus)*HALF_OF_CONNECTED_ROAD_WIDTH +middlePoint.getY());
 
                     //作成したnodeの2点をnmに追加
                     HashMap<String,Double> mapMinus = new HashMap<String,Double>();
@@ -451,7 +451,7 @@ public class ExpansionHighwaySimplePoint {
         Point2D.Double point2 = new Point2D.Double(nm.getX(node2),nm.getY(node2));
         Double distance = Math.hypot(point1.getX()-point2.getX(),point1.getY()-point2.getY());
 
-        if (distance <= TRIANGLE_ROAD_HEIGHT*2) {
+        if (distance <= TRIANGLE_HEIGHT_FOR_ROAD*2) {
             return true;
         }
         else {
